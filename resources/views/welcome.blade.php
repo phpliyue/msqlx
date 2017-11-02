@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    码上去旅行
+                    Laravel
                 </div>
 
                 <div class="links">
