@@ -30,5 +30,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 *
 */
 Route::get('wx_api_banner_ads',function(){
-    return '1';
-})
+    return 1;
+});
