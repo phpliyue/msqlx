@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+ * app admin
+ * */
+Route::get('appAdmin','Admin\App\AppAdminController@index');
+Route::get('/temp',function (){
+    return view('pc.template.template');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
