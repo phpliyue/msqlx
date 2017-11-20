@@ -25,3 +25,10 @@ Route::get('/temp',function (){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+/*
+*   微信小程序接口
+*
+*/
+Route::get('wx_api_banner_ads',function(){
+    return '1';
+})
