@@ -6,5 +6,6 @@
     </head>
     <body>
         <h1>msqlx</h1>
+        <p>first page</p>
     </body>
 </html>
