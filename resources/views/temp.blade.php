@@ -16,8 +16,10 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
+                            {{--<img alt="image" class="img-circle"--}}
+                                 {{--src="{{URL::asset('img/profile_small.jpg')}}"/>--}}
                             <img alt="image" class="img-circle"
-                                 src="{{URL::asset('img/profile_small.jpg')}}"/>
+                                 src="images/profile/@yield('headImage','default.jpg')" height="48" width="48"/>
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong
@@ -25,7 +27,7 @@
                              </span> <span class="text-muted text-xs block">Art Director <b
                                             class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="profile">Profile</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
                             <li><a href="mailbox.html">Mailbox</a></li>
                             <li class="divider"></li>
@@ -48,16 +50,16 @@
                 {{--<li><a href="dashboard_5.html">Dashboard v.5 </a></li>--}}
                 {{--</ul>--}}
                 {{--</li>--}}
-                <li class="active">
-                    <a href="#"><i class="fa fa-home"></i> <span class="nav-label">Layouts</span></a>
+                <li class="@yield('nav1')">
+                    <a href="/administrator"><i class="fa fa-image"></i> <span class="nav-label">图片管理</span></a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-image"></i> <span class="nav-label">Layouts</span></a>
+                <li class="@yield('nav2')">
+                    <a href="/product"><i class="fa fa-money"></i> <span class="nav-label">产品管理</span></a>
                 </li>
-                <li>
+                <li class="@yield('nav3')">
                     <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
                 </li>
-                <li>
+                <li class="@yield('nav4')">
                     <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
                 </li>
             </ul>
