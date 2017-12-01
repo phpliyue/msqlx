@@ -96,15 +96,15 @@ class RequestMatcherTest extends TestCase
     {
         $matcher = new RequestMatcher();
 
-        $request = Request::create('/admin/foo');
+        $request = Request::create('/Admin/foo');
 
-        $matcher->matchPath('/admin/.*');
+        $matcher->matchPath('/Admin/.*');
         $this->assertTrue($matcher->matches($request));
 
-        $matcher->matchPath('/admin');
+        $matcher->matchPath('/Admin');
         $this->assertTrue($matcher->matches($request));
 
-        $matcher->matchPath('^/admin/.*$');
+        $matcher->matchPath('^/Admin/.*$');
         $this->assertTrue($matcher->matches($request));
 
         $matcher->matchMethod('/blog/.*');
@@ -124,8 +124,8 @@ class RequestMatcherTest extends TestCase
     public function testPathWithEncodedCharacters()
     {
         $matcher = new RequestMatcher();
-        $request = Request::create('/admin/fo%20o');
-        $matcher->matchPath('^/admin/fo o*$');
+        $request = Request::create('/Admin/fo%20o');
+        $matcher->matchPath('^/Admin/fo o*$');
         $this->assertTrue($matcher->matches($request));
     }
 
@@ -133,7 +133,7 @@ class RequestMatcherTest extends TestCase
     {
         $matcher = new RequestMatcher();
 
-        $request = Request::create('/admin/foo');
+        $request = Request::create('/Admin/foo');
         $request->attributes->set('foo', 'foo_bar');
 
         $matcher->matchAttribute('foo', 'foo_.*');
