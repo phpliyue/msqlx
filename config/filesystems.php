@@ -45,7 +45,12 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+//            'root' => storage_path('app'),
+            'root' => public_path('/images/profile/'),
+        ],
+        'lunbotu' => [
+            'driver' => 'local',
+            'root' => public_path('/images/'),
         ],
 
         'public' => [
