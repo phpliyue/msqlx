@@ -10,7 +10,7 @@
                 {!! Form::open(array('url'=>'profile_upload','files'=>true)) !!}
                     <div class="fomr-group">
                         <label>upload head_image</label>
-                        {!! Form::file('headImage',$attributes = ['id'=>'liyue']) !!}
+                        {!! Form::file('headImage') !!}
                     </div>
                     <input type="hidden" name="oldHeadImage" value="{{$user->head_image}}">
                 <input type="submit" class="btn btn-success">
