@@ -48,9 +48,9 @@ return [
 //            'root' => storage_path('app'),
             'root' => public_path('/images/profile/'),
         ],
-        'lunbotu' => [
+        'cirImg' => [
             'driver' => 'local',
-            'root' => public_path('/images/'),
+            'root' => public_path('/images/circleImages'),
         ],
 
         'public' => [
