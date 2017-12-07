@@ -24,15 +24,15 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong
                                             class="font-bold">@yield('username','码上去旅行')</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b
+                             </span> <span class="text-muted text-xs block">用户信息<b
                                             class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile">Profile</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="mailbox.html">Mailbox</a></li>
+                            <li><a href="profile">用户管理</a></li>
+                            <li><a href="contacts.html">待定</a></li>
+                            <li><a href="mailbox.html">邮箱</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                           document.getElementById('logout-form').submit()"; >Logout</a></li>
+                           document.getElementById('logout-form').submit()"; >退出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -50,6 +50,9 @@
                 {{--<li><a href="dashboard_5.html">Dashboard v.5 </a></li>--}}
                 {{--</ul>--}}
                 {{--</li>--}}
+                <li class="@yield('navzero')">
+                    <a href="/adminIndex"><i class="fa fa-home"></i> <span class="nav-label">概况统计</span></a>
+                </li>
                 <li class="@yield('nav1')">
                     <a href="/administrator"><i class="fa fa-image"></i> <span class="nav-label">图片管理</span></a>
                 </li>
@@ -62,6 +65,11 @@
                 <li class="@yield('nav4')">
                     <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
                 </li>
+                @if(Auth::user()->email == 'qmna.20@gmail.com')
+                    <li class="@yield('root')">
+                        <a href="/root"><i class="fa fa-user"></i> <span class="nav-label">root</span></a>
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>
@@ -71,12 +79,12 @@
                 <div class="navbar-header">
                     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i>
                     </a>
-                    <form role="search" class="navbar-form-custom" action="search_results.html">
-                        <div class="form-group">
-                            <input type="text" placeholder="Search for something..." class="form-control"
-                                   name="top-search" id="top-search">
-                        </div>
-                    </form>
+                    {{--<form role="search" class="navbar-form-custom" action="search_results.html">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<input type="text" placeholder="Search for something..." class="form-control"--}}
+                                   {{--name="top-search" id="top-search">--}}
+                        {{--</div>--}}
+                    {{--</form>--}}
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     {{--<li>--}}
@@ -118,7 +126,7 @@
                             <li>
                                 <div class="dropdown-messages-box">
                                     <a href="profile.html" class="pull-left">
-                                        liyue
+                                        liyue........................
                                         <img alt="image" class="img-circle" src="img/profile.jpg">
                                     </a>
                                     <div class="media-body ">
@@ -183,8 +191,7 @@
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
-                            <i class="fa fa-sign-out"></i> Log out
-
+                            <i class="fa fa-sign-out"></i> 退出
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
