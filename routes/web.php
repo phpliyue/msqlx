@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','Admin\AdminController@liyue');
+Route::get('/','Web\IndexController@index');
 /*
  *
  * 后台
