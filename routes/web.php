@@ -10,10 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 Route::get('/','Admin\AdminController@liyue');
 /*
  *
@@ -22,13 +18,13 @@ Route::get('/','Admin\AdminController@liyue');
 //注册登入auth
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-//后台登入首页
-Route::get('/administrator','Admin\AdminController@index')->middleware('auth');
+Route::get('/adminIndex','Admin\AdminController@firstPage')->middleware('auth');
+//后台图片管理
+Route::get('/administrator','Admin\AdminController@imageMag')->middleware('auth');
 //个人信息页
 Route::get('/profile','Admin\AdminController@profile')->middleware('auth');
 //个人信息图片修改方法
 Route::post('/profile_upload','Admin\AdminController@profileUpload');
-Route::post('/upload','Admin\AdminController@upload');
 //轮播图上传
 Route::post('/circleImages','Admin\AdminController@circleImages')->name('circleImages');
 //产品管理
@@ -50,5 +46,5 @@ Route::get('wx_api_banner_ads',function(){
 Route::post('img_update','AdminAjaxController@imgUpdate');
 Route::get('image-upload',['as'=>'image.upload','uses'=>'AdminController@index']);
 Route::post('image-upload',['as'=>'image.upload.post','uses'=>'AdminAjaxController@imageUploadPost']);
-
-
+//管理员路由
+Route::get('root','Admin\RootController@index');
