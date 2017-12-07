@@ -42,7 +42,7 @@ class AdminController extends Controller
                 [
                     'uid'=>Auth::user()->id,
                     'type'=>'cp',
-                    'pic_path'=>public_path('/images/circleImages/default.jpg'),
+                    'pic_path'=>'/images/circleImages/default.jpg',
                     'sort'=>1,
                     'shop_id'=>Auth::user()->shop_id,
                     'created_at'=>$date,
@@ -51,7 +51,7 @@ class AdminController extends Controller
                 [
                     'uid'=>Auth::user()->id,
                     'type'=>'cp',
-                    'pic_path'=>public_path('/images/circleImages/default.jpg'),
+                    'pic_path'=>'/images/circleImages/default.jpg',
                     'sort'=>2,
                     'shop_id'=>Auth::user()->shop_id,
                     'created_at'=>$date,
@@ -60,7 +60,7 @@ class AdminController extends Controller
                 [
                     'uid'=>Auth::user()->id,
                     'type'=>'cp',
-                    'pic_path'=>public_path('/images/circleImages/default.jpg'),
+                    'pic_path'=>'/images/circleImages/default.jpg',
                     'sort'=>3,
                     'shop_id'=>Auth::user()->shop_id,
                     'created_at'=>$date,
