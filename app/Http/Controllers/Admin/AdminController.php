@@ -143,7 +143,7 @@ class AdminController extends Controller
             $circleImagesName = 'cp'.time().'.'.$file_ext;
             $time = date("Y:m:d h:i:s",time());
             Image::make($circleImages)->resize(300,200)->save(public_path('/images/circleImages/'.$circleImagesName));
-            $pic_path = public_path('images/circleImages/'.$circleImagesName);
+            $pic_path = 'public/images/circleImages/'.$circleImagesName;
             DB::table('picture')->where('type','cp')
                                 ->where('sort',$imageSort)
                                 ->where('shop_id',Auth::user()->shop_id)
