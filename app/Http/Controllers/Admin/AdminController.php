@@ -42,7 +42,7 @@ class AdminController extends Controller
                 [
                     'uid'=>Auth::user()->id,
                     'type'=>'cp',
-                    'pic_path'=>public_path('/images/circleImages/'),
+                    'pic_path'=>public_path('/images/circleImages/default.jpg'),
                     'sort'=>1,
                     'shop_id'=>Auth::user()->shop_id,
                     'created_at'=>$date,
@@ -51,7 +51,7 @@ class AdminController extends Controller
                 [
                     'uid'=>Auth::user()->id,
                     'type'=>'cp',
-                    'pic_path'=>public_path('/images/circleImages/'),
+                    'pic_path'=>public_path('/images/circleImages/default.jpg'),
                     'sort'=>2,
                     'shop_id'=>Auth::user()->shop_id,
                     'created_at'=>$date,
@@ -60,7 +60,7 @@ class AdminController extends Controller
                 [
                     'uid'=>Auth::user()->id,
                     'type'=>'cp',
-                    'pic_path'=>public_path('/images/circleImages/'),
+                    'pic_path'=>public_path('/images/circleImages/default.jpg'),
                     'sort'=>3,
                     'shop_id'=>Auth::user()->shop_id,
                     'created_at'=>$date,
@@ -143,7 +143,7 @@ class AdminController extends Controller
             $circleImagesName = 'cp'.time().'.'.$file_ext;
             $time = date("Y:m:d h:i:s",time());
             Image::make($circleImages)->resize(300,200)->save(public_path('/images/circleImages/'.$circleImagesName));
-            $pic_path = public_path('images/circleImages/');
+            $pic_path = public_path('images/circleImages/'.$circleImagesName);
             DB::table('picture')->where('type','cp')
                                 ->where('sort',$imageSort)
                                 ->where('shop_id',Auth::user()->shop_id)
