@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -9,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Image;
 use App\Model\Picture;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 class AdminController extends Controller
 {
     public function __construct()
@@ -17,11 +17,12 @@ class AdminController extends Controller
         $this->Picture = new Picture();
     }
     /*
-    *
+    *后台首页
     */
     public function firstPage()
     {
-        return view('admin.index',array('user'=>Auth::user()));
+        $data = DB::table('product')->get();
+        return view('admin.index',array('user'=>Auth::user(),'data'=>$data));
     }
     public function liyue(){
         return view('welcome');
@@ -115,13 +116,6 @@ class AdminController extends Controller
         return redirect('/profile');
     }
     /*
-     * product management
-     * */
-    public function product()
-    {
-        return view('admin.product',array('user'=>Auth::user()));
-    }
-    /*
      *  circle image upload
      *
      * */
@@ -154,5 +148,77 @@ class AdminController extends Controller
             return redirect('/administrator');
         }
         return redirect('/administrator');
+    }
+    /*
+       * product management
+       * */
+    public function product()
+    {
+        $data = DB::table('product')->get();
+//        dd($data);
+        return view('admin.product',array('user'=>Auth::user(),'data'=>$data));
+    }
+/*
+ * product add
+ *
+ *
+ * */
+    public function productInsert(Request $request){
+       $data = DB::table('product')->insert([
+                'title' => $request->get('title'),
+                'auth' => $request->get('auth'),
+                'detail' => $request->get('cont'),
+                'shop_id' => $request->get('shop_id'),
+                'created_at' => date('Y:m:d H:i:s',time()),
+                'updated_at' => date('Y:m:d H:i:s',time())
+        ]);
+       if($data){
+           return redirect('/product');
+       }
+    }
+    /*
+     * 产品更新页面
+     *
+     * */
+    public function productUpdate($id){
+        $data = DB::table('product')->where('id',$id)->get();
+        return view('Admin.productUpdate',array('user'=>Auth::user(),'data'=>$data));
+    }
+    /*
+     * 产品修改方法
+     *
+     * */
+    public function productUpdateM(Request $request){
+        $id = $request->get('id');
+        $data = DB::table('product')->where('id',$id)->update([
+            'title' => $request->get('title'),
+            'auth' => $request->get('auth'),
+            'detail' => $request->get('cont'),
+            'updated_at' => date('Y:m:d H:i:s',time())
+        ]);
+        if($data){
+            return redirect('/product');
+        }
+    }
+    /*
+     * 产品删除方法
+     * */
+    public function productDelete($id){
+        $data = DB::table('product')->where('id',$id)->delete();
+        if($data)
+        {
+            return redirect('/product');
+        }
+    }
+    public function productImageUpload(Request $request)
+    {
+        $data = $request->all();
+        $imgInfo = $data{'file'};
+        $imgName = $imgInfo->getClientOriginalName();
+        $img_ext = substr(strrchr($imgName, '.'), 1);
+        $imgNewName = 'p'.time().'.'.$img_ext;
+        Image::make($imgInfo)->save(public_path('/images/product/'.$imgNewName));
+        $img_path = '/images/product/'.$imgNewName;
+        return $img_path;
     }
 }
