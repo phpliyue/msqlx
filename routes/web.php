@@ -29,10 +29,21 @@ Route::post('/profile_upload','Admin\AdminController@profileUpload');
 Route::post('/circleImages','Admin\AdminController@circleImages')->name('circleImages');
 //产品管理
 Route::get('/product','Admin\AdminController@product')->middleware('auth');
+//产品修改页
+Route::get('/productUpdate/{id}','Admin\AdminController@productUpdate');
+//产品修改方法
+Route::post('/productUpdateM','Admin\AdminController@productUpdateM')->name('proUp');
+//产品删除方法
+Route::get('/productDelete/{id}','Admin\AdminController@productDelete');
 //后台模板
 Route::get('/temp',function(){
     return view('temp');
 });
+Route::any('/one/{k}','Admin\AdminController@productUpdate');
+//富文本编辑器提交
+Route::post('/productInsert','Admin\AdminController@productInsert')->name('Insert');
+Route::post('/productUpdate','Admin\AdminController@productUpdate')->name('Update');
+Route::post('/productImageUpload','Admin\AdminController@productImageUpload');
 
 /*
 *   微信小程序接口
