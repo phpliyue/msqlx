@@ -16,99 +16,35 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <i class="fa fa-wrench"></i>
                             </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="#">Config option 1</a>
-                                </li>
-                                <li><a href="#">Config option 2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
+                        </div>
+                    </div>
+
+
+                    <div class="ibox-content">
+                        <div class="carousel slide" id="carousel1">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                @foreach($res as $key => $value)
+                                    <div class="item {{$value->sort==1?'active':''}}">
+                                        <img src="images/circleImages/{{$value->pic_name}}" alt="..." width="100%" class="img-responsive">
+                                    </div>
+                                @endforeach
+
+                            </div>
+                            <a data-slide="prev" href="#carousel1" class="left carousel-control">
+                                <span class="icon-prev"></span>
+                            </a>
+                            <a data-slide="next" href="#carousel1" class="right carousel-control">
+                                <span class="icon-next"></span>
                             </a>
                         </div>
                     </div>
-                    <div class="ibox-content">
-                        {{--<h3>--}}
-                            {{--轮播图--}}
-                        {{--</h3>--}}
-                        {{--<p>--}}
-                            {{--Easily create knob input style.--}}
-                        {{--</p>--}}
 
-                        {{--<div class="text-center">--}}
-                            {{--<small>Dynamic knob example</small><br/><br/>--}}
-                            {{--<div class="m-r-md inline">--}}
-                                {{--<input type="text" value="75" class="dial m-r-sm" data-fgColor="#ED5565" data-width="85" data-height="85" data-cursor=true data-thickness=.3/>--}}
-                            {{--</div>--}}
-                            {{--<div class="m-r-md inline">--}}
-                                {{--<input type="text" value="25" class="dial m-r" data-fgColor="#ED5565" data-width="85" data-height="85" data-step="1000" data-min="-15000" data-max="15000" data-displayPrevious=true/>--}}
-                            {{--</div>--}}
-                            {{--<div class="m-r-md inline">--}}
-                                {{--<input type="text" value="60" class="dial m-r" data-fgColor="#ED5565" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 />--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        <div class="text-center">
-                        {{--<div id="myCarousel" class="carousel slide" >--}}
-                            {{--<!-- 轮播（Carousel）指标 -->--}}
-                            {{--<ol class="carousel-indicators">--}}
-                                {{--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>--}}
-                                {{--<li data-target="#myCarousel" data-slide-to="1"></li>--}}
-                                {{--<li data-target="#myCarousel" data-slide-to="2"></li>--}}
-                            {{--</ol>--}}
-                            {{--<!-- 轮播（Carousel）项目 -->--}}
-                            {{--<div class="carousel-inner">--}}
-                                {{--<div class="item active">--}}
-                                    {{--<img width="100%" height="" src="images/circleImages/{{$picName[0]->pic_name}}" alt="First slide">--}}
-                                {{--</div>--}}
-                                {{--<div class="item">--}}
-                                    {{--<img width="100%" src="images/circleImages/{{$picName[1]->pic_name}}" alt="Second slide">--}}
-                                {{--</div>--}}
-                                {{--<div class="item">--}}
-                                    {{--<img width="100%" src="images/circleImages/{{$picName[2]->pic_name}}" alt="Third slide">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<!-- 轮播（Carousel）导航 -->--}}
-                            {{--<a class="carousel-control left" href="#myCarousel"--}}
-                               {{--data-slide="prev">&lsaquo;--}}
-                            {{--</a>--}}
-                            {{--<a class="carousel-control right" href="#myCarousel"--}}
-                               {{--data-slide="next">&rsaquo;--}}
-                            {{--</a>--}}
-                        {{--</div>--}}
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                </ol>
 
-                                <!-- Wrapper for slides -->
-
-                                <div class="carousel-inner" role="listbox">
-                                    {{--<div class="item active">--}}
-                                        {{--<img src="images/circleImages/default.jpg" alt="..." width="100%">--}}
-                                    {{--</div>--}}
-                                    @foreach($res as $key => $value)
-                                        <div class="item {{$value->sort==1?'active':''}}">
-                                            <img src="images/circleImages/{{$value->pic_name}}" alt="..." width="100%">
-                                        </div>
-                                    @endforeach
-                                </div>
-
-                                <!-- Controls -->
-                                {{--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">--}}
-                                    {{--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>--}}
-                                    {{--<span class="sr-only">Previous</span>--}}
-                                {{--</a>--}}
-                                {{--<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">--}}
-                                    {{--<span class="fa fa-chevron-right" aria-hidden="true"></span>--}}
-                                    {{--<i class="fa fa-3x fa-caret-right"></i>--}}
-                                    {{--<span class="sr-only">Next</span>--}}
-                                {{--</a>--}}
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-7" >
@@ -155,14 +91,14 @@
                                     <div class="thumbnail">
                                         <img src="images/circleImages/{{$value->pic_name}}" alt="" width="100%">
                                         {!! Form::open(array('route' => 'circleImages','files'=>true)) !!}
-                                        <div class="form-group">
-                                            {!! Form::file('image', array('class' => 'form-control')) !!}
-                                        </div>
-                                        <input type="hidden" name="imageSort" value="{{$value->sort}}">
-                                        <input type="hidden" name="oldCirImg" value="{{$value->pic_name}}" >
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-success">Upload</button>
-                                        </div>
+                                            <div class="form-group">
+                                                {!! Form::file('image', array('class' => 'form-control')) !!}
+                                            </div>
+                                            <input type="hidden" name="imageSort" value="{{$value->sort}}">
+                                            <input type="hidden" name="oldCirImg" value="{{$value->pic_name}}" >
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-success">Upload</button>
+                                            </div>
                                         {!! Form::close() !!}
                                     </div>
                                 </div>
