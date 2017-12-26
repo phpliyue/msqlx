@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title','后台管理')</title>
-    <link href="{{URL::asset('css/app.css')}}" rel="stylesheet">
+
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="{{URL::asset('css/plugins/summernote/summernote.css')}}" rel="stylesheet">
+    {{--<link href="{{URL::asset('css/app.css')}}" rel="stylesheet">--}}
     <link href="{{URL::asset('css/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -19,7 +27,7 @@
                             {{--<img alt="image" class="img-circle"--}}
                                  {{--src="{{URL::asset('img/profile_small.jpg')}}"/>--}}
                             <img alt="image" class="img-circle"
-                                 src="images/profile/@yield('headImage','default.jpg')" height="48" width="48"/>
+                                 src="/images/profile/@yield('headImage','default.jpg')" height="48" width="48"/>
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong
@@ -415,7 +423,7 @@
         <script src="{{URL::asset('js/app.js')}}"></script>
         <script src="{{URL::asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
         <script src="{{URL::asset('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-        <script src="{{URL::asset('js/inspinia.js')}}"></script>
+        {{--<script src="{{URL::asset('js/inspinia.js')}}"></script>--}}
 @show
 
 
