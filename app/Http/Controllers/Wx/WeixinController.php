@@ -12,6 +12,6 @@ class WeixinController extends Controller
     }
 
     public function getProInfo(Request $request){
-        dd($request);
+        dd($request->get('type'));
     }
 }
