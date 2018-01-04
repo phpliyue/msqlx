@@ -30,7 +30,7 @@ Route::post('/circleImages','Admin\AdminController@circleImages')->name('circleI
 //产品管理
 Route::get('/product','Admin\AdminController@product')->middleware('auth');
 //产品修改页
-Route::get('/productUpdate/{id}','Admin\AdminController@productUpdate');
+Route::get('/productUpdate/{id}','Admin\AdminController@productUpdateId');
 //产品修改方法
 Route::post('/productUpdateM','Admin\AdminController@productUpdateM')->name('proUp');
 //产品删除方法
@@ -59,3 +59,9 @@ Route::get('image-upload',['as'=>'image.upload','uses'=>'AdminController@index']
 Route::post('image-upload',['as'=>'image.upload.post','uses'=>'AdminAjaxController@imageUploadPost']);
 //管理员路由
 Route::get('root','Admin\RootController@index');
+/*
+ * 码上去旅行微信接口
+ * */
+Route::get('x_getAdPic','Wx\WeixinController@getAdPic');
+//获取产品信息接口
+Route::get('x_getProductInfo','Wx\WeixinController@getProInfo');
