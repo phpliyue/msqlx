@@ -12,6 +12,11 @@ class WeixinController extends Controller
     }
 
     public function getProInfo(Request $request){
-        dd($request->get('type'));
+        $type = $request->get('type');
+        if($type == 'zb'){
+            return '你想要周边旅游信息，请求正确我歹给啊。';
+        }else{
+            return '别他妈的瞎请求';
+        }
     }
 }
