@@ -181,6 +181,7 @@ class AdminController extends Controller
                 'type' => $request->get('type'),
                 'detail' => $request->get('cont'),
                 'shop_id' => $request->get('shop_id'),
+                'time' => date('Y:m:d',time()),
                 'created_at' => date('Y:m:d H:i:s',time()),
                 'updated_at' => date('Y:m:d H:i:s',time())
         ]);
@@ -194,7 +195,7 @@ class AdminController extends Controller
      * */
     public function productUpdateId($id){
         $data = DB::table('product')->where('id',$id)->get();
-        return view('Admin.productUpdate',array('user'=>Auth::user(),'data'=>$data));
+        return view('admin.productUpdate',array('user'=>Auth::user(),'data'=>$data));
     }
     /*
      * 产品修改方法
@@ -219,6 +220,7 @@ class AdminController extends Controller
                 'type' => $request->get('type'),
                 'cover_name' => $cover,
                 'detail' => $request->get('cont'),
+                'time' => date('Y:m:d',time()),
                 'updated_at' => date('Y:m:d H:i:s',time())
             ]);
             if($cover_name !== 'default.jpg'){
@@ -233,6 +235,7 @@ class AdminController extends Controller
             'auth' => $request->get('auth'),
             'type' => $request->get('type'),
             'detail' => $request->get('cont'),
+            'time' => date('Y:m:d',time()),
             'updated_at' => date('Y:m:d H:i:s',time())
         ]);
         if($data){
