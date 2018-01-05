@@ -52,6 +52,10 @@ return [
             'driver' => 'local',
             'root' => public_path('/images/circleImages'),
         ],
+        'proImg' => [
+            'driver' => 'local',
+            'root' => public_path('/images/product'),
+        ],
 
         'public' => [
             'driver' => 'local',
