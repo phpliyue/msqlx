@@ -16,30 +16,39 @@
                 </div>
             </div>
             <div class="ibox-content">
-                <form method="post" class="form-horizontal" action="/productInsert">
-                    <div class="form-group has-success">
-                        <label class="col-sm-2 control-label">Input with success</label>
-                        <div class="col-sm-10"><input type="date" class="form-control"></div>
-                    </div>
-                 </form>
-                <div class="hr-line-dashed"></div>
                 {!! Form::open(array('route'=>'Insert','files'=>true,'class'=>'form-horizontal')) !!}
                 <div class="form-group has-success">
-                    {!! Form::label('titel','title',['class'=>'col-sm-2 control-label']) !!}
+                    {!! Form::label('titel','标题',['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         {!! Form::text('title','',['class'=>'form-control']) !!}
                     </div>
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="form-group has-success">
-                    {!! Form::label('auth','auth',['class'=>'col-sm-2 control-label']) !!}
+                    {!! Form::label('cover','封面',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-10">
+                        {!! Form::file('cover') !!}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group has-success">
+                    {!! Form::label('type','类型',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-10">
+                        周边游 &nbsp {!! Form::radio('type','zb',true) !!} &nbsp &nbsp
+                        国内游 &nbsp {!! Form::radio('type','gn') !!} &nbsp &nbsp
+                        国际游 &nbsp {!! Form::radio('type','gj') !!}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group has-success">
+                    {!! Form::label('auth','作者',['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         {!! Form::text('auth','',['class'=>'form-control']) !!}
                     </div>
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="form-group has-success">
-                    {!! Form::label('detail','detail',['class'=>'col-sm-2 control-label']) !!}
+                    {!! Form::label('detail','内容',['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         {!! Form::text('detail','',['class'=>'form-control summernote','id'=>'summernote']) !!}
                         <input type="hidden" value="" name="cont" class="cont">
@@ -56,8 +65,6 @@
     </div>
         </div>
     </div>
-
-
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
@@ -71,7 +78,6 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover dataTables-example" >
                                 <thead>
@@ -97,8 +103,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-
-
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -111,7 +115,6 @@
                                 </tfoot>
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -126,7 +129,6 @@
     <script src="{{URL::asset('js/plugins/dataTables/datatables.min.js')}}"></script>
     <script>
         $(document).ready(function(){
-
             $('.dataTables-example').DataTable({
                 pageLength: 25,
                 responsive: true,
@@ -136,7 +138,6 @@
                     {extend: 'csv'},
                     {extend: 'excel', title: 'ExampleFile'},
                     {extend: 'pdf', title: 'ExampleFile'},
-
                     {extend: 'print',
                         customize: function (win){
                             $(win.document.body).addClass('white-bg');
