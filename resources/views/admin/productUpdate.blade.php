@@ -16,37 +16,54 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="/productUpdate">
-                            <div class="form-group has-success">
-                                <label class="col-sm-2 control-label">Input with success</label>
-                                <div class="col-sm-10"><input type="date" class="form-control"></div>
-                            </div>
-                        </form>
                         <div class="hr-line-dashed"></div>
                         {!! Form::open(array('route'=>'proUp','files'=>true,'class'=>'form-horizontal')) !!}
                         @foreach($data as $key)
                         <div class="form-group has-success">
-                            {!! Form::label('titel','title',['class'=>'col-sm-2 control-label']) !!}
+                            {!! Form::label('titel','标题',['class'=>'col-sm-2 control-label']) !!}
                             <div class="col-sm-10">
                                 {!! Form::text('title',"$key->title",['class'=>'form-control']) !!}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group has-success">
-                            {!! Form::label('auth','auth',['class'=>'col-sm-2 control-label']) !!}
+                            {!! Form::label('coverimg','封面',['class'=>'col-sm-2 control-label']) !!}
+                            <div class="col-sm-10">
+                                <img src={{$key->cover}}></img>
+                            </div>
+                        </div>
+                        <div class="form-group has-success">
+                            {!! Form::label('cover','封面',['class'=>'col-sm-2 control-label']) !!}
+                            <div class="col-sm-10">
+                                {!! Form::file('cover') !!}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group has-success">
+                            {!! Form::label('type','类型',['class'=>'col-sm-2 control-label']) !!}
+                            <div class="col-sm-10">
+                                周边游 &nbsp {!! Form::radio('type','zb',$key->type == 'zb'?true:false)!!} &nbsp &nbsp
+                                国内游 &nbsp {!! Form::radio('type','gn',$key->type == 'gn'?true:false) !!} &nbsp &nbsp
+                                国际游 &nbsp {!! Form::radio('type','gj',$key->type == 'gj'?true:false) !!}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group has-success">
+                            {!! Form::label('auth','作者',['class'=>'col-sm-2 control-label']) !!}
                             <div class="col-sm-10">
                                 {!! Form::text('auth',"$key->auth",['class'=>'form-control']) !!}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group has-success">
-                            {!! Form::label('detail','',['class'=>'col-sm-2 control-label']) !!}
+                            {!! Form::label('detail','内容',['class'=>'col-sm-2 control-label']) !!}
                             <div class="col-sm-10">
                                 <input type="hidden" name="id" value="{{$key->id}}">
                                 <input type="hidden" class="fuCon" value='{{$key->detail}}'>
                                 {!! Form::text('detail',"",['class'=>'form-control summernote','id'=>'summernote']) !!}
                                 <input type="hidden" value="$key->detail" name="cont" class="cont">
                                 <input type="hidden" value="{{$user->shop_id}}" name="shop_id" >
+                                <input type="hidden" value="{{$key->cover_name}}" name="cover_name">
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -70,19 +87,13 @@
     <script src="{{URL::asset('js/plugins/summernote/summernote.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/pace/pace.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/dataTables/datatables.min.js')}}"></script>
-
     {{--<script src="{{URL::asset('js/inspinia.js')}}"></script>--}}
     <script>
-//        $(document).ready(function(){
-
-
-
             $('.summernote').summernote(
                 {
                     height:'25em',
                     focus:true,
                     callbacks: {
-
                         onImageUpload: function (files) {
                             sendFile(files[0]);
                         },
@@ -90,15 +101,9 @@
                             console.log('onChange:', contents);
                             $('.cont').val(contents);
                         }
-//                        onFocus: function() {
-//                            var content = $('.fuCon').val();
-//                            $('.summernote').summernote('code',content);
-//                        }
                     }
                 });
-//        });
         var content = $('.fuCon').val();
-
         function sendFile(file) {
             console.log(file);
             var img = file;
