@@ -155,7 +155,6 @@ class AdminController extends Controller
     public function product()
     {
         $data = DB::table('product')->get();
-//        dd($data);
         return view('admin.product',array('user'=>Auth::user(),'data'=>$data));
     }
 /*
@@ -164,9 +163,22 @@ class AdminController extends Controller
  *
  * */
     public function productInsert(Request $request){
+       if($request->hasFile('cover')){
+           $shopId = Auth::user()->shop_id;
+           $coverInfo = $request->file('cover');
+           $coverName = $coverInfo->getClientOriginalName();
+           $cover_ext = substr(strrchr($coverName, '.'), 1);
+           $type = $request->get('type');
+           $cover = $type.$shopId.time().'.'.$cover_ext;
+           Image::make($coverInfo)->resize(300,200)->save(public_path('/images/product/'.$cover));
+           $cover_path = '/images/product/'.$cover;
+       }
        $data = DB::table('product')->insert([
                 'title' => $request->get('title'),
+                'cover' => $cover_path,
+                'cover_name' => $cover,
                 'auth' => $request->get('auth'),
+                'type' => $request->get('type'),
                 'detail' => $request->get('cont'),
                 'shop_id' => $request->get('shop_id'),
                 'created_at' => date('Y:m:d H:i:s',time()),
@@ -180,7 +192,7 @@ class AdminController extends Controller
      * 产品更新页面
      *
      * */
-    public function productUpdate($id){
+    public function productUpdateId($id){
         $data = DB::table('product')->where('id',$id)->get();
         return view('Admin.productUpdate',array('user'=>Auth::user(),'data'=>$data));
     }
@@ -189,10 +201,37 @@ class AdminController extends Controller
      *
      * */
     public function productUpdateM(Request $request){
+        $cover_name = $request->get('cover_name');
         $id = $request->get('id');
+        if($request->hasFile('cover')){
+            $shopId = Auth::user()->shop_id;
+            $coverInfo = $request->file('cover');
+            $coverName = $coverInfo->getClientOriginalName();
+            $cover_ext = substr(strrchr($coverName, '.'), 1);
+            $type = $request->get('type');
+            $cover = $type.$shopId.time().'.'.$cover_ext;
+            Image::make($coverInfo)->resize(300,200)->save(public_path('/images/product/'.$cover));
+            $cover_path = '/images/product/'.$cover;
+            $data = DB::table('product')->where('id',$id)->update([
+                'title' => $request->get('title'),
+                'cover' => $cover_path,
+                'auth' => $request->get('auth'),
+                'type' => $request->get('type'),
+                'cover_name' => $cover,
+                'detail' => $request->get('cont'),
+                'updated_at' => date('Y:m:d H:i:s',time())
+            ]);
+            if($cover_name !== 'default.jpg'){
+                Storage::disk('proImg')->delete($cover_name);
+            }
+            if($data){
+                return redirect('/product');
+            }
+        }
         $data = DB::table('product')->where('id',$id)->update([
             'title' => $request->get('title'),
             'auth' => $request->get('auth'),
+            'type' => $request->get('type'),
             'detail' => $request->get('cont'),
             'updated_at' => date('Y:m:d H:i:s',time())
         ]);
