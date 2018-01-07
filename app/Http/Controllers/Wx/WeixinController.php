@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Wx;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Auth;
 
 class WeixinController extends Controller
 {
@@ -11,12 +13,14 @@ class WeixinController extends Controller
         return '11213';
     }
 
+    /*
+     * 返回旅游信息
+     * 接口地址:www.msqlx/x_getProductInfo?type=
+     *
+     * */
     public function getProInfo(Request $request){
         $type = $request->get('type');
-        if($type == 'zb'){
-            return '你想要周边旅游信息，请求正确我歹给啊。';
-        }else{
-            return '别他妈的瞎请求';
-        }
+        $Data = DB::table('product')->where('type',$type)->get();
+        return json_encode($Data);
     }
 }
