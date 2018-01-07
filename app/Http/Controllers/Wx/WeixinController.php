@@ -23,4 +23,13 @@ class WeixinController extends Controller
         $Data = DB::table('product')->where('type',$type)->get();
         return json_encode($Data);
     }
+    /*
+     * 获取产品详情
+     * 接口地址:https://www.msqlx.com/x_getProductDetail?id=
+     * */
+    public function getProDetail(Request $request){
+        $id = $request->get('id');
+        $Data = DB::table('product')->where('id',$id)->get();
+        return json_encode($Data);
+    }
 }
