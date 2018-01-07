@@ -65,3 +65,5 @@ Route::get('root','Admin\RootController@index');
 Route::get('x_getAdPic','Wx\WeixinController@getAdPic');
 //获取产品信息接口
 Route::get('x_getProductInfo','Wx\WeixinController@getProInfo');
+//get product detail
+Route::get('x_getProductDetail','Wx\WeixinController@getProDetail');
