@@ -54,8 +54,8 @@ class WeixinController extends Controller
         $cusName = $request->get('customerName');
         $cusImage = $request->get('customerImageUrl');
         $openid = $request->get('openid');
-        $data = DB::table('customer')->where('wx_openid')->get();
-        if($data){
+        $data = DB::table('customer')->where('wx_openid',$openid)->get();
+        if(!$data){
             $info = DB::table('customer')->insert([
                     'wx_name' => $cusName,
                     'wx_head_image' => $cusImage,
@@ -65,7 +65,9 @@ class WeixinController extends Controller
             if($info){
                 return 'customer add';
             }
+        }else{
+            return 'customer login';
         }
-        return 'customer login';
+
     }
 }
