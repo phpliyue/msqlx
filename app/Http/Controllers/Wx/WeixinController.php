@@ -19,8 +19,8 @@ class WeixinController extends Controller
      * */
     public function getProInfo(Request $request){
         $type = $request->get('type');
-        $Data = DB::table('product')->where('type',$type)->get();
-        return json_encode($Data);
+        $data = DB::table('product')->where('type',$type)->get();
+        return json_encode($data);
     }
     /*
      * 获取产品详情
@@ -28,8 +28,8 @@ class WeixinController extends Controller
      * */
     public function getProDetail(Request $request){
         $id = $request->get('id');
-        $Data = DB::table('product')->where('id',$id)->get();
-        return json_encode($Data);
+        $data = DB::table('product')->where('id',$id)->get();
+        return json_encode($data);
     }
     /*
      * customer login get customer wx name wx headImage openid
@@ -43,7 +43,29 @@ class WeixinController extends Controller
 //        $appid = 'wx5eb8e41173cf7ac2';
 //        $secret = 'e3bf7d92c1d041344eabf1dededfec3d';
         $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx5eb8e41173cf7ac2&secret=e3bf7d92c1d041344eabf1dededfec3d&js_code=$code&grant_type=authorization_code";
-        $userinfo = json_decode(file_get_contents($url),true);
-        return $userinfo;
+        $data = json_decode(file_get_contents($url),true);
+        return $data;
+    }
+    /*
+     * save customer infomation
+     * interface: https://www.msqlx.com/x_saveCustomerInfo
+     * */
+    public function saveCustomerInfo(Request $request){
+        $cusName = $request->get('customerName');
+        $cusImage = $request->get('customerImageUrl');
+        $openid = $request->get('openid');
+        $data = DB::table('customer')->where('wx_openid')->get();
+        if($data){
+            $info = DB::table('customer')->insert([
+                    'wx_name' => $cusName,
+                    'wx_head_image' => $cusImage,
+                    'wx_openid' => $openid,
+                    'create_time' => date('Y:m:d H:i:s',time())
+                ]);
+            if($info){
+                return 'customer add';
+            }
+        }
+        return 'customer login';
     }
 }
