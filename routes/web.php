@@ -67,3 +67,5 @@ Route::get('x_getAdPic','Wx\WeixinController@getAdPic');
 Route::get('x_getProductInfo','Wx\WeixinController@getProInfo');
 //get product detail
 Route::get('x_getProductDetail','Wx\WeixinController@getProDetail');
+//get customer login information
+Route::get('x_getCustomerLogin','Wx\WeixinController@getCustomerLogin');
