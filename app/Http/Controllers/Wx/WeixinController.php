@@ -56,15 +56,13 @@ class WeixinController extends Controller
         $openid = $request->get('openid');
         $data = DB::table('customer')->where('wx_openid',$openid)->get();
         if(!$data->count()){
-            $info = DB::table('customer')->insert([
-                    'wx_name' => $cusName,
-                    'wx_head_image' => $cusImage,
-                    'wx_openid' => $openid,
-                    'create_time' => date('Y:m:d H:i:s',time())
-                ]);
-            if($info){
-                return 'customer add';
-            }
+            DB::table('customer')->insert([
+                'wx_name' => $cusName,
+                'wx_head_image' => $cusImage,
+                'wx_openid' => $openid,
+                'create_time' => date('Y:m:d H:i:s',time())
+            ]);
+            return 'customer add';
         }else{
             return 'customer login';
         }
