@@ -55,7 +55,7 @@ class WeixinController extends Controller
         $cusImage = $request->get('customerImageUrl');
         $openid = $request->get('openid');
         $data = DB::table('customer')->where('wx_openid',$openid)->get();
-        if(!$data){
+        if(!$data->count()){
             $info = DB::table('customer')->insert([
                     'wx_name' => $cusName,
                     'wx_head_image' => $cusImage,
