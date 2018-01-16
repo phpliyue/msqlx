@@ -69,3 +69,5 @@ Route::get('x_getProductInfo','Wx\WeixinController@getProInfo');
 Route::get('x_getProductDetail','Wx\WeixinController@getProDetail');
 //get customer login information
 Route::get('x_getCustomerLogin','Wx\WeixinController@getCustomerLogin');
+//save customer information
+Route::get('x_saveCustomerInfo','Wx\WeixinController@saveCustomerInfo');
