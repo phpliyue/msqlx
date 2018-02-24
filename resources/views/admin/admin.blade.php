@@ -1,7 +1,7 @@
 @extends('temp')
 @section('headImage'){{$user->head_image}}@endsection
 @section('username'){{$user->name}}@endsection
-@section('nav1','active')
+@section('root','active')
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">

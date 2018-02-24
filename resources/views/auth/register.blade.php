@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -78,6 +77,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     注册
                                 </button>
+
                             </div>
                         </div>
                     </form>
@@ -86,4 +86,24 @@
         </div>
     </div>
 </div>
+    <script>
+        $(document).ready(function(){
+            $("#shop_id").blur(function(){
+                var con = $("#shop_id").val();
+                var data = {'shop_id':con};
+                $.ajax({
+                    url:'/ajax_checkShopId',
+                    data:data,
+                    success:function(reg){
+                        if(reg == 0){
+                            alert('商户号不合法!');
+                            $("#shop_id").val('')
+                        }
+                    }
+
+                })
+            })
+        })
+    </script>
 @endsection
+

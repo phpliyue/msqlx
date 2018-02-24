@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{asset('js/jquery-2.1.1.js')}}"></script>
 </head>
 <body>
     <div id="app">
@@ -76,5 +77,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    {{--<script src="{{URL::asset('js/jquery-2.1.1.js')}}"></script>--}}
+    @section('js')
+        <script src="{{URL::asset('js/jquery-2.1.1.js')}}"></script>
+        <script src="{{URL::asset('js/app.js')}}"></script>
+    @show
 </body>
 </html>

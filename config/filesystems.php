@@ -56,6 +56,14 @@ return [
             'driver' => 'local',
             'root' => public_path('/images/product'),
         ],
+        'dy_head' => [
+            'driver' => 'local',
+            'root' => public_path('/images/ciceroni/headImg')
+        ],
+        'dy_credentials' => [
+            'driver' => 'local',
+            'root' => public_path('/images/ciceroni/credentials')
+        ],
 
         'public' => [
             'driver' => 'local',

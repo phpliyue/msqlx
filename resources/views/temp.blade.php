@@ -62,7 +62,7 @@
                     <a href="/adminIndex"><i class="fa fa-home"></i> <span class="nav-label">概况统计</span></a>
                 </li>
                 <li class="@yield('nav1')">
-                    <a href="/administrator"><i class="fa fa-image"></i> <span class="nav-label">图片管理</span></a>
+                    <a href="/userMag"><i class="fa fa-users"></i> <span class="nav-label">导游管理</span></a>
                 </li>
                 <li class="@yield('nav2')">
                     <a href="/product"><i class="fa fa-money"></i> <span class="nav-label">产品管理</span></a>
