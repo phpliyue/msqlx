@@ -28,6 +28,79 @@ class AdminController extends Controller
         return view('welcome');
     }
     /*
+     *导游
+     * */
+    public function userMag()
+    {
+        $data = DB::table('ciceroni')->where('shop_id',Auth::user()->shop_id)->get();
+        return view('admin.userMag',array('user'=>Auth::user(),'data'=>$data));
+    }
+    /*
+     * 导游管理页
+     * */
+    public function cUserMag()
+    {
+        $data = DB::table('ciceroni')->where('shop_id',Auth::user()->shop_id)->get();
+        return view('admin.cUserMag',array('user'=>Auth::user(),'data'=>$data));
+    }
+    /*
+    * 导游添加页
+    * */
+    public function cUserAdd()
+    {
+        return view('admin.cUserAdd',array('user'=>Auth::user()));
+    }
+    /*
+     * 导游添加方法
+     * */
+    public function ciceroniAdd(Request $request)
+    {
+        $headImg = $request->file('headImg');
+        $credentials = $request->file('credentials');
+        $name = $request->get('name');
+        $belongTo = $request->get('belongTo');
+        $headImgName = $headImg->getClientOriginalName();
+        $credentialsName = $credentials->getClientOriginalName();
+        $cred_ext = substr(strrchr($credentialsName, '.'), 1);
+        $head_ext = substr(strrchr($headImgName, '.'), 1);
+        $headImg_name = 'dy'.time().'.'.$head_ext;
+        $credentials_name = 'zs'.time().'.'.$cred_ext;
+        Image::make($headImg)->resize(200,300)->save(public_path('/images/ciceroni/headImg/'.$headImg_name));
+        Image::make($credentials)->resize(200,300)->save(public_path('/images/ciceroni/credentials/'.$credentials_name));
+        $head_path = '/images/ciceroni/headImg/'.$headImg_name;
+        $cred_path = '/images/ciceroni/credentials/'.$credentials_name;
+        $date = date("Y:m:d H:i:s",time());
+        DB::table('ciceroni')->insert([
+            'name' => $name,
+            'headImg' => $head_path,
+            'credentials' => $cred_path,
+            'belong_to' => $belongTo,
+            'shop_id' => Auth::user()->shop_id,
+            'created_at' => $date
+        ]);
+        return redirect('/userMag');
+    }
+    /*
+     *商家导游移除方法
+     * */
+    public function cUserDel($id)
+    {
+        $info = DB::table('ciceroni')->where('id',$id)->get();
+        foreach ($info as $key => $value){
+            $headImg = $value->headImg;
+            $credentials = $value->credentials;
+        }
+        $headImgName = substr(strrchr($headImg, '/'), 1);
+        $credentialsName = substr(strrchr($credentials, '/'), 1);
+        Storage::disk('dy_head')->delete($headImgName);
+        Storage::disk('dy_credentials')->delete($credentialsName);
+        $data = DB::table('ciceroni')->where('id',$id)->delete();
+        if($data){
+            return redirect('/cUserMag');
+        }
+    }
+
+    /*
     *图片管理页
     */
     public function imageMag()
@@ -154,7 +227,7 @@ class AdminController extends Controller
        * */
     public function product()
     {
-        $data = DB::table('product')->get();
+        $data = DB::table('product')->where('shop_id',Auth::user()->shop_id)->get();
         return view('admin.product',array('user'=>Auth::user(),'data'=>$data));
     }
 /*
