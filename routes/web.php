@@ -18,33 +18,46 @@ Route::get('/','Web\IndexController@index');
 //注册登入auth
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/adminIndex','Admin\AdminController@firstPage')->middleware('auth');
-//后台图片管理
-Route::get('/administrator','Admin\AdminController@imageMag')->middleware('auth');
-//个人信息页
-Route::get('/profile','Admin\AdminController@profile')->middleware('auth');
-//个人信息图片修改方法
-Route::post('/profile_upload','Admin\AdminController@profileUpload');
-//轮播图上传
-Route::post('/circleImages','Admin\AdminController@circleImages')->name('circleImages');
-//产品管理
-Route::get('/product','Admin\AdminController@product')->middleware('auth');
-//产品修改页
-Route::get('/productUpdate/{id}','Admin\AdminController@productUpdateId');
-//产品修改方法
-Route::post('/productUpdateM','Admin\AdminController@productUpdateM')->name('proUp');
-//产品删除方法
-Route::get('/productDelete/{id}','Admin\AdminController@productDelete');
-//后台模板
-Route::get('/temp',function(){
-    return view('temp');
+/*
+ * 商户
+ * */
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/adminIndex','Admin\AdminController@firstPage');
+    //后台图片管理
+    Route::get('/administrator','Admin\AdminController@imageMag');
+    //个人信息页
+    Route::get('/profile','Admin\AdminController@profile');
+    //个人信息图片修改方法
+    Route::post('/profile_upload','Admin\AdminController@profileUpload');
+    //轮播图上传
+    Route::post('/circleImages','Admin\AdminController@circleImages')->name('circleImages');
+    //导游
+    Route::get('/userMag','Admin\AdminController@userMag');
+    //导游添加
+    Route::get('/cUserAdd','Admin\AdminController@cUserAdd');
+    //导游管理
+    Route::get('/cUserMag','Admin\AdminController@cUserMag');
+    Route::get('/cUserDel/{id}','Admin\AdminController@cUserDel');
+    //产品管理
+    Route::get('/product','Admin\AdminController@product');
+    //产品修改页
+    Route::get('/productUpdate/{id}','Admin\AdminController@productUpdateId');
+    //产品修改方法
+    Route::post('/productUpdateM','Admin\AdminController@productUpdateM')->name('proUp');
+    //产品删除方法
+    Route::get('/productDelete/{id}','Admin\AdminController@productDelete');
+    //后台模板
+    Route::get('/temp',function(){
+        return view('temp');
+    });
+    Route::any('/one/{k}','Admin\AdminController@productUpdate');
+    //富文本编辑器提交
+    Route::post('/productInsert','Admin\AdminController@productInsert')->name('Insert');
+    Route::post('/productUpdate','Admin\AdminController@productUpdate')->name('Update');
+    Route::post('/productImageUpload','Admin\AdminController@productImageUpload');
+    //导游添加
+    Route::post('/daoYouAdd','Admin\AdminController@ciceroniAdd')->name('cDaoYouAdd');
 });
-Route::any('/one/{k}','Admin\AdminController@productUpdate');
-//富文本编辑器提交
-Route::post('/productInsert','Admin\AdminController@productInsert')->name('Insert');
-Route::post('/productUpdate','Admin\AdminController@productUpdate')->name('Update');
-Route::post('/productImageUpload','Admin\AdminController@productImageUpload');
-
 /*
 *   微信小程序接口
 *
@@ -57,8 +70,27 @@ Route::get('wx_api_banner_ads',function(){
 Route::post('img_update','AdminAjaxController@imgUpdate');
 Route::get('image-upload',['as'=>'image.upload','uses'=>'AdminController@index']);
 Route::post('image-upload',['as'=>'image.upload.post','uses'=>'AdminAjaxController@imageUploadPost']);
-//管理员路由
-Route::get('root','Admin\RootController@index');
+
+/*
+ * 管理员路由
+ * */
+ROute::group(['middleware'=>'auth'],function(){
+    Route::get('/root','Admin\RootController@index');
+    Route::get('/daoyou','Admin\RootController@daoyou');
+    Route::get('/lxs','Admin\RootController@lxs');
+    Route::get('/meisi','Admin\RootController@meisi');
+    Route::get('/bibei','Admin\RootController@bibei');
+    Route::get('/seying','Admin\RootController@seying');
+    Route::get('/gonglve','Admin\RootController@gonglve');
+    Route::get('/more','Admin\RootController@more');
+    Route::get('/shopId','Admin\RootController@shopId');
+    Route::post('/shopAdd','Admin\RootController@shopAdd')->name('shopAdd');
+});
+/*
+ * 后台ajax
+ * */
+Route::get('ajax_checkShopId','Admin\AjaxController@checkShopId');
+
 /*
  * 码上去旅行微信接口
  * */
