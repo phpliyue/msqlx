@@ -83,7 +83,7 @@ class WeixinController extends Controller
         $proT = DB::table('product')->where('id',$pid)->get();
         if($cusT->count() && $proT->count()){
 
-            return json_encode('success');
+            return json_encode($proT);
         }else{
             dd('false');
         }
