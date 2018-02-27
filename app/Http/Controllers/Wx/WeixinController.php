@@ -68,4 +68,25 @@ class WeixinController extends Controller
         }
 
     }
+    /*
+     * save customer order
+     * */
+    public function saveCustomerOrder(Request $request)
+    {
+        $name = $request->get('name');
+        $phone = $request->get('phone');
+        $pNumber = $request->get('pNumber');
+        $pid = $request->get('pid');
+        $openid = $request->get('openid');
+//        dd($openid);
+        $cusT = DB::table('customer')->where('wx_openid',$openid)->get();
+        $proT = DB::table('product')->where('id',$pid)->get();
+        if($cusT->count() && $proT->count()){
+
+            return 'success';
+        }else{
+            dd('false');
+        }
+//        dd($data);
+    }
 }
