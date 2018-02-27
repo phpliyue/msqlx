@@ -82,10 +82,9 @@ class WeixinController extends Controller
         $cusT = DB::table('customer')->where('wx_openid',$openid)->get();
         $proT = DB::table('product')->where('id',$pid)->get();
         if($cusT->count() && $proT->count()){
-
-            return json_encode($proT);
+            return 'success';
         }else{
-            dd('false');
+            return 'false';
         }
 //        dd($data);
     }
