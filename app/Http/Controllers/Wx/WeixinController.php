@@ -81,10 +81,8 @@ class WeixinController extends Controller
 //        dd($openid);
         $cusT = DB::table('customer')->where('wx_openid',$openid)->get();
         $proT = DB::table('product')->where('id',$pid)->get();
-        if($cusT->count() && $proT->count()){
+        if($cusT->count() and $proT->count()){
             return 'success';
-        }else{
-            return 'false';
         }
 //        dd($data);
     }
