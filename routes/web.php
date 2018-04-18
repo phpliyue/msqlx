@@ -105,3 +105,5 @@ Route::get('x_getCustomerLogin','Wx\WeixinController@getCustomerLogin');
 Route::get('x_saveCustomerInfo','Wx\WeixinController@saveCustomerInfo');
 //save customer order
 Route::get('x_saveCustomerOrder','Wx\WeixinController@saveCustomerOrder');
+// get guide info
+Route::get('x_getGuideDetail','Wx\WeixinController@getGuideDetail');
