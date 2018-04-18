@@ -86,4 +86,11 @@ class WeixinController extends Controller
         }
 //        dd($data);
     }
+    /*
+     * get guide info
+     * */
+    public function getGuideDetail(Request $request){
+        $data = DB::table('ciceroni')->get();
+        return json_encode($data);
+    }
 }
