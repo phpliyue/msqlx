@@ -93,4 +93,11 @@ class WeixinController extends Controller
         $data = DB::table('ciceroni')->get();
         return json_encode($data);
     }
+    /*
+     * get lxs info
+     * */
+    public function getLxsInfo(Request $request){
+        $data = DB::table()->get();
+        return json_encode($data);
+    }
 }

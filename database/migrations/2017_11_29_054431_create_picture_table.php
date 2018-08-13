@@ -17,7 +17,7 @@ class CreatePictureTable extends Migration
         Schema::defaultStringLength(191);
         Schema::create('picture', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('uid')->comment('用户id');
+            $table->integer('uid')->comment('用户id')->unsigned();
             $table->string('type')->comment('图片类型');
             $table->string('pic_name')->default('default.jpg');
             $table->string('pic_path');

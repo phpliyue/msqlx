@@ -30,14 +30,14 @@
                                 <div class="form-group has-success">
                                     {!! Form::label('shopName','商户',['class'=>'col-sm-2 control-label']) !!}
                                     <div class="col-sm-10">
-                                        {!! Form::text('shopName','',['class'=>'form-control']) !!}
+                                        {!! Form::text('shopName','',['class'=>'form-control','required'=>true]) !!}
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group has-success">
                                     {!! Form::label('shopId','商户ID',['class'=>'col-sm-2 control-label']) !!}
                                     <div class="col-sm-10">
-                                        {!! Form::text('shopId','',['class'=>'form-control']) !!}
+                                        {!! Form::text('shopId','',['class'=>'form-control','required'=>true]) !!}
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
@@ -71,7 +71,7 @@
                                     <th>商户</th>
                                     <th>商户ID</th>
                                     <th>创建时间</th>
-                                    <th>删除</th>
+                                    <th>管理</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -83,7 +83,10 @@
                                     </td>
                                     <td>{{$value->shopId}}</td>
                                     <td class="center">{{$value->created_at}}</td>
-                                    <td class="center">delete</td>
+                                    <td class="center">
+                                        <a href="/shopIdUpdate/{{$value->shopId}}">修改</a>|
+                                        <a href="/deleteShopId/{{$value->shopId}}">删除</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -93,7 +96,7 @@
                                     <th>商户</th>
                                     <th>商户ID</th>
                                     <th>创建时间</th>
-                                    <th>删除</th>
+                                    <th>管理</th>
                                 </tr>
                                 </tfoot>
                             </table>

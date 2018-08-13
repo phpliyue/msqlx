@@ -3,7 +3,10 @@
 @section('username'){{$user->name}}@endsection
 @section('root','active')
 @section('content')
-more
+    {!! Form::open(array('route'=>'videoUpload','files'=>true)) !!}
+        {!! Form::file('video') !!}
+    {!! Form::submit('tijiao') !!}
+    {!! Form::close() !!}
 @endsection
 
 @section('js')

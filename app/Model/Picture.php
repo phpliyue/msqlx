@@ -11,9 +11,20 @@ class Picture extends Model
         $info = DB::table('users')->get();
         return $info;
     }
-    public function insertPic(){
+    /**
+     * if user is new user initialise circle images table
+     *
+     * @param array
+     * @return object
+     * */
+    public function insertPic($array){
 
     }
+    /**
+     * check user picture table is Null
+     * @param string $
+     *
+     * */
 
 
 }

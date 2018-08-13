@@ -56,15 +56,21 @@ return [
             'driver' => 'local',
             'root' => public_path('/images/product'),
         ],
+        //导游头像
         'dy_head' => [
             'driver' => 'local',
             'root' => public_path('/images/ciceroni/headImg')
         ],
+        //导游证书
         'dy_credentials' => [
             'driver' => 'local',
             'root' => public_path('/images/ciceroni/credentials')
         ],
-
+        //旅行社封面
+        'lxs' => [
+            'driver' => 'local',
+            'root' => public_path('/images/lxs')
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

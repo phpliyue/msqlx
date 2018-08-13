@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('head_image')->default('default.jpg');
             $table->string('password');
-            $table->string('shop_id')->comment('商户id');
+            $table->string('shop_id');
             $table->rememberToken();
             $table->timestamps();
         });

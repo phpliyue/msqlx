@@ -85,6 +85,11 @@ ROute::group(['middleware'=>'auth'],function(){
     Route::get('/more','Admin\RootController@more');
     Route::get('/shopId','Admin\RootController@shopId');
     Route::post('/shopAdd','Admin\RootController@shopAdd')->name('shopAdd');
+    Route::get('/shopIdUpdate/{id}','Admin\RootController@shopIdUpdate');
+    Route::get('/addLxs','Admin\RootController@addLxs');
+    Route::post('/addLxsM','Admin\RootController@addLxsM')->name('addLxsM');
+    Route::get('/deleteShopId/{id}','Admin\RootController@deleteShopId');
+    Route::post('/videoUpload','Admin\RootController@videoUpload')->name('videoUpload');
 });
 /*
  * 后台ajax
@@ -107,3 +112,5 @@ Route::get('x_saveCustomerInfo','Wx\WeixinController@saveCustomerInfo');
 Route::get('x_saveCustomerOrder','Wx\WeixinController@saveCustomerOrder');
 // get guide info
 Route::get('x_getGuideDetail','Wx\WeixinController@getGuideDetail');
+//get lxs info
+Route::get('x_getLxsInfo','Wx\WeixinController@getLxsInfo');
