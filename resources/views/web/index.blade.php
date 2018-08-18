@@ -29,13 +29,13 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header page-scroll">
-                {{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"--}}
-                        {{--aria-expanded="false" aria-controls="navbar">--}}
-                    {{--<span class="sr-only">Toggle navigation</span>--}}
-                    {{--<span class="icon-bar"></span>--}}
-                    {{--<span class="icon-bar"></span>--}}
-                    {{--<span class="icon-bar"></span>--}}
-                {{--</button>--}}
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="">
                     <i class="fa fa-user"></i> 登入
                 </a>
@@ -60,7 +60,7 @@
         <li data-target="#inSlider" data-slide-to="1"></li>
     </ol>
     <div class="carousel-inner" role="listbox" >
-        <div class="item active" style="background-image:url('images/webFirst/friend.jpg');background-attachment: fixed;background-repeat: no-repeat;background-size: cover;">
+        <div class="item active" style="background-image:url('images/webFirst/friend.jpg') ;background-repeat: no-repeat;background-size:100% 100%;">
             <div class="container">
                 <div class="carousel-caption" >
                     <h1>我们有&nbsp;<br/>
@@ -81,7 +81,10 @@
             <div class="header-back one"></div>
 
         </div>
-        <div class="item" style="background-image:url('images/webFirst/network.jpg');background-attachment: fixed;background-repeat: no-repeat;background-size: cover;">
+        {{--background-attachment: fixed;--}}
+        {{--background-repeat: no-repeat;--}}
+        {{--background-size: cover;--}}
+        <div class="item" style="background-image:url('images/webFirst/network.jpg');background-repeat: no-repeat;background-size:100% 100%;">
             <div class="container">
                 <div class="carousel-caption blank">
                     <h1>全民参与<br/>全民互联<br/></h1>
