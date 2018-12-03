@@ -1,0 +1,17 @@
+@extends('company.temp')
+@section('meta')
+        @parent
+    @endsection
+@section('link')
+        @parent
+    @endsection
+@section('header')
+    @endsection
+@section('content')
+        @parent
+    @endsection
+@section('footer')
+    @endsection
+@section('js')
+        @parent
+    @endsection

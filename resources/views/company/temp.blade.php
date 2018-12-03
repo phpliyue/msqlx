@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    @section('meta')
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Author Meta -->
+        <meta name="author" content="codepixer">
+        <!-- Meta Description -->
+        <meta name="description" content="">
+        <!-- Meta Keyword -->
+        <meta name="keywords" content="">
+        <!-- meta character set -->
+        <meta charset="UTF-8">
+    @show
+
+    @section('link')
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="ico.png">
+        <link rel="stylesheet" href="{{URL::asset('company/css/linearicons.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('company/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('company/css/bootstrap.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('company/css/magnific-popup.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('company/css/nice-select.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('company/css/animate.min.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('company/css/owl.carousel.css')}}">
+        <link rel="stylesheet" href="{{URL::asset('company/css/main.css')}}">
+    @show
+    <!-- Site Title -->
+    <title>@yield('title')</title>
+</head>
+<body>
+@yield('header')
+    <header id="header" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-between d-flex">
+                <div id="logo">
+                    <a href="index.html"><img src="{{URL::asset('company/img/logo.png')}}" alt="" title="" /></a>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="menu-active"><a href="#home">首页</a></li>
+                        <li><a href="#service_product">服务与产品</a></li>
+                        <li><a href="#case">案例</a></li>
+                        <li><a href="#about">关于</a></li>
+                        <li class="menu-has-children"><a href="">加入</a>
+                            <ul>
+                                <li><a href="generic.html">注册</a></li>
+                                <li><a href="elements.html">登入</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+@show
+
+@section('content')
+    <section class="banner-area" id="home">
+        <div class="container">
+            <div class="row fullscreen d-flex align-items-center justify-content-center">
+                <div class="banner-content col-lg-7">
+                    <h1 style="margin-top:-120px;">
+                        All you want is here
+                    </h1>
+                    <p class="pt-20 pb-20">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Start we-offer Area -->
+    <section class="we-offer-area section-gap" id="service_product">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-60 col-lg-10">
+                    <div class="title text-center">
+                        <h1 class="mb-10">服务与产品</h1>
+                        <p>我们立志于为用户提供优质的服务与产品。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-offer d-flex flex-row pb-30">
+                        <div class="icon">
+                            <img src="{{URL::asset('company/img/s1.png')}}" alt="">
+                        </div>
+                        <div class="desc">
+                            <a href="http://owl.msqlx.com"><h4>商企服务</h4></a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="single-offer d-flex flex-row pb-30">
+                        <div class="icon">
+                            <img src="{{URL::asset('company/img/s3.png')}}" alt="">
+                        </div>
+                        <div class="desc">
+                            <a href="#"><h4>Endless Support</h4></a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-offer d-flex flex-row pb-30">
+                        <div class="icon">
+                            <img src="{{URL::asset('company/img/s2.png')}}" alt="">
+                        </div>
+                        <div class="desc">
+                            <a href="#"><h4>Smart Security</h4></a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="single-offer d-flex flex-row pb-30">
+                        <div class="icon">
+                            <img src="{{URL::asset('company/img/s4.png')}}" alt="">
+                        </div>
+                        <div class="desc">
+                            <a href="#"><h4>Smart Security</h4></a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End we-offer Area -->
+
+
+    <!-- 行业资讯 -->
+    {{--<section class="home-video-area" id="information">--}}
+        {{--<div class="container-fluid">--}}
+            {{--<div class="row justify-content-end align-items-center">--}}
+                {{--<div class="col-lg-4 no-padding video-right">--}}
+                    {{--<p class="top-title">行业前沿</p>--}}
+                    {{--<h1>Watch tutorial <br>--}}
+                        {{--Video of SaaS to start</h1>--}}
+                    {{--<p><span>We are here to listen from you deliver exellence</span></p>--}}
+                    {{--<p>--}}
+                        {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.--}}
+                    {{--</p>--}}
+                {{--</div>--}}
+                {{--<section class="video-area col-lg-6">--}}
+                    {{--<div class="overlay overlay-bg"></div>--}}
+                    {{--<div class="container">--}}
+                        {{--<div class="video-content">--}}
+                            {{--<a href="http://www.youtube.com/watch?v=0O2aH4XLbto" class="play-btn"><img src="{{URL::asset('company/img/play-btn.png')}}" alt=""></a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</section>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
+    <!-- End home-aboutus Area -->
+
+
+    <!-- Start home-aboutus Area -->
+    {{--<section class="home-aboutus-area">--}}
+        {{--<div class="container-fluid">--}}
+            {{--<div class="row justify-content-center align-items-center">--}}
+                {{--<div class="col-lg-8 no-padding about-left">--}}
+                    {{--<img class="img-fluid" src="{{URL::asset('company/img/about-bg.jpg')}}" alt="">--}}
+                {{--</div>--}}
+                {{--<div class="col-lg-4 no-padding about-right">--}}
+                    {{--<p class="top-title">24/7 Support system</p>--}}
+                    {{--<h1 class="text-white">A Handy support <br>--}}
+                        {{--System for the Software</h1>--}}
+                    {{--<p><span>We are here to listen from you deliver exellence</span></p>--}}
+                    {{--<p>--}}
+                        {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.--}}
+                    {{--</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
+    <!-- End home-aboutus Area -->
+
+
+    <!-- 行业案例 -->
+    <section class="protfolio-area section-gap" id="case">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-60 col-lg-10">
+                    <div class="title text-center">
+                        <h1 class="mb-10">行业案例</h1>
+                        <p>Who are in extremely love with eco friendly system.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 single-portfolio">
+                    <img class="image img-fluid" src="{{URL::asset('company/img/p1.jpg')}}" alt="">
+                    <a href="{{URL::asset('company/img/p1.jpg')}}" class="img-pop-up">
+                        <div class="middle">
+                            <div class="text"><span class="lnr lnr-frame-expand"></span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 single-portfolio">
+                    <img class="image img-fluid" src="{{URL::asset('company/img/p2.jpg')}}" alt="">
+                    <a href="{{URL::asset('company/img/p2.jpg')}}" class="img-pop-up">
+                        <div class="middle">
+                            <div class="text"><span class="lnr lnr-frame-expand"></span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 single-portfolio">
+                    <img class="image img-fluid" src="{{URL::asset('company/img/p3.jpg')}}" alt="">
+                    <a href="{{URL::asset('company/img/p3.jpg')}}" class="img-pop-up">
+                        <div class="middle">
+                            <div class="text"><span class="lnr lnr-frame-expand"></span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-8 single-portfolio">
+                    <img class="image img-fluid" src="{{URL::asset('company/img/p4.jpg')}}" alt="">
+                    <a href="{{URL::asset('company/img/p4.jpg')}}" class="img-pop-up">
+                        <div class="middle">
+                            <div class="text"><span class="lnr lnr-frame-expand"></span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 single-portfolio">
+                    <img class="image img-fluid" src="{{URL::asset('company/img/p5.jpg')}}" alt="">
+                    <a href="{{URL::asset('company/img/p5.jpg')}}" class="img-pop-up">
+                        <div class="middle">
+                            <div class="text"><span class="lnr lnr-frame-expand"></span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 single-portfolio">
+                    <img class="image img-fluid" src="{{URL::asset('company/img/p6.jpg')}}" alt="">
+                    <a href="{{URL::asset('company/img/p6.jpg')}}" class="img-pop-up">
+                        <div class="middle">
+                            <div class="text"><span class="lnr lnr-frame-expand"></span></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End protfolio Area -->
+
+    <!-- Start callto-action Area -->
+    <section class="callto-action-area relative section-gap">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content col-lg-9">
+                    <div class="title text-center">
+                        <h1 class="mb-10 text-white">Got Impressed to our features</h1>
+                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                        <a class="primary-btn" href="#">Request Free Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End calto-action Area -->
+
+
+    <!-- 关于-->
+    <section class="price-area section-gap" id="about">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-60 col-lg-8">
+                    <div class="title text-center">
+                        <h1 class="mb-10">Choose the Perfect Plan for you</h1>
+                        <p>Who are in extremely love with eco friendly system.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-price">
+                        <div class="top-sec d-flex justify-content-between">
+                            <div class="top-left">
+                                <h4>Standard</h4>
+                                <p>For the <br>individuals</p>
+                            </div>
+                            <div class="top-right">
+                                <h1>£199</h1>
+                            </div>
+                        </div>
+                        <div class="bottom-sec">
+                            <p>
+                                “Few would argue that, despite the advancements
+                            </p>
+                        </div>
+                        <div class="end-sec">
+                            <ul>
+                                <li>2.5 GB Free Photos</li>
+                                <li>Secure Online Transfer Indeed</li>
+                                <li>Unlimited Styles for interface</li>
+                                <li>Reliable Customer Service</li>
+                                <li>Manual Backup Provided</li>
+                            </ul>
+                            <button class="primary-btn price-btn mt-20">Purchase Plan</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-price">
+                        <div class="top-sec d-flex justify-content-between">
+                            <div class="top-left">
+                                <h4>Business</h4>
+                                <p>For the <br>small Company</p>
+                            </div>
+                            <div class="top-right">
+                                <h1>£399</h1>
+                            </div>
+                        </div>
+                        <div class="bottom-sec">
+                            <p>
+                                “Few would argue that, despite the advancements
+                            </p>
+                        </div>
+                        <div class="end-sec">
+                            <ul>
+                                <li>2.5 GB Free Photos</li>
+                                <li>Secure Online Transfer Indeed</li>
+                                <li>Unlimited Styles for interface</li>
+                                <li>Reliable Customer Service</li>
+                                <li>Manual Backup Provided</li>
+                            </ul>
+                            <button class="primary-btn price-btn mt-20">Purchase Plan</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-price">
+                        <div class="top-sec d-flex justify-content-between">
+                            <div class="top-left">
+                                <h4>Ultimate</h4>
+                                <p>For the <br>large Company</p>
+                            </div>
+                            <div class="top-right">
+                                <h1>£499</h1>
+                            </div>
+                        </div>
+                        <div class="bottom-sec">
+                            <p>
+                                “Few would argue that, despite the advancements
+                            </p>
+                        </div>
+                        <div class="end-sec">
+                            <ul>
+                                <li>2.5 GB Free Photos</li>
+                                <li>Secure Online Transfer Indeed</li>
+                                <li>Unlimited Styles for interface</li>
+                                <li>Reliable Customer Service</li>
+                                <li>Manual Backup Provided</li>
+                            </ul>
+                            <button class="primary-btn price-btn mt-20">Purchase Plan</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- End price Area -->
+
+    <!-- Start testomial Area -->
+    <section class="testomial-area section-gap">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-60 col-lg-8">
+                    <div class="title text-center">
+                        <h1 class="mb-10">Testimonial from our Clients</h1>
+                        <p>Who are in extremely love with eco friendly system.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="active-tstimonial-carusel">
+                    <div class="single-testimonial item">
+                        <img class="mx-auto" src="{{URL::asset('company/img/t1.png')}}" alt="">
+                        <p class="desc">
+                            Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+                        </p>
+                        <h4>Mark Alviro Wiens</h4>
+                        <p>
+                            CEO at Google
+                        </p>
+                    </div>
+                    <div class="single-testimonial item">
+                        <img class="mx-auto" src="{{URL::asset('company/img/t2.png')}}" alt="">
+                        <p class="desc">
+                            Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+                        </p>
+                        <h4>Mark Alviro Wiens</h4>
+                        <p>
+                            CEO at Google
+                        </p>
+                    </div>
+                    <div class="single-testimonial item">
+                        <img class="mx-auto" src="{{URL::asset('company/img/t3.png')}}" alt="">
+                        <p class="desc">
+                            Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+                        </p>
+                        <h4>Mark Alviro Wiens</h4>
+                        <p>
+                            CEO at Google
+                        </p>
+                    </div>
+                    <div class="single-testimonial item">
+                        <img class="mx-auto" src="{{URL::asset('company/img/t1.png')}}" alt="">
+                        <p class="desc">
+                            Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+                        </p>
+                        <h4>Mark Alviro Wiens</h4>
+                        <p>
+                            CEO at Google
+                        </p>
+                    </div>
+                    <div class="single-testimonial item">
+                        <img class="mx-auto" src="{{URL::asset('company/img/t2.png')}}" alt="">
+                        <p class="desc">
+                            Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+                        </p>
+                        <h4>Mark Alviro Wiens</h4>
+                        <p>
+                            CEO at Google
+                        </p>
+                    </div>
+                    <div class="single-testimonial item">
+                        <img class="mx-auto" src="{{URL::asset('company/img/t3.png')}}" alt="">
+                        <p class="desc">
+                            Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+                        </p>
+                        <h4>Mark Alviro Wiens</h4>
+                        <p>
+                            CEO at Google
+                        </p>
+                    </div>
+                    <div class="single-testimonial item">
+                        <img class="mx-auto" src="{{URL::asset('company/img/t1.png')}}" alt="">
+                        <p class="desc">
+                            Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+                        </p>
+                        <h4>Mark Alviro Wiens</h4>
+                        <p>
+                            CEO at Google
+                        </p>
+                    </div>
+                    <div class="single-testimonial item">
+                        <img class="mx-auto" src="{{URL::asset('company/img/t2.png')}}" alt="">
+                        <p class="desc">
+                            Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+                        </p>
+                        <h4>Mark Alviro Wiens</h4>
+                        <p>
+                            CEO at Google
+                        </p>
+                    </div>
+                    <div class="single-testimonial item">
+                        <img class="mx-auto" src="{{URL::asset('company/img/t3.png')}}" alt="">
+                        <p class="desc">
+                            Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+                        </p>
+                        <h4>Mark Alviro Wiens</h4>
+                        <p>
+                            CEO at Google
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End testomial Area -->
+
+    <!-- Start latest-blog Area -->
+    <section class="latest-blog-area section-gap" id="blog">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-60 col-lg-8">
+                    <div class="title text-center">
+                        <h1 class="mb-10">Latest News from our Blog</h1>
+                        <p>Who are in extremely love with eco friendly system.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 single-blog">
+                    <img class="img-fluid" src="{{URL::asset('company/img/b1.jpg')}}" alt="">
+                    <ul class="tags">
+                        <li><a href="#">Travel</a></li>
+                        <li><a href="#">Life style</a></li>
+                    </ul>
+                    <a href="#"><h4>Portable latest Fashion for young women</h4></a>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
+                    </p>
+                    <p class="post-date">31st January, 2018</p>
+                </div>
+                <div class="col-lg-6 single-blog">
+                    <img class="img-fluid" src="{{URL::asset('company/img/b2.jpg')}}" alt="">
+                    <ul class="tags">
+                        <li><a href="#">Travel</a></li>
+                        <li><a href="#">Life style</a></li>
+                    </ul>
+                    <a href="#"><h4>Portable latest Fashion for young women</h4></a>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
+                    </p>
+                    <p class="post-date">31st January, 2018</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End latest-blog Area -->
+@show
+@yield('footer')
+    <!-- start footer Area -->
+    <footer class="footer-area section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-12">
+                    <div class="single-footer-widget">
+                        <h6>Top Products</h6>
+                        <ul class="footer-nav">
+                            <li><a href="#">Managed Website</a></li>
+                            <li><a href="#">Manage Reputation</a></li>
+                            <li><a href="#">Power Tools</a></li>
+                            <li><a href="#">Marketing Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6  col-md-12">
+                    <div class="single-footer-widget newsletter">
+                        <h6>Newsletter</h6>
+                        <p>You can trust us. we only send promo offers, not a single spam.</p>
+                        <div id="mc_embed_signup">
+                            <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+
+                                <div class="form-group row" style="width: 100%">
+                                    <div class="col-lg-8 col-md-12">
+                                        <input name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
+                                        <div style="position: absolute; left: -5000px;">
+                                            <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-12">
+                                        <button class="nw-btn primary-btn">Subscribe<span class="lnr lnr-arrow-right"></span></button>
+                                    </div>
+                                </div>
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3  col-md-12">
+                    <div class="single-footer-widget mail-chimp">
+                        <h6 class="mb-20">Instragram Feed</h6>
+                        <ul class="instafeed d-flex flex-wrap">
+                            <li><img src="{{URL::asset('company/img/i1.jpg')}}" alt=""></li>
+                            <li><img src="{{URL::asset('company/img/i2.jpg')}}" alt=""></li>
+                            <li><img src="{{URL::asset('company/img/i3.jpg')}}" alt=""></li>
+                            <li><img src="{{URL::asset('company/img/i4.jpg')}}" alt=""></li>
+                            <li><img src="{{URL::asset('company/img/i5.jpg')}}" alt=""></li>
+                            <li><img src="{{URL::asset('company/img/i6.jpg')}}" alt=""></li>
+                            <li><img src="{{URL::asset('company/img/i7.jpg')}}" alt=""></li>
+                            <li><img src="{{URL::asset('company/img/i8.jpg')}}" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row footer-bottom d-flex justify-content-between">
+                <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+                <div class="col-lg-4 col-sm-12 footer-social">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                    <a href="#"><i class="fa fa-behance"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer Area -->
+@show
+@section('js')
+<script src="{{URL::asset('company/js/vendor/jquery-2.2.4.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="{{URL::asset('company/js/vendor/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+<script src="{{URL::asset('company/js/easing.min.js')}}"></script>
+<script src="{{URL::asset('company/js/hoverIntent.js')}}"></script>
+<script src="{{URL::asset('company/js/superfish.min.js')}}"></script>
+<script src="{{URL::asset('company/js/jquery.ajaxchimp.min.js')}}"></script>
+<script src="{{URL::asset('company/js/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{URL::asset('company/js/owl.carousel.min.js')}}"></script>
+<script src="{{URL::asset('company/js/jquery.sticky.js')}}"></script>
+<script src="{{URL::asset('company/js/jquery.nice-select.min.js')}}"></script>
+<script src="{{URL::asset('company/js/parallax.min.js')}}"></script>
+<script src="{{URL::asset('company/js/mail-script.js')}}"></script>
+<script src="{{URL::asset('company/js/main.js')}}"></script>
+@show
+
+</body>
+</html>
+
+
+
