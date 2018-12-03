@@ -63,10 +63,10 @@
             <div class="row fullscreen d-flex align-items-center justify-content-center">
                 <div class="banner-content col-lg-7">
                     <h1 style="margin-top:-120px;">
-                        All you want is here
+                        XXXXXXX
                     </h1>
                     <p class="pt-20 pb-20">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+
                     </p>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                             <img src="{{URL::asset('company/img/s3.png')}}" alt="">
                         </div>
                         <div class="desc">
-                            <a href="#"><h4>Endless Support</h4></a>
+                            <a href="#"><h4>小程序</h4></a>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
                             </p>
@@ -114,7 +114,7 @@
                             <img src="{{URL::asset('company/img/s2.png')}}" alt="">
                         </div>
                         <div class="desc">
-                            <a href="#"><h4>Smart Security</h4></a>
+                            <a href="#"><h4>技术咨询</h4></a>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
                             </p>
@@ -125,7 +125,7 @@
                             <img src="{{URL::asset('company/img/s4.png')}}" alt="">
                         </div>
                         <div class="desc">
-                            <a href="#"><h4>Smart Security</h4></a>
+                            <a href="#"><h4>SNOWBALL</h4></a>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
                             </p>
@@ -135,58 +135,6 @@
             </div>
         </div>
     </section>
-    <!-- End we-offer Area -->
-
-
-    <!-- 行业资讯 -->
-    {{--<section class="home-video-area" id="information">--}}
-        {{--<div class="container-fluid">--}}
-            {{--<div class="row justify-content-end align-items-center">--}}
-                {{--<div class="col-lg-4 no-padding video-right">--}}
-                    {{--<p class="top-title">行业前沿</p>--}}
-                    {{--<h1>Watch tutorial <br>--}}
-                        {{--Video of SaaS to start</h1>--}}
-                    {{--<p><span>We are here to listen from you deliver exellence</span></p>--}}
-                    {{--<p>--}}
-                        {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.--}}
-                    {{--</p>--}}
-                {{--</div>--}}
-                {{--<section class="video-area col-lg-6">--}}
-                    {{--<div class="overlay overlay-bg"></div>--}}
-                    {{--<div class="container">--}}
-                        {{--<div class="video-content">--}}
-                            {{--<a href="http://www.youtube.com/watch?v=0O2aH4XLbto" class="play-btn"><img src="{{URL::asset('company/img/play-btn.png')}}" alt=""></a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</section>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</section>--}}
-    <!-- End home-aboutus Area -->
-
-
-    <!-- Start home-aboutus Area -->
-    {{--<section class="home-aboutus-area">--}}
-        {{--<div class="container-fluid">--}}
-            {{--<div class="row justify-content-center align-items-center">--}}
-                {{--<div class="col-lg-8 no-padding about-left">--}}
-                    {{--<img class="img-fluid" src="{{URL::asset('company/img/about-bg.jpg')}}" alt="">--}}
-                {{--</div>--}}
-                {{--<div class="col-lg-4 no-padding about-right">--}}
-                    {{--<p class="top-title">24/7 Support system</p>--}}
-                    {{--<h1 class="text-white">A Handy support <br>--}}
-                        {{--System for the Software</h1>--}}
-                    {{--<p><span>We are here to listen from you deliver exellence</span></p>--}}
-                    {{--<p>--}}
-                        {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.--}}
-                    {{--</p>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</section>--}}
-    <!-- End home-aboutus Area -->
-
-
     <!-- 行业案例 -->
     <section class="protfolio-area section-gap" id="case">
         <div class="container">
@@ -250,130 +198,8 @@
             </div>
         </div>
     </section>
-    <!-- End protfolio Area -->
-
-    <!-- Start callto-action Area -->
-    <section class="callto-action-area relative section-gap">
-        <div class="overlay overlay-bg"></div>
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="menu-content col-lg-9">
-                    <div class="title text-center">
-                        <h1 class="mb-10 text-white">Got Impressed to our features</h1>
-                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                        <a class="primary-btn" href="#">Request Free Demo</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End calto-action Area -->
-
-
-    <!-- 关于-->
-    <section class="price-area section-gap" id="about">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="menu-content pb-60 col-lg-8">
-                    <div class="title text-center">
-                        <h1 class="mb-10">Choose the Perfect Plan for you</h1>
-                        <p>Who are in extremely love with eco friendly system.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="single-price">
-                        <div class="top-sec d-flex justify-content-between">
-                            <div class="top-left">
-                                <h4>Standard</h4>
-                                <p>For the <br>individuals</p>
-                            </div>
-                            <div class="top-right">
-                                <h1>£199</h1>
-                            </div>
-                        </div>
-                        <div class="bottom-sec">
-                            <p>
-                                “Few would argue that, despite the advancements
-                            </p>
-                        </div>
-                        <div class="end-sec">
-                            <ul>
-                                <li>2.5 GB Free Photos</li>
-                                <li>Secure Online Transfer Indeed</li>
-                                <li>Unlimited Styles for interface</li>
-                                <li>Reliable Customer Service</li>
-                                <li>Manual Backup Provided</li>
-                            </ul>
-                            <button class="primary-btn price-btn mt-20">Purchase Plan</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-price">
-                        <div class="top-sec d-flex justify-content-between">
-                            <div class="top-left">
-                                <h4>Business</h4>
-                                <p>For the <br>small Company</p>
-                            </div>
-                            <div class="top-right">
-                                <h1>£399</h1>
-                            </div>
-                        </div>
-                        <div class="bottom-sec">
-                            <p>
-                                “Few would argue that, despite the advancements
-                            </p>
-                        </div>
-                        <div class="end-sec">
-                            <ul>
-                                <li>2.5 GB Free Photos</li>
-                                <li>Secure Online Transfer Indeed</li>
-                                <li>Unlimited Styles for interface</li>
-                                <li>Reliable Customer Service</li>
-                                <li>Manual Backup Provided</li>
-                            </ul>
-                            <button class="primary-btn price-btn mt-20">Purchase Plan</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-price">
-                        <div class="top-sec d-flex justify-content-between">
-                            <div class="top-left">
-                                <h4>Ultimate</h4>
-                                <p>For the <br>large Company</p>
-                            </div>
-                            <div class="top-right">
-                                <h1>£499</h1>
-                            </div>
-                        </div>
-                        <div class="bottom-sec">
-                            <p>
-                                “Few would argue that, despite the advancements
-                            </p>
-                        </div>
-                        <div class="end-sec">
-                            <ul>
-                                <li>2.5 GB Free Photos</li>
-                                <li>Secure Online Transfer Indeed</li>
-                                <li>Unlimited Styles for interface</li>
-                                <li>Reliable Customer Service</li>
-                                <li>Manual Backup Provided</li>
-                            </ul>
-                            <button class="primary-btn price-btn mt-20">Purchase Plan</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End price Area -->
-
     <!-- Start testomial Area -->
-    <section class="testomial-area section-gap">
+    <section class="testomial-area section-gap" id="about">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-60 col-lg-8">
@@ -479,48 +305,6 @@
             </div>
         </div>
     </section>
-    <!-- End testomial Area -->
-
-    <!-- Start latest-blog Area -->
-    <section class="latest-blog-area section-gap" id="blog">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="menu-content pb-60 col-lg-8">
-                    <div class="title text-center">
-                        <h1 class="mb-10">Latest News from our Blog</h1>
-                        <p>Who are in extremely love with eco friendly system.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 single-blog">
-                    <img class="img-fluid" src="{{URL::asset('company/img/b1.jpg')}}" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#"><h4>Portable latest Fashion for young women</h4></a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
-                    </p>
-                    <p class="post-date">31st January, 2018</p>
-                </div>
-                <div class="col-lg-6 single-blog">
-                    <img class="img-fluid" src="{{URL::asset('company/img/b2.jpg')}}" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#"><h4>Portable latest Fashion for young women</h4></a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
-                    </p>
-                    <p class="post-date">31st January, 2018</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End latest-blog Area -->
 @show
 @yield('footer')
     <!-- start footer Area -->
@@ -529,19 +313,19 @@
             <div class="row">
                 <div class="col-lg-3  col-md-12">
                     <div class="single-footer-widget">
-                        <h6>Top Products</h6>
+                        <h6>产品与服务</h6>
                         <ul class="footer-nav">
-                            <li><a href="#">Managed Website</a></li>
-                            <li><a href="#">Manage Reputation</a></li>
-                            <li><a href="#">Power Tools</a></li>
-                            <li><a href="#">Marketing Service</a></li>
+                            <li><a href="#">商企服务</a></li>
+                            <li><a href="#">msqlx</a></li>
+                            <li><a href="#">msqhs</a></li>
+                            <li><a href="#">雪球社区</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6  col-md-12">
                     <div class="single-footer-widget newsletter">
-                        <h6>Newsletter</h6>
-                        <p>You can trust us. we only send promo offers, not a single spam.</p>
+                        <h6>联系我们</h6>
+                        <p>发送您的邮件，我们第一时间联系您。</p>
                         <div id="mc_embed_signup">
                             <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
 
@@ -554,7 +338,7 @@
                                     </div>
 
                                     <div class="col-lg-4 col-md-12">
-                                        <button class="nw-btn primary-btn">Subscribe<span class="lnr lnr-arrow-right"></span></button>
+                                        <button class="nw-btn primary-btn">发送<span class="lnr lnr-arrow-right"></span></button>
                                     </div>
                                 </div>
                                 <div class="info"></div>
@@ -564,7 +348,7 @@
                 </div>
                 <div class="col-lg-3  col-md-12">
                     <div class="single-footer-widget mail-chimp">
-                        <h6 class="mb-20">Instragram Feed</h6>
+                        <h6 class="mb-20">冰箱贴</h6>
                         <ul class="instafeed d-flex flex-wrap">
                             <li><img src="{{URL::asset('company/img/i1.jpg')}}" alt=""></li>
                             <li><img src="{{URL::asset('company/img/i2.jpg')}}" alt=""></li>
