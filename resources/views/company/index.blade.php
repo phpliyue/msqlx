@@ -5,6 +5,7 @@
 @section('link')
         @parent
     @endsection
+@section('title','码上互联')
 @section('header')
     @endsection
 @section('content')
