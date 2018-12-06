@@ -65,6 +65,9 @@ class WeixinController extends Controller
             ]);
             return 'customer add';
         }else{
+            DB::table('customer')->where('wx_openid',$openid)->update([
+                'last_login' => date('Y:m:d H:i:s',time())
+            ]);
             return 'customer login';
         }
 
