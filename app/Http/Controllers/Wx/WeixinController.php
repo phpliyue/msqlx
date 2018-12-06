@@ -60,7 +60,8 @@ class WeixinController extends Controller
                 'wx_name' => $cusName,
                 'wx_head_image' => $cusImage,
                 'wx_openid' => $openid,
-                'create_time' => date('Y:m:d H:i:s',time())
+                'create_time' => date('Y:m:d H:i:s',time()),
+                'last_login' => date('Y:m:d H:i:s',time())
             ]);
             return 'customer add';
         }else{
