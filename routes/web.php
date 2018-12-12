@@ -74,7 +74,7 @@ Route::post('image-upload',['as'=>'image.upload.post','uses'=>'AdminAjaxControll
 /*
  * 管理员路由
  * */
-ROute::group(['middleware'=>'auth'],function(){
+Route::group(['middleware'=>'auth'],function(){
     Route::get('/root','Admin\RootController@index');
     Route::get('/daoyou','Admin\RootController@daoyou');
     Route::get('/lxs','Admin\RootController@lxs');
@@ -114,3 +114,23 @@ Route::get('x_saveCustomerOrder','Wx\WeixinController@saveCustomerOrder');
 Route::get('x_getGuideDetail','Wx\WeixinController@getGuideDetail');
 //get lxs info
 Route::get('x_getLxsInfo','Wx\WeixinController@getLxsInfo');
+
+/*
+ * 码上去签到
+ */
+Route::get('/signIn_index','SignIn\IndexController@index');
+Route::group(['middleware'=>'signInAuth'],function(){
+    Route::get('/signIn_home','SignIn\HomeController@index');
+    Route::get('/signIn_message','SignIn\MessageController@index');
+});
+/*
+ * 宿舍管理
+ */
+Route::get('/dorm_index','Dorm\IndexController@index');
+Route::group(['middleware'=>'dormAuth'],function(){
+    Route::get('/dorm_home','Dorm\HomeController@index');
+    Route::get('/dorm_roomManage','Dorm\RoomManageController@index');
+});
+
+
+
