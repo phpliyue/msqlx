@@ -7,7 +7,7 @@
         }
     </style>
 @show
-@section('title','码上去签到')
+@section('title','宿舍管理-登入')
 @section('content')
     <div class="container-fluid">
         <div style="text-align: center;margin-top:100px;">
