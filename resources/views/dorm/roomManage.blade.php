@@ -22,12 +22,12 @@
                         <h4 class="modal-title">添加宿舍</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="get">
-                            <div class="form-group col-md-4"><label>楼层</label> <input type="number" placeholder="楼层" class="form-control" name="l"></div>
-                            <div class="form-group col-md-4"><label>房间数</label> <input type="number" placeholder="房间数" class="form-control" name="f"></div>
-                            <div class="form-group col-md-4"><label>床位数</label> <input type="number" placeholder="床位数" class="form-control" name="c"></div>
+                        <form action="/dorm_getRoomInfo" method="get">
+                            <div class="form-group col-md-4 lou"><label>楼层</label> <input type="number" placeholder="楼层" class="form-control" name="l[]"></div>
+                            <div class="form-group col-md-4 fangjian"><label>房间数</label> <input type="number" placeholder="房间数" class="form-control" name="f[]"></div>
+                            <div class="form-group col-md-4 chuangwei"><label>床位数</label> <input type="number" placeholder="床位数" class="form-control" name="c[]"></div>
                             <hr style="width: 100%;color:red;" class="addline">
-
+                            <button type="submit">提交</button>
                         </form>
 
                         <div class="form-group col-md-12"><label>Sample Input</label> <input type="email" placeholder="Enter your email" class="form-control"></div>
@@ -35,6 +35,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" id="addL">添加楼层</button>
+                        <button type="button" class="btn btn-info" id="delL">删除楼层</button>
                         <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
                         <button type="button" class="btn btn-primary">添加</button>
                     </div>
@@ -51,11 +52,14 @@
     <script>
         $(document).ready(function(){
             $('#addL').click(function(){
-//                alert('sss');
-                var lou = 1;
-                $('.addline:last').after("<div class='form-group col-md-4'><label>楼层</label> <input type='number' placeholder='楼层' class='form-control' name='l'></div> <div class='form-group col-md-4'><label>房间数</label> <input type='number' placeholder='房间数' class='form-control' name='f'></div> <div class='form-group col-md-4'><label>床位数</label> <input type='number' placeholder='床位数' class='form-control' name='c'></div> <hr style='width: 100%;color:red;' class='addline'>");
-
-            })
+                $('.addline:last').after("<div class='form-group col-md-4 lou'><label>楼层</label> <input type='number' placeholder='楼层' class='form-control' name='l[]'></div> <div class='form-group col-md-4 fangjian'><label>房间数</label> <input type='number' placeholder='房间数' class='form-control' name='f[]'></div> <div class='form-group col-md-4 chuangwei'><label>床位数</label> <input type='number' placeholder='床位数' class='form-control' name='c[]'></div> <hr style='width: 100%;color:red;' class='addline'>");
+            });
+            $('#delL').click(function(){
+                $('.lou:last').remove();
+                $('.fangjian:last').remove();
+                $('.chuangwei:last').remove();
+                $('.addline:last').remove();
+            });
         })
     </script>
 @endsection
