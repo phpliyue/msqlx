@@ -36,7 +36,8 @@
         <div class="container">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="index.html"><img src="{{URL::asset('company/img/logo.png')}}" alt="" title="" /></a>
+                    <a href="index.html"><img src="{{URL::asset('company/img/logo2.png')}}" alt="" title="" /></a><span style="font-size: 18px;margin-left:10px;">码上互联网信息服务有限公司</span>
+
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
@@ -87,23 +88,34 @@
                 <div class="col-lg-6">
                     <div class="single-offer d-flex flex-row pb-30">
                         <div class="icon">
-                            <img src="{{URL::asset('company/img/s1.png')}}" alt="">
+                            <img src="{{URL::asset('company/img/p1.png')}}" alt="">
                         </div>
                         <div class="desc">
                             <a href="http://owl.msqlx.com"><h4>商企服务</h4></a>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
+                                为企业提供一站式服务，不管你是初创者还是企业家我们都为你提供专业的服务，为您节省宝贵的时间与金钱，让您更专注于核心产品与服务中，提升企业的核心价值，让企业立于不败之地。
                             </p>
                         </div>
                     </div>
                     <div class="single-offer d-flex flex-row pb-30">
                         <div class="icon">
-                            <img src="{{URL::asset('company/img/s3.png')}}" alt="">
+                            <img src="{{URL::asset('company/img/p3.png')}}" alt="">
                         </div>
                         <div class="desc">
-                            <a href="#"><h4>小程序</h4></a>
+                            <a href="#"><h4>互联网服务</h4></a>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
+                                提供互联网技术支持与建议，帮助小微企业快速接入互联网，我们不光做技术外包，还要以合伙人的角度去帮助小微企业代运营，只有把客户的事业当作自己的事业才能服务好客户。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="single-offer d-flex flex-row pb-30">
+                        <div class="icon">
+                            <img src="{{URL::asset('company/img/p3.png')}}" alt="">
+                        </div>
+                        <div class="desc">
+                            <a href="/dorm_index"><h4>宿舍管理</h4></a>
+                            <p>
+                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                             </p>
                         </div>
                     </div>
@@ -111,10 +123,10 @@
                 <div class="col-lg-6">
                     <div class="single-offer d-flex flex-row pb-30">
                         <div class="icon">
-                            <img src="{{URL::asset('company/img/s2.png')}}" alt="">
+                            <img src="{{URL::asset('company/img/p2.png')}}" alt="">
                         </div>
                         <div class="desc">
-                            <a href="#"><h4>技术咨询</h4></a>
+                            <a href="/signIn_index"><h4>码上去签到</h4></a>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
                             </p>
@@ -122,10 +134,21 @@
                     </div>
                     <div class="single-offer d-flex flex-row pb-30">
                         <div class="icon">
-                            <img src="{{URL::asset('company/img/s4.png')}}" alt="">
+                            <img src="{{URL::asset('company/img/p4.png')}}" alt="">
                         </div>
                         <div class="desc">
-                            <a href="#"><h4>SNOWBALL</h4></a>
+                            <a href="#"><h4>雪球社区</h4></a>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="single-offer d-flex flex-row pb-30">
+                        <div class="icon">
+                            <img src="/" alt="">
+                        </div>
+                        <div class="desc">
+                            <a href="#"><h4>预留</h4></a>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.
                             </p>
