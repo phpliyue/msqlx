@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('getUser','Api\SnowBallController@test');
+/*
+ * 宿舍管理接口
+ */
+Route::get('dorm_saveUserInfo','Api\DormController@saveUserInfo');
