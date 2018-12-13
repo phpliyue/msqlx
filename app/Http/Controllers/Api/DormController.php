@@ -9,7 +9,12 @@ class DormController extends Controller
 {
     public function saveUserInfo(Request $request)
     {
-        $data = 1;
-        return $data;
+        $arr['admin'] = $request->get('admin');
+        $arr['openid'] = $request->get('openid');
+        $arr['name'] = $request->get('name');
+        $arr['phone'] = $request->get('phone');
+        $arr['card'] = $request->get('card');
+        $arr['sex'] = $request->get('sex');
+        return $arr;
     }
 }
