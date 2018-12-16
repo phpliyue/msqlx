@@ -9,7 +9,7 @@
             <h2>宿舍管理</h2>
         </div>
         <div class="row" style="margin-top:5%;">
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="POST">
                 <div class="form-group">
                     <label for="account" class="col-md-4 control-label">账号</label>
                     <div class="col-md-4">
@@ -55,7 +55,7 @@
             }
             is_submit = true;
             $.ajax({
-                type:"post",
+                type:"POST",
                 url:'{{url('dorm_login')}}',
                 dataType:"json",
                 data:{
