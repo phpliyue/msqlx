@@ -23,7 +23,7 @@
                     <a href="/dorm_roomManage"><i class="fa fa-money"></i> <span class="nav-label">房间管理</span></a>
                 </li>
                 <li class="@yield('nav3')">
-                    <a href="/dorm_getRooms"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+                    <a href="/dorm_getRooms"><i class="fa fa-diamond"></i> <span class="nav-label">房间信息</span></a>
                 </li>
                 {{--<li class="@yield('nav4')">--}}
                     {{--<a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>--}}
