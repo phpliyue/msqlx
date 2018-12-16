@@ -100,7 +100,7 @@ class DormController extends Controller
         $card = '11111';//$request->input('card');
         //先判断该用户是否入驻
 //        $info = (object)['uid'=>13];
-        $info = DB::table('dorm_users')->where('wx_openid',$openid)->first();
+        $info = DB::table('dorm_user')->where('wx_openid',$openid)->first();
         if(!empty($info))
         {
             //查询该员工是否入住
