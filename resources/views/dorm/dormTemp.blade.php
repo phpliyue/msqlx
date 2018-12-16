@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -22,11 +23,11 @@
                     <a href="/dorm_roomManage"><i class="fa fa-money"></i> <span class="nav-label">房间管理</span></a>
                 </li>
                 <li class="@yield('nav3')">
-                    <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+                    <a href="/dorm_getRooms"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
                 </li>
-                <li class="@yield('nav4')">
-                    <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
-                </li>
+                {{--<li class="@yield('nav4')">--}}
+                    {{--<a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>--}}
+                {{--</li>--}}
             </ul>
         </div>
     </nav>

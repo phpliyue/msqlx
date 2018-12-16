@@ -7,37 +7,51 @@
     <link href="{{URL::asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
 @show
 @section('title','宿舍管理-房间管理')
-@section('nav2','active')
+@section('nav3','active')
 @section('content')
-    <div class="row wrapper wrapper-content animated fadeInRight">
-        <div class="col-lg-2">
-            <button class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myModal">+<i class="fa fa-home"></i></button>
-            {{--<button type="button" class="btn btn-w-m btn-info" data-toggle="modal" data-target="#myModal">添加宿舍</button>--}}
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>住宿信息</h5>
         </div>
-        <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content animated bounceInRight">
-                    <div class="modal-header">
-                        <i class="fa fa-home modal-icon"></i>
-                        <h4 class="modal-title">添加宿舍</h4>
-                    </div>
-                    <div class="modal-body J_room">
-                        <div class="form-group col-md-12"><label>宿舍楼</label> <input type="name" placeholder="请输入宿舍名" class="form-control J_dorm_name"></div>
-                        <div class="J_floor_line">
-                            <div class="form-group col-md-4"><label>楼层</label> <input type="number" placeholder="楼层" class="form-control J_floor_num"></div>
-                            <div class="form-group col-md-4"><label>房间数</label> <input type="number" placeholder="房间数" class="form-control J_room_num"></div>
-                            <div class="form-group col-md-4"><label>床位数</label> <input type="number" placeholder="床位数" class="form-control J_bed_num"></div>
-                            <hr style="width: 100%;color:red;">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-info J_add">添加楼层</button>
-                        <button type="button" class="btn btn-info J_del">删除楼层</button>
-                        <button type="button" class="btn btn-white J_cancel" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary J_submit">提交</button>
-                    </div>
-                </div>
+        <div class="ibox-content">
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>宿舍楼</th>
+                        {{--<th>楼层</th>--}}
+                        <th>房间号</th>
+                        {{--<th>床号</th>--}}
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>手机号</th>
+                        {{--<th>身份证</th>--}}
+                        <th>入住时间</th>
+                        <th>退房时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($rooms as $room)
+                        <tr class="gradeX">
+                            <td>{{$room->id}}</td>
+                            <td>{{$room->dorm_name}}</td>
+                            {{--<td>{{$room->floor}}</td>--}}
+                            {{--<td >{{$room->room}}</td>--}}
+                            <td>{{$room->num}}</td>
+                            <td>@if($room->status == 1){{$room->user_info->name}}@endif</td>
+                            <td>{{$room->sex}}</td>
+                            <td>@if($room->status == 1){{$room->user_info->phone}}@endif</td>
+                            {{--<td>@if($room->status == 1){{$room->user_info->card}}@endif</td>--}}
+                            <td>@if($room->status == 1){{$room->user_info->in_time}}@endif</td>
+                            <td>@if($room->status == 1){{$room->user_info->out_time}}@endif</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
+
         </div>
     </div>
 @endsection
@@ -46,16 +60,43 @@
     <script src="{{URL::asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
     <script src="{{URL::asset('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
     <script src="{{URL::asset('js/inspinia.js')}}"></script>
+    <script src="{{URL::asset('js/plugins/dataTables/datatables.min.js')}}"></script>
     <script>
+        $(document).ready(function(){
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
         $(document).ready(function(){
             //添加楼层
             $('.J_add').click(function(){
                 $('.J_floor_line:last').after('<div class="J_floor_line">'+
-                    '<div class="form-group col-md-4"><label>楼层</label> <input type="number" placeholder="楼层" class="form-control J_floor_num"></div>'+
-                    '<div class="form-group col-md-4"><label>房间数</label> <input type="number" placeholder="房间数" class="form-control J_room_num" ></div>'+
-                    '<div class="form-group col-md-4"><label>床位数</label> <input type="number" placeholder="床位数" class="form-control J_bed_num"></div>'+
-                    '<hr style="width: 100%;color:red;">'+
-                    '</div>');
+                        '<div class="form-group col-md-4"><label>楼层</label> <input type="number" placeholder="楼层" class="form-control J_floor_num"></div>'+
+                        '<div class="form-group col-md-4"><label>房间数</label> <input type="number" placeholder="房间数" class="form-control J_room_num" ></div>'+
+                        '<div class="form-group col-md-4"><label>床位数</label> <input type="number" placeholder="床位数" class="form-control J_bed_num"></div>'+
+                        '<hr style="width: 100%;color:red;">'+
+                        '</div>');
             });
             //点击添加宿舍按钮
             $('.col-lg-2').click(function(){
@@ -123,8 +164,6 @@
                         }else{
                             alert(data.info);
                         }
-                    },fail:function(){
-                        alert('error')
                     },
                     complete:function(){
                         is_submit = false;

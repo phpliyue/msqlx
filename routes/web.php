@@ -127,9 +127,14 @@ Route::group(['middleware'=>'signInAuth'],function(){
  * 宿舍管理
  */
 Route::get('/dorm_index','Dorm\IndexController@index');
+Route::post('/dorm_login','Dorm\IndexController@login');
+Route::any('/dorm_register','Dorm\IndexController@register');
+Route::any('/dorm_logout','Dorm\IndexController@logout');
 Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_home','Dorm\HomeController@index');
     Route::get('/dorm_roomManage','Dorm\RoomManageController@index');
+    Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');
+    Route::get('/dorm_getRooms','Dorm\RoomManageController@getRooms');
 });
 
 

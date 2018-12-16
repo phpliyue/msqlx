@@ -7,7 +7,7 @@
         }
     </style>
 @show
-@section('title','宿舍管理-登入')
+@section('title','宿舍管理-注册')
 @section('content')
     <div class="container-fluid">
         <div style="text-align: center;margin-top:100px;">
@@ -15,6 +15,8 @@
         </div>
         <div class="row" style="margin-top:5%;">
             <form class="form-horizontal">
+                {{ csrf_field() }}
+                @include('error')
                 <div class="form-group">
                     <label for="account" class="col-md-4 control-label">账号</label>
                     <div class="col-md-4">
@@ -27,10 +29,16 @@
                         <input type="password" class="form-control" id="password" name="password" placeholder="请输入正确密码" required>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="password" class="col-md-4 control-label">电话</label>
+                    <div class="col-md-4">
+                        <input type="password" class="form-control" id="phone" name="phone" placeholder="请输入电话号" required>
+                    </div>
+                </div>
                 <div class="form-group" style="text-align: center;">
                     <div class="col-md-offset-4 col-md-4">
-                        <button type="submit" class="btn btn-default J_submit">登入</button>
-                        <a href="{{url('dorm_register')}}" class="btn btn-default">注册</a>
+                        <button type="submit" class="btn btn-default J_submit">注册</button>
+                        <a href="{{url('dorm_index')}}" class="btn btn-default">登录</a>
                     </div>
                 </div>
             </form>
@@ -50,6 +58,7 @@
             }
             var account = $('#account').val();
             var password = $('#password').val();
+            var phone = $('#phone').val();
             if(account == ''){
                 alert('请输入账号！');
                 return false;
@@ -58,14 +67,44 @@
                 alert('请输入密码！');
                 return false;
             }
+            if(phone == ''){
+                alert('请输入手机号！');
+                return false;
+            }
             is_submit = true;
             $.ajax({
                 type:"post",
-                url:'{{url('dorm_login')}}',
-                dataType:"json",
+                url:'{{url('dorm_register')}}',
+                dataType:"json",8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 data:{
                     "account":account,
-                    "password":password
+                    "password":password,
+                    "phone":phone
                 },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
