@@ -119,6 +119,7 @@ class DormController extends Controller
                 }
                 if($res)
                 {
+                    $res = DB:table('dorm_user')->where('wx_openid',$openid)->update('out_time');
                     return json_encode(['code'=>200,'info'=>'退房成功！']);
                 }else
                 {
