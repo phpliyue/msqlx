@@ -36,18 +36,18 @@ class DormController extends Controller
                 $room = DB::table('dorm_room')->select('id','dorm_name','floor','room','bed')->where(['admin'=>$arr['admin'],'status'=>0])->where('sex',null)->orWhere('sex','')->orderBy('num','asc')->first();
                 if(empty($room))
                 {
-                    return json_encode(['code'=>200,'info'=>'宿舍已满，暂无空位置！']);
+                    return json_encode(['code'=>100,'info'=>'宿舍已满，暂无空位置！']);
                 }else
                 {
                     $res = DB::table('dorm_room')->where('id',$room->id)->update(['uid'=>$uid,'sex'=>$arr['sex'],'status'=>1]);
                     $result = DB::table('dorm_room')->where(['dorm_name'=>$room->dorm_name,'floor'=>$room->floor,'room'=>$room->room])->update(['sex'=>$arr['sex']]);
                     if($res == false || $result == false)
                     {
-                        return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
+                        return json_encode(['code'=>100,'info'=>'服务器繁忙！']);
                     }else
                     {
                         DB::table('dorm_user')->where('wx_openid',$arr['openid'])->update(['in_time'=>date('Y-m-d H:i:s',time())]);
-                        return json_encode(['code'=>100,'info'=>'入住成功！','data'=>$room]);
+                        return json_encode(['code'=>200,'info'=>'入住成功！','data'=>$room]);
                     }
                 }
             }else
@@ -56,16 +56,16 @@ class DormController extends Controller
                 $res = DB::table('dorm_room')->where('id',$room->id)->update(['uid'=>$uid,'status'=>1]);
                 if($res == false)
                 {
-                    return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
+                    return json_encode(['code'=>100,'info'=>'服务器繁忙！']);
                 }else
                 {
                     DB::table('dorm_user')->where('wx_openid',$arr['openid'])->update(['in_time'=>date('Y-m-d H:i:s',time())]);
-                    return json_encode(['code'=>100,'info'=>'入住成功！','data'=>$room]);
+                    return json_encode(['code'=>200,'info'=>'入住成功！','data'=>$room]);
                 }
             }
         }else
         {
-            return json_encode(['code'=>200,'info'=>'该员工已入住！']);
+            return json_encode(['code'=>100,'info'=>'该员工已入住！']);
         }
     }
     /*
@@ -88,5 +88,64 @@ class DormController extends Controller
             return 'customer add';
         }
 
+    }
+    /*
+     * 退房
+     * */
+    public function backRoom(Request $request)
+    {
+        $openid = $request->get('openid');
+        $admin = 'liyue';
+        $name = 'aa';//$request->input('name');
+        $card = '11111';//$request->input('card');
+        //先判断该用户是否入驻
+        $info = (object)['uid'=>13];//DB::table('dorm_users')->where(['name'=>$name,'card'=>$card])->first();
+        if(!empty($info))
+        {
+            //查询该员工是否入住
+            $room = DB::table('dorm_room')->where(['admin'=>$admin,'uid'=>$info->uid,'status'=>1])->first();
+            //若没有该性别的人员入住，则随机分配一间空房间
+            if(!empty($room))
+            {
+                //查询该房间是否只剩当前一人
+                $count = DB::table('dorm_room')->where(['admin'=>$admin,'floor'=>$room->floor,'room'=>$room->room,'status'=>1])->count();
+                if($count == 1)
+                {
+                    $res = DB::table('dorm_room')->where(['admin'=>$admin,'floor'=>$room->floor,'room'=>$room->room])->update(['uid'=>null,'sex'=>null,'status'=>0]);
+                }else
+                {
+                    $res = DB::table('dorm_room')->where('id',$room->id)->update(['uid'=>null,'status'=>0]);
+                }
+                if($res)
+                {
+                    return json_encode(['code'=>200,'info'=>'退房成功！']);
+                }else
+                {
+                    return json_encode(['code'=>100,'info'=>'服务器繁忙！']);
+                }
+            }else
+            {
+                return json_encode(['code'=>100,'info'=>'该员工未入住！']);
+            }
+        }else
+        {
+            return json_encode(['code'=>100,'info'=>'该员工信息不存在！']);
+        }
+    }
+    /*
+     * 获取用户信息
+     * */
+    public function getUserInfo(Request $request)
+    {
+        $openid = $request->get('openid');
+        $info = DB::table('dorm_user')->where('wx_openid',$openid)->first();
+        if($info->in_time){
+            $data['name'] = $info->name;
+            $data['phone'] = $info->phone;
+            $data['card'] = $info->card;
+            $data['sex'] = $info->sex;
+            return json_encode(['code'=>200,'info'=>'返回用户信息！','data'=>$data]);
+        }
+        return json_encode(['code'=>100,'info'=>'暂无用户信息！']);
     }
 }
