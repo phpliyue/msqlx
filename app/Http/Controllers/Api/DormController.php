@@ -20,8 +20,7 @@ class DormController extends Controller
             'phone'=>$arr['phone'],
             'card'=>$arr['card'],
             'sex'=>$arr['sex'],
-            'admin'=>$arr['admin'],
-            'in_time'=>date('Y-m-d H:i:s',time())
+            'admin'=>$arr['admin']
         ]);
 
         //先判断该用户是否入驻
@@ -34,7 +33,7 @@ class DormController extends Controller
             //若没有该性别的人员入住，则随机分配一间空房间
             if(empty($room))
             {
-                $room = DB::table('dorm_room')->select('id','dorm_name','floor','room','bed')->where(['admin'=>$arr['admin'],'status'=>0,'sex'=>null])->orderBy('num','asc')->first();
+                $room = DB::table('dorm_room')->select('id','dorm_name','floor','room','bed')->where(['admin'=>$arr['admin'],'status'=>0])->where('sex',null)->orWhere('sex','')->orderBy('num','asc')->first();
                 if(empty($room))
                 {
                     return json_encode(['code'=>200,'info'=>'宿舍已满，暂无空位置！']);
@@ -47,6 +46,7 @@ class DormController extends Controller
                         return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
                     }else
                     {
+                        DB::table('dorm_user')->where('wx_openid',$arr['openid'])->update(['in_time'=>date('Y-m-d H:i:s',tme())]);
                         return json_encode(['code'=>100,'info'=>'入住成功！','data'=>$room]);
                     }
                 }
@@ -59,6 +59,7 @@ class DormController extends Controller
                     return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
                 }else
                 {
+                    DB::table('dorm_user')->where('wx_openid',$arr['openid'])->update(['in_time'=>date('Y-m-d H:i:s',tme())]);
                     return json_encode(['code'=>100,'info'=>'入住成功！','data'=>$room]);
                 }
             }
