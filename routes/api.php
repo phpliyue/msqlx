@@ -20,5 +20,6 @@ Route::get('getUser','Api\SnowBallController@test');
 /*
  * 宿舍管理接口
  */
+Route::get('getOpenid','Api\GetOpenidController@getOpenid');
 Route::get('dorm_saveUserInfo','Api\DormController@saveUserInfo');
 Route::get('dorm_saveUserLogin','Api\DormController@saveUserLogin');
