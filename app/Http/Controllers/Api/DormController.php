@@ -95,11 +95,12 @@ class DormController extends Controller
     public function backRoom(Request $request)
     {
         $openid = $request->get('openid');
-        $admin = 'liyue';
+        $admin = $request->get('admin');;
         $name = 'aa';//$request->input('name');
         $card = '11111';//$request->input('card');
         //先判断该用户是否入驻
-        $info = (object)['uid'=>13];//DB::table('dorm_users')->where(['name'=>$name,'card'=>$card])->first();
+//        $info = (object)['uid'=>13];
+        $info = DB::table('dorm_users')->where('wx_openid',$openid)->first();
         if(!empty($info))
         {
             //查询该员工是否入住
@@ -144,6 +145,12 @@ class DormController extends Controller
             $data['phone'] = $info->phone;
             $data['card'] = $info->card;
             $data['sex'] = $info->sex;
+            $roomInfo = DB::table('dorm_room')->where('uid',$info->uid)->first();
+            if($roomInfo){
+                $data['floor'] = $roomInfo->floor;
+                $data['room'] = $roomInfo->room;
+                $data['bed'] = $roomInfo->bed;
+            }
             return json_encode(['code'=>200,'info'=>'返回用户信息！','data'=>$data]);
         }
         return json_encode(['code'=>100,'info'=>'暂无用户信息！']);
