@@ -14,7 +14,7 @@
             <h2>宿舍管理</h2>
         </div>
         <div class="row" style="margin-top:10%;">
-            <form class="form-horizontal">
+            <div class="form-horizontal">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="account" class="col-xs-2 col-xs-offset-1 col-md-4 col-md-offset-0 control-label">账号</label>
@@ -40,7 +40,7 @@
                         <button type="submit" class="btn btn-default J_submit" style="width:100px;float:right;color:#aa3400">注册</button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
 
     </div>

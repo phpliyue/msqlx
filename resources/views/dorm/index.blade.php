@@ -14,7 +14,7 @@
             <h2>宿舍管理</h2>
         </div>
         <div class="row" style="margin-top:10%;text-align:center;">
-            <form class="form-horizontal" method="POST">
+            <div class="form-horizontal">
                 <div class="form-group">
                     <label for="account" class="col-xs-2 col-xs-offset-1 col-md-4 col-md-offset-0 control-label">账号</label>
                     <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-0">
@@ -33,7 +33,7 @@
                         <button type="submit" class="btn btn-default J_submit" style="width:100px;float:right;color:#08aa30;">登入</button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
 
     </div>
