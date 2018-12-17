@@ -43,13 +43,12 @@ class RoomManageController extends Controller
         }
     }
     //获取宿舍详细信息
-    public function getRooms()
+    public function getRooms(Request $request)
     {
-        $admin = 'liyue';//session('dorm_account');
+        $admin = $request->session()->get('dorm_account');//session('dorm_account');
         $rooms = DB::table('dorm_room')->where(['dorm_room.admin'=>$admin])->get()->toArray();
         $uids = array_filter(array_column($rooms,'uid'));
         $user_infos = DB::table('dorm_user')->select('uid','name','phone','card','in_time','out_time')->whereIn('uid',$uids)->get()->toArray();
-
         $users = array_reduce($user_infos,function($users,$v){
             $users[$v->uid] = $v;
             return $users;
@@ -59,6 +58,5 @@ class RoomManageController extends Controller
             $rooms[$k]->user_info = empty($v->uid) ? [] :$users[$v->uid];
         }
         return view('dorm.roomInfo',['rooms'=>$rooms]);
-
     }
 }
