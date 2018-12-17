@@ -59,15 +59,15 @@
             var password = $('#password').val();
             var phone = $('#phone').val();
             if(account == ''){
-                alert('请输入账号！');
+                swal('请输入账号！');
                 return false;
             }
             if(password == ''){
-                alert('请输入密码！');
+                swal('请输入密码！');
                 return false;
             }
             if(phone == ''){
-                alert('请输入手机号！');
+                swal('请输入手机号！');
                 return false;
             }
             is_submit = true;
@@ -85,6 +85,7 @@
                 },
                 success:function(data){
                     if(data.code == 100){
+                        swal("注册成功", "欢迎使用!", "success");
                         window.location.href = '{{url('dorm_home')}}';
                     }else{
                         alert(data.info);
