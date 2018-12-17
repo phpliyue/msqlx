@@ -9,14 +9,14 @@
 @section('title','宿舍管理-房间管理')
 @section('nav2','active')
 @section('content')
-    <div class="row wrapper wrapper-content animated fadeInRight">
+    <div class="row wrapper wrapper-content">
         <div class="col-lg-2">
             <button class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myModal">+<i class="fa fa-home"></i></button>
             {{--<button type="button" class="btn btn-w-m btn-info" data-toggle="modal" data-target="#myModal">添加宿舍</button>--}}
         </div>
         <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content animated bounceInRight">
+                <div class="modal-content">
                     <div class="modal-header">
                         <i class="fa fa-home modal-icon"></i>
                         <h4 class="modal-title">添加宿舍</h4>
