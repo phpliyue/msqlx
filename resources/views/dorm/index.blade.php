@@ -1,6 +1,11 @@
 @extends('base')
 @section('css')
     @parent
+    <style>
+        body{
+            background-color: #FEE918;
+        }
+    </style>
 @show
 @section('title','宿舍管理-登入')
 @section('content')
