@@ -14,7 +14,7 @@
             <button style="width:100%;" class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myModal">+<i class="fa fa-home"></i></button>
         </div>
         <div class="col-lg-2">
-            <button class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myCode"><i class="fa fa-qrcode "></i></button>
+            <button style="width:100%;" class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myCode"><i class="fa fa-qrcode "></i></button>
         </div>
         <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
