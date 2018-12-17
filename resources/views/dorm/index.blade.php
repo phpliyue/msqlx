@@ -51,11 +51,11 @@
             var account = $('#account').val();
             var password = $('#password').val();
             if(account == ''){
-                alert('请输入账号！');
+                swal('请输入账号！');
                 return false;
             }
             if(password == ''){
-                alert('请输入密码！');
+                swal('请输入密码！');
                 return false;
             }
             is_submit = true;
@@ -72,9 +72,10 @@
                 },
                 success:function(data){
                     if(data.code == 100){
+                        swal("登入成功", "欢迎回来!", "success");
                         window.location.href = '{{url('dorm_home')}}';
                     }else{
-                        alert(data.info);
+                        swal(data.info);
                     }
                 },
                 complete:function(){
