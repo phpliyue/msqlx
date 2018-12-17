@@ -16,7 +16,6 @@
         <div class="row" style="margin-top:5%;">
             <form class="form-horizontal">
                 {{ csrf_field() }}
-                @include('error')
                 <div class="form-group">
                     <label for="account" class="col-md-4 control-label">账号</label>
                     <div class="col-md-4">
@@ -75,32 +74,7 @@
             $.ajax({
                 type:"post",
                 url:'{{url('dorm_register')}}',
-                dataType:"json",8
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                dataType:"json",
                 data:{
                     "account":account,
                     "password":password,
