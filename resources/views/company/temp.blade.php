@@ -115,7 +115,7 @@
                         <div class="desc">
                             <a href="/dorm_index"><h4>宿舍管理</h4></a>
                             <p>
-                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                                铺位信息：设置所管理的铺位，每个铺位一个自有编码，不可重复。考虑到铺位信息较多，系统设置有人性化的批量增加铺位编码功能，以减轻工作人员初始数据的工作量。
                             </p>
                         </div>
                     </div>
