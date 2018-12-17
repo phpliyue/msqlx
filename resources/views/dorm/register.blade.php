@@ -88,7 +88,7 @@
                         swal("注册成功", "欢迎使用!", "success");
                         window.location.href = '{{url('dorm_home')}}';
                     }else{
-                        alert(data.info);
+                        swal(data.info);
                     }
                 },
                 complete:function(){
