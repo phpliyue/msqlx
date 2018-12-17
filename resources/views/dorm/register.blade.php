@@ -89,8 +89,6 @@
                         window.location.href = '{{url('dorm_home')}}';
                     }else{
                         swal(data.info);
-                        console.log(data.info);
-                        window.location.href = '{{url('dorm_register')}}';
                     }
                 },
                 complete:function(){
