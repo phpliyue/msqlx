@@ -10,9 +10,11 @@
 @section('nav2','active')
 @section('content')
     <div class="row wrapper wrapper-content">
+        <div class="col-lg-2" style="text-align: center;">
+            <button style="width:100%;" class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myModal">+<i class="fa fa-home"></i></button>
+        </div>
         <div class="col-lg-2">
-            <button class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myModal">+<i class="fa fa-home"></i></button>
-            {{--<button type="button" class="btn btn-w-m btn-info" data-toggle="modal" data-target="#myModal">添加宿舍</button>--}}
+            <button class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myCode"><i class="fa fa-qrcode "></i></button>
         </div>
         <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -35,6 +37,26 @@
                         <button type="button" class="btn btn-info J_del">删除楼层</button>
                         <button type="button" class="btn btn-white J_cancel" data-dismiss="modal">取消</button>
                         <button type="button" class="btn btn-primary J_submit">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal inmodal" id="myCode" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa fa-qrcode modal-icon"></i>
+                        <h4 class="modal-title">生成二维码</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div style="height:300px;width:100%;background-color:pink;">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary">提交</button>
                     </div>
                 </div>
             </div>
