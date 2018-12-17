@@ -76,6 +76,7 @@
                         window.location.href = '{{url('dorm_home')}}';
                     }else{
                         swal(data.info);
+                        window.location.href = '{{url('dorm_index')}}';
                     }
                 },
                 complete:function(){
