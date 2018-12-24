@@ -48,7 +48,7 @@
                         <li class="menu-has-children"><a href="">加入</a>
                             <ul>
                                 <li><a href="generic.html">注册</a></li>
-                                <li><a href="elements.html">登入</a></li>
+                                <li><a href="/login">登入</a></li>
                             </ul>
                         </li>
                     </ul>
