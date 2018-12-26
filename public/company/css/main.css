@@ -2010,7 +2010,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   color: #222;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   outline: none;
 }
@@ -2168,7 +2168,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .section-gap {
-  padding: 120px 0;
+  padding: 50px 0;
 }
 
 .section-title {
@@ -2263,8 +2263,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .banner-area {
   /*background: url(../img/header-bg.jpg) center;*/
-  background: url(../img/header-bg.png) center;
+  background: url(../img/header_bg.jpg) center;
+  background-color: #c1e2b3;
   background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .banner-content {
@@ -2478,7 +2480,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .text {
-  background-color: #df003a;
+  /*background-color: #80ccc2;*/
   color: white;
   font-size: 25px;
   padding: 16px 32px;
