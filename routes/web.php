@@ -11,6 +11,7 @@
 |
 */
 Route::get('/','Web\IndexController@index');
+Route::get('/new','Web\IndexController@new');
 /*
  *
  * 后台
@@ -22,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
  * 商户
  * */
 Route::group(['middleware'=>'auth'],function(){
-    Route::get('/adminIndex','Admin\AdminController@firstPage');
+    Route::get('/adminIndex','Admin\AdminController@index');
     //后台图片管理
     Route::get('/administrator','Admin\AdminController@imageMag');
     //个人信息页
@@ -75,9 +76,12 @@ Route::post('image-upload',['as'=>'image.upload.post','uses'=>'AdminAjaxControll
  * 管理员路由
  * */
 Route::group(['middleware'=>'auth'],function(){
-    Route::get('/root','Admin\RootController@index');
-    Route::get('/daoyou','Admin\RootController@daoyou');
-    Route::get('/lxs','Admin\RootController@lxs');
+    Route::get('root','Root\RootController@index');
+    Route::get('folders','Root\RootController@folders');//素材管理
+    Route::post('folders/create','Root\RootController@foldersCreate')->name('folders_create');
+    Route::get('snowball','Root\SnowBallController@index');
+    Route::post('ad/create','Root\SnowBallController@adCreate')->name('ad_create');
+    Route::get('ad/delete/{id}','Root\SnowBallController@adDelete');
     Route::get('/meisi','Admin\RootController@meisi');
     Route::get('/bibei','Admin\RootController@bibei');
     Route::get('/seying','Admin\RootController@seying');
@@ -135,6 +139,22 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_roomManage','Dorm\RoomManageController@index');
     Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');
     Route::get('/dorm_getRooms','Dorm\RoomManageController@getRooms');
+});
+
+
+/*
+ * 商品管理
+ */
+Route::any('/shop_login','Shop\LoginController@login');
+Route::any('/shop_reg','Shop\LoginController@register');
+Route::any('/shop_logout','Shop\LoginController@logout');
+Route::group(['middleware'=>'ShopAuth'],function(){
+    Route::get('/shop_index','Shop\IndexController@index');//首页
+    Route::get('/shop_goods','Shop\GoodsController@goods');//商品列表
+    Route::any('/shop_upgoods/{id?}','Shop\GoodsController@upgoods');//上架商品
+    Route::post('/shop_upload','Shop\GoodsController@upload');//上传图片
+    Route::get('/shop_cate','Shop\CateController@index');//类目
+    Route::any('/shop_addcate/{id?}','Shop\CateController@addcate');//新增类目
 });
 
 
