@@ -14,13 +14,13 @@
             <button style="width:100%;" class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myModal">+<i class="fa fa-home"></i></button>
         </div>
         <div class="col-lg-2">
-            <button style="width:100%;" class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myCode"><i class="fa fa-qrcode "></i></button>
+            <button style="width:100%;" class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myCode"><i class="fa fa-qrcode"></i></button>
         </div>
         <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <i class="fa fa-home modal-icon"></i>
+                        <i class="fa fa-home modal-icon" style="color:#FEE918;"></i>
                         <h4 class="modal-title">添加宿舍</h4>
                     </div>
                     <div class="modal-body J_room">
@@ -46,13 +46,23 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <i class="fa fa-qrcode modal-icon"></i>
+                        <i class="fa fa-qrcode modal-icon" style="color:#FEE918;"></i>
                         <h4 class="modal-title">生成二维码</h4>
                     </div>
-                    <div class="modal-body">
-                        <div style="height:300px;width:100%;background-color:pink;">
+                    <div class="modal-body" style="height:300px;width:100%;background-color:pink;">
+                        {{--<div style="height:300px;width:100%;background-color:pink;">--}}
+                            <div class="row">
+                                <div class="col-md-4 goIn" style="background-color:lightskyblue;height:189.33px;">
 
-                        </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4" style="text-align: center;margin-top:20px;">
+                                    <button type="button" class="btn btn-primary doGoIn">生成入住二维码</button>
+                                </div>
+                            </div>
+
+                        {{--</div>--}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>

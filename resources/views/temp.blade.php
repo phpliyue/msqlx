@@ -16,6 +16,11 @@
     <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
+    <style>
+        .rc{
+            line-height:1.5;
+        }
+    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -75,7 +80,7 @@
                 </li>
                 @if(Auth::user()->email == 'qmna.20@gmail.com')
                     <li class="@yield('root')">
-                        <a href="/root"><i class="fa fa-user"></i> <span class="nav-label">root</span></a>
+                        <a href="root"><i class="fa fa-user"></i> <span class="nav-label">管理员</span></a>
                     </li>
                 @endif
             </ul>
@@ -418,12 +423,15 @@
             </div>
         </div>
     </div>
+
+</div>
 @section('js')
         <script src="{{URL::asset('js/jquery-2.1.1.js')}}"></script>
         <script src="{{URL::asset('js/app.js')}}"></script>
         <script src="{{URL::asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
         <script src="{{URL::asset('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
         <script src="{{URL::asset('js/inspinia.js')}}"></script>
+        <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
 @show
 
 
