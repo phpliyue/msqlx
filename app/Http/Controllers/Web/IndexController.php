@@ -9,7 +9,14 @@ class IndexController extends Controller
 {
     public function index()
     {
-//        return view('web.index');
-        return view('company.index');
+        //网站首页
+        return view('web.index');
+    }
+    /*
+     * 新闻页面
+     * */
+    public function new()
+    {
+        return view('web.new');
     }
 }

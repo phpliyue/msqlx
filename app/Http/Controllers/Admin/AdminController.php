@@ -19,7 +19,7 @@ class AdminController extends Controller
     /*
     *后台首页
     */
-    public function firstPage()
+    public function index()
     {
         $data = DB::table('product')->get();
         return view('admin.index',array('user'=>Auth::user(),'data'=>$data));

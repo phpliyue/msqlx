@@ -60,5 +60,6 @@ class Kernel extends HttpKernel
 
         'signInAuth' => \App\Http\Middleware\SignInAuth::class,
         'dormAuth' => \App\Http\Middleware\DormAuth::class,
+        'ShopAuth' => \App\Http\Middleware\ShopAuth::class,
     ];
 }
