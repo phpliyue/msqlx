@@ -48,6 +48,26 @@ return [
 //            'root' => storage_path('app'),
             'root' => public_path('/images/profile/'),
         ],
+        'folderImg'=>[
+            'driver' => 'local',
+            'root' => public_path('/folder/image'),
+        ],
+        'folderVideo'=>[
+            'driver' => 'local',
+            'root' => public_path('/folder/video'),
+        ],
+        'folderIcon'=>[
+            'driver' => 'local',
+            'root' => public_path('/folder/icon'),
+        ],
+        'folderDocument'=>[
+            'driver' => 'local',
+            'root' => public_path('/folder/document'),
+        ],
+        'folderMusic'=>[
+            'driver' => 'local',
+            'root' => public_path('/folder/music'),
+        ],
         'cirImg' => [
             'driver' => 'local',
             'root' => public_path('/images/circleImages'),
