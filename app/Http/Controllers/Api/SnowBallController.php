@@ -22,4 +22,14 @@ class SnowBallController extends Controller
         $ad = DB::table('snowball_ad')->get(['id','imagepath']);
         return $ad;
     }
+    /*
+     *
+     *
+     * */
+    public function getAdContent(Request $request)
+    {
+        $id = $request->get('id');
+        $adContent = DB::table('snowball_ad')->where('id',$id)->get(['content','datetime']);
+        return $adContent;
+    }
 }

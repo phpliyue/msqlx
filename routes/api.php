@@ -35,5 +35,6 @@ Route::get('dorm_getUserInfo','Api\DormController@getUserInfo');//在退房时�
 /*
  * 雪球社区
  * */
-Route::get('snowall_getAd','Api\SnowBallController@getAd');
+Route::get('snowBall_getAd','Api\SnowBallController@getAd');//获取轮播图
+Route::get('snowBall_getAdContent','Api\SnowBallController@getAdContent');//获取轮播图内容
 
