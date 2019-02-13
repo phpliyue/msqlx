@@ -24,7 +24,7 @@ class CreateFoldersRequest extends FormRequest
     public function rules()
     {
         return [
-            'filesData'=>'required|file'
+            'fileName'=>'required'
         ];
     }
     /*
@@ -34,8 +34,9 @@ class CreateFoldersRequest extends FormRequest
     public function messages()
     {
         $messages = [
-            'filesData.required'=>'没有选择文件',
-            'filesData.file'=>'不知道是什么'
+//            'filesData.required'=>'没有选择文件',
+//            'filesData.file'=>'不知道是什么'
+            'fileName.required'=>'没有文件'
         ];
         return $messages;
     }

@@ -157,5 +157,8 @@ Route::group(['middleware'=>'ShopAuth'],function(){
     Route::any('/shop_addcate/{id?}','Shop\CateController@addcate');//新增类目
 });
 
+Route::get('error',function(){
+    abort(404, 'Unauthorized action.');
+});
 
 

@@ -7,14 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInit5e9979f617d859aad76f162e3c02a0c7
 {
     public static $files = array (
-        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
-        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
@@ -110,6 +110,7 @@ class ComposerStaticInit5e9979f617d859aad76f162e3c02a0c7
         'A' => 
         array (
             'App\\' => 4,
+            'AetherUpload\\' => 13,
         ),
     );
 
@@ -117,8 +118,8 @@ class ComposerStaticInit5e9979f617d859aad76f162e3c02a0c7
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -284,6 +285,10 @@ class ComposerStaticInit5e9979f617d859aad76f162e3c02a0c7
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'AetherUpload\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -326,6 +331,17 @@ class ComposerStaticInit5e9979f617d859aad76f162e3c02a0c7
     );
 
     public static $classMap = array (
+        'AetherUpload\\AetherUploadServiceProvider' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/AetherUploadServiceProvider.php',
+        'AetherUpload\\ConfigMapper' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/ConfigMapper.php',
+        'AetherUpload\\Console\\BuildRedisHashesCommand' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/Console/BuildRedisHashesCommand.php',
+        'AetherUpload\\Console\\CleanUpDirectoryCommand' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/Console/CleanUpDirectoryCommand.php',
+        'AetherUpload\\Console\\CreateGroupDirectoryCommand' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/Console/CreateGroupDirectoryCommand.php',
+        'AetherUpload\\Console\\PublishCommand' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/Console/PublishCommand.php',
+        'AetherUpload\\Receiver' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/Receiver.php',
+        'AetherUpload\\RedisHandler' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/RedisHandler.php',
+        'AetherUpload\\ResourceHandler' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/ResourceHandler.php',
+        'AetherUpload\\Responser' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/Responser.php',
+        'AetherUpload\\UploadHandler' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/UploadHandler.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminAjaxController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminAjaxController.php',
@@ -334,21 +350,40 @@ class ComposerStaticInit5e9979f617d859aad76f162e3c02a0c7
         'App\\Http\\Controllers\\Admin\\AjaxController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AjaxController.php',
         'App\\Http\\Controllers\\Admin\\RootController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/RootController.php',
         'App\\Http\\Controllers\\Admin\\TravelController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TravelController.php',
+        'App\\Http\\Controllers\\Api\\DormController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/DormController.php',
+        'App\\Http\\Controllers\\Api\\GetOpenidController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/GetOpenidController.php',
         'App\\Http\\Controllers\\Api\\SnowBallController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/SnowBallController.php',
+        'App\\Http\\Controllers\\Api\\WxPublicApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/WxPublicApiController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Dorm\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/HomeController.php',
+        'App\\Http\\Controllers\\Dorm\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/IndexController.php',
+        'App\\Http\\Controllers\\Dorm\\RoomManageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/RoomManageController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\Root\\RootController' => __DIR__ . '/../..' . '/app/Http/Controllers/Root/RootController.php',
+        'App\\Http\\Controllers\\Root\\SnowBallController' => __DIR__ . '/../..' . '/app/Http/Controllers/Root/SnowBallController.php',
+        'App\\Http\\Controllers\\Shop\\CateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CateController.php',
+        'App\\Http\\Controllers\\Shop\\GoodsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/GoodsController.php',
+        'App\\Http\\Controllers\\Shop\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/IndexController.php',
+        'App\\Http\\Controllers\\Shop\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/LoginController.php',
+        'App\\Http\\Controllers\\SignIn\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/SignIn/HomeController.php',
+        'App\\Http\\Controllers\\SignIn\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/SignIn/IndexController.php',
+        'App\\Http\\Controllers\\SignIn\\MessageController' => __DIR__ . '/../..' . '/app/Http/Controllers/SignIn/MessageController.php',
         'App\\Http\\Controllers\\Web\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Web/IndexController.php',
         'App\\Http\\Controllers\\Wx\\WeixinController' => __DIR__ . '/../..' . '/app/Http/Controllers/Wx/WeixinController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\DormAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/DormAuth.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
+        'App\\Http\\Middleware\\ShopAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/ShopAuth.php',
+        'App\\Http\\Middleware\\SignInAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/SignInAuth.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\CreateFoldersRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CreateFoldersRequest.php',
         'App\\Model\\Picture' => __DIR__ . '/../..' . '/app/Model/Picture.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

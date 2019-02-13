@@ -43,6 +43,7 @@
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
+
                     <div class="form-group has-success">
                         {!! Form::label('platform','平台',['class'=>'col-sm-2 control-label']) !!}
                         <div class="col-sm-10">
@@ -54,12 +55,30 @@
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
-                    <div class="form-group has-success">
+                    <div class="form-group has-success" id="aetherupload-wrapper">
                         {!! Form::label('filesData','文件',['class'=>'col-sm-2 control-label','require'=>'true']) !!}
                         <div class="col-sm-10">
-                            {!! Form::file('filesData') !!}
+                            {!! Form::file('filesData',['id'=>'file','onchange'=>"aetherupload(this,'file').success(someCallback).upload()"]) !!}
+                            <div class="progress " style="height: 6px;margin-bottom: 2px;margin-top: 10px;width: 200px;">
+                                <div id="progressbar" style="background:#31ff08;height:6px;width:0;"></div><!--需要有一个名为progressbar的id，用以标识进度条-->
+                            </div>
+                            <span style="font-size:12px;color:#aaa;" id="output"></span><!--需要有一个名为output的id，用以标识提示信息-->
+                            <input type="hidden" name="file1" id="savedpath" >
+                            <div id="result"></div>
                         </div>
                     </div>
+
+                    {{--<div class="form-group " id="aetherupload-wrapper" ><!--组件最外部需要有一个名为aetherupload-wrapper的id，用以包装组件-->--}}
+                        {{--<label>文件1(带回调)：</label>--}}
+                        {{--<div class="controls" >--}}
+                            {{--<input type="file" id="file"  onchange="aetherupload(this,'file').success(someCallback).upload()"/><!--需要有一个名为file的id，用以标识上传的文件，aetherupload(file,group)中第二个参数为分组名，success方法可用于声名上传成功后的回调方法名-->--}}
+                            {{--<div class="progress " style="height: 6px;margin-bottom: 2px;margin-top: 10px;width: 200px;">--}}
+                                {{--<div id="progressbar" style="background:blue;height:6px;width:0;"></div><!--需要有一个名为progressbar的id，用以标识进度条-->--}}
+                            {{--</div>--}}
+                            {{--<span style="font-size:12px;color:#aaa;" id="output"></span><!--需要有一个名为output的id，用以标识提示信息-->--}}
+                            {{--<input type="hidden" name="file1" id="savedpath" ><!--需要有一个名为savedpath的id，用以标识文件保存路径的表单字段，还需要一个任意名称的name-->--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     {{--<div class="form-group has-success">--}}
                     {{--{!! Form::label('credentials','证书',['class'=>'col-sm-2 control-label']) !!}--}}
                     {{--<div class="col-sm-10">--}}
@@ -74,6 +93,8 @@
                             {!! Form::text('remark','',['class'=>'form-control']) !!}
                         </div>
                     </div>
+                    <input type="hidden" name="fileName" value="" class="fileName">
+                    <input type="hidden" name="filePath" value="" class="filePath">
                     <div class="hr-line-dashed"></div>
                     <div class="form-group text-center">
                         {!! Form::submit('上传','',['class'=>' text-center']) !!}
@@ -87,6 +108,7 @@
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-9">
             <h2>素材管理</h2>
+            {{DIRECTORY_SEPARATOR}}
             <ol class="breadcrumb">
                 <li>
                     <a href="/root">管理员</a>
@@ -316,4 +338,19 @@
 @endsection
 @section('js')
     @parent
+    <script src="{{ URL::asset('js/spark-md5.min.js') }}"></script>
+    <script src="{{ URL::asset('js/aetherupload.js') }}"></script>
+    <script>
+        // success(callback)中声名的回调方法需在此定义，参数callback可为任意名称，此方法将会在上传完成后被调用
+        // 可使用this对象获得fileName,fileSize,uploadBaseName,uploadExt,subDir,group,savedPath等属性的值
+        someCallback = function(){
+            // Example
+            $('#result').append(
+                '<p>执行回调 - 文件原名：<span >'+this.fileName+'</span> | 文件大小：<span >'+parseFloat(this.fileSize / (1000 * 1000)).toFixed(2) + 'MB'+'</span> | 文件储存名：<span >'+this.savedPath.substr(this.savedPath.lastIndexOf('/') + 1)+'</span></p>'
+            );
+            $('.fileName').val(this.fileName);
+            $('.filePath').val(this.savedPath);
+        }
+
+    </script>
 @endsection

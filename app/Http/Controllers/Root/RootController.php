@@ -34,41 +34,42 @@ class RootController extends Controller
 
         $type = $request->get('type');
         $platform = $request->get('platform');
-        $filesData = $request->file('filesData');
+        $fileName = $request->get('fileName');
+        $savePath = $request->get('filePath');
+        $filePath = '/folder/'.str_replace("\\", "/", $savePath);
         $remark = $request->get('remark');
-        $filesName = $filesData->getClientOriginalName();
-        $filesExt = substr(strrchr($filesName, '.'), 1);
-        $filesData_name = time().'.'.$filesExt;
-        switch ($type)
-        {
-            case 'image':
-                Storage::disk('folderImg')->put($filesData_name, file_get_contents($filesData));
-                $path = '/folder/image/'.$filesData_name;
-            break;
-            case 'video':
-                Storage::disk('folderVideo')->put($filesData_name, file_get_contents($filesData));
-                $path = '/folder/video/'.$filesData_name;
-                break;
-            case 'icon':
-                Storage::disk('folderIcon')->put($filesData_name, file_get_contents($filesData));
-                $path = '/folder/icon/'.$filesData_name;
-                break;
-            case 'document':
-                Storage::disk('folderDocument')->put($filesData_name, file_get_contents($filesData));
-                $path = '/folder/document/'.$filesData_name;
-                break;
-            case 'music':
-                Storage::disk('folderMusic')->put($filesData_name, file_get_contents($filesData));
-                $path = '/folder/music/'.$filesData_name;
-                break;
-            default:
-                return redirect('folders');
-        }
+//        $filesName = $filesData->getClientOriginalName();
+//        $filesExt = substr(strrchr($filesName, '.'), 1);
+//        $filesData_name = time().'.'.$filesExt;
+//        switch ($type)
+//        {
+//            case 'image':
+//                Storage::disk('folderImg')->put($filesData_name, file_get_contents($filesData));
+//                $path = '/folder/image/'.$filesData_name;
+//            break;
+//            case 'video':
+//                Storage::disk('folderVideo')->put($filesData_name, file_get_contents($filesData));
+//                $path = '/folder/video/'.$filesData_name;
+//                break;
+//            case 'icon':
+//                Storage::disk('folderIcon')->put($filesData_name, file_get_contents($filesData));
+//                $path = '/folder/icon/'.$filesData_name;
+//                break;
+//            case 'document':
+//                Storage::disk('folderDocument')->put($filesData_name, file_get_contents($filesData));
+//                $path = '/folder/document/'.$filesData_name;
+//                break;
+//            case 'music':
+//                Storage::disk('folderMusic')->put($filesData_name, file_get_contents($filesData));
+//                $path = '/folder/music/'.$filesData_name;
+//                break;
+//            default:
+//                return redirect('folders');
+//        }
         DB::table('folder')->insert([
             'type' => $type,
-            'path' => $path,
-            'newname'=>$filesData_name,
-            'filesname' => $filesName,
+            'path' => $filePath,
+            'filesname' => $fileName,
             'remark'=>$remark,
             'platform' => $platform,
             'datetime' => date('Y-m-d H:i:s',time())
