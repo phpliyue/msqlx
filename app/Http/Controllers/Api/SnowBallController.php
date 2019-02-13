@@ -13,4 +13,13 @@ class SnowBallController extends Controller
             'sex'=>'男'
         ]);
     }
+    /*
+     * 获取首页广告栏图片
+     *
+     * */
+    public function getAd()
+    {
+        $ad = DB::table('snowball_ad')->get(['id','imagepath']);
+        return $ad;
+    }
 }

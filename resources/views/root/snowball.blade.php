@@ -180,6 +180,7 @@
                                 <th data-toggle="true">标题</th>
                                 <th>时间</th>
                                 <th data-hide="all">图片</th>
+                                <th data-hide="all">内容</th>
                                 <th>删除</th>
                             </tr>
                             </thead>
@@ -188,17 +189,24 @@
                             <tr>
                                 <td>{{$key->title}}</td>
                                 <td>{{$key->datetime}}</td>
-                                <td><image src="{{$key->imagepath}}"></image></td>
+                                <td><image src="{{$key->imagepath}}" style="width:100%;"></image>
+                                </td>
+                                <td>
+                                    {{--<input type="hidden" class="setValue" value="{{$key->content}}">--}}
+                                    <div class="contentValue" style="width:100%;word-wrap: break-word;word-break: break-all;overflow: hidden;">
+                                        {{$key->content}}
+                                    </div>
+                                </td>
                                 <td><a href="ad/delete/{{$key->id}}"><i class="fa fa-trash text-navy"></i></a></td>
                             </tr>
                             @endforeach
                             </tbody>
                             <tfoot>
-                            <tr>
-                                <td colspan="5">
-                                    <ul class="pagination pull-right"></ul>
-                                </td>
-                            </tr>
+                            {{--<tr>--}}
+                                {{--<td colspan="5">--}}
+                                    {{--<ul class="pagination pull-right"></ul>--}}
+                                {{--</td>--}}
+                            {{--</tr>--}}
                             </tfoot>
                         </table>
                     </div>
@@ -373,5 +381,9 @@
         //         }
         //     });
         // }
+        // var content = $('.setValue').val();
+        // $('.contentValue').append(
+        //     content
+        // );
     </script>
 @endsection

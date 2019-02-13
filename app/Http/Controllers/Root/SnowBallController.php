@@ -11,7 +11,7 @@ class SnowBallController extends Controller
 {
     public function index()
     {
-        $adData = DB::table('snowball-ad')->get();
+        $adData = DB::table('snowball_ad')->get();
         return view('root.snowball', array('user' => Auth::user(), 'data' => $adData));
     }
 
@@ -21,7 +21,7 @@ class SnowBallController extends Controller
         $imagepath = $request->get('path');
         $content = $request->get('cont');
 
-        $result = DB::table('snowball-ad')->insert([
+        $result = DB::table('snowball_ad')->insert([
             'title' => $title,
             'imagepath' => $imagepath,
             'content' => $content,
@@ -34,7 +34,7 @@ class SnowBallController extends Controller
     }
     public function adDelete($id)
     {
-        $result = DB::table('snowball-ad')->where('id',$id)->delete();
+        $result = DB::table('snowball_ad')->where('id',$id)->delete();
         if($result)
         {
             $successMessages = '删除成功';
