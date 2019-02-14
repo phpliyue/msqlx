@@ -80,6 +80,9 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('folders','Root\RootController@folders');//素材管理
     Route::post('folders/create','Root\RootController@foldersCreate')->name('folders_create');
     Route::get('snowball','Root\SnowBallController@index');
+    Route::get('snowballAdAddView','Root\SnowBallController@snowballAdAddView');
+    Route::get('snowballAdUpdateView/{id}','Root\SnowBallController@snowballAdUpdateView');
+    Route::post('ad/update','Root\SnowBallController@adUpdate')->name('ad_update');
     Route::post('ad/create','Root\SnowBallController@adCreate')->name('ad_create');
     Route::get('ad/delete/{id}','Root\SnowBallController@adDelete');
     Route::get('/meisi','Admin\RootController@meisi');

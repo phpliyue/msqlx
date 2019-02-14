@@ -9,17 +9,20 @@
 
 
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="{{URL::asset('css/plugins/summernote/summernote.css')}}" rel="stylesheet">
     {{--<link href="{{URL::asset('css/app.css')}}" rel="stylesheet">--}}
     <link href="{{URL::asset('css/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('css/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/animate.css')}}" rel="stylesheet">
+    {{--<link href="{{URL::asset('css/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">--}}
     <link href="{{URL::asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
     <style>
-        .rc{
-            line-height:1.5;
+        .rc {
+            line-height: 1.5;
         }
+
     </style>
 </head>
 <body>
@@ -30,7 +33,7 @@
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
                             {{--<img alt="image" class="img-circle"--}}
-                                 {{--src="{{URL::asset('img/profile_small.jpg')}}"/>--}}
+                            {{--src="{{URL::asset('img/profile_small.jpg')}}"/>--}}
                             <img alt="image" class="img-circle"
                                  src="/images/profile/@yield('headImage','default.jpg')" height="48" width="48"/>
                              </span>
@@ -45,7 +48,7 @@
                             <li><a href="mailbox.html">邮箱</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                           document.getElementById('logout-form').submit()"; >退出</a></li>
+                           document.getElementById('logout-form').submit()" ;>退出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -80,7 +83,7 @@
                 </li>
                 @if(Auth::user()->email == 'qmna.20@gmail.com')
                     <li class="@yield('root')">
-                        <a href="root"><i class="fa fa-user"></i> <span class="nav-label">管理员</span></a>
+                        <a href="/root"><i class="fa fa-user"></i> <span class="nav-label">管理员</span></a>
                     </li>
                 @endif
             </ul>
@@ -93,10 +96,10 @@
                     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i>
                     </a>
                     {{--<form role="search" class="navbar-form-custom" action="search_results.html">--}}
-                        {{--<div class="form-group">--}}
-                            {{--<input type="text" placeholder="Search for something..." class="form-control"--}}
-                                   {{--name="top-search" id="top-search">--}}
-                        {{--</div>--}}
+                    {{--<div class="form-group">--}}
+                    {{--<input type="text" placeholder="Search for something..." class="form-control"--}}
+                    {{--name="top-search" id="top-search">--}}
+                    {{--</div>--}}
                     {{--</form>--}}
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
@@ -225,10 +228,14 @@
             <div class="sidebar-container">
 
                 <ul class="nav nav-tabs navs-3">
-
-                    <li class="active"><a data-toggle="tab" href="#tab-1">
-                            Notes
-                        </a></li>
+                    @if(Auth::user()->email == 'qmna.20@gmail.com')
+                        <li class="active"><a data-toggle="tab" href="#tab-1">
+                                素材
+                            </a></li>
+                    @endif
+                    {{--<li class="active"><a data-toggle="tab" href="#tab-1">--}}
+                            {{--素材--}}
+                        {{--</a></li>--}}
                     <li><a data-toggle="tab" href="#tab-2">
                             Projects
                         </a></li>
@@ -239,36 +246,41 @@
 
                 <div class="tab-content">
 
+                    @if(Auth::user()->email == 'qmna.20@gmail.com')
+                        <div id="tab-1" class="tab-pane active">
 
-                    <div id="tab-1" class="tab-pane active">
-
-                        <div class="sidebar-title">
-                            <h3><i class="fa fa-comments-o"></i> Latest Notes</h3>
-                            <small><i class="fa fa-tim"></i> You have 10 new message.</small>
-                        </div>
-
-                        <div>
-                            <div class="sidebar-message">
-                                <a href="#">
-                                    <div class="pull-left text-center">
-                                        <img alt="image" class="img-circle message-avatar" src="img/a3.jpg">
-
-                                        <div class="m-t-xs">
-                                            <i class="fa fa-star text-warning"></i>
-                                            <i class="fa fa-star text-warning"></i>
-                                            <i class="fa fa-star text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below.
-                                        <br>
-                                        <small class="text-muted">Yesterday 1:10 pm</small>
-                                    </div>
-                                </a>
+                            <div class="sidebar-title">
+                                <h3><i class="fa fa-comments-o"></i> 素材</h3>
+                                <small><i class="fa fa-tim"></i> 所有素材</small>
                             </div>
-                        </div>
 
-                    </div>
+                            <div>
+                                <div class="sidebar-message">
+                                    @section('folder')
+
+                                    @show
+                                    {{--<a href="#">--}}
+                                        {{--<div class="pull-left text-center">--}}
+                                            {{--<img alt="image" class="img-circle message-avatar" src="img/a3.jpg">--}}
+
+                                            {{--<div class="m-t-xs">--}}
+                                                {{--<i class="fa fa-star text-warning"></i>--}}
+                                                {{--<i class="fa fa-star text-warning"></i>--}}
+                                                {{--<i class="fa fa-star text-warning"></i>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="media-body">--}}
+                                            {{--The standard chunk of Lorem Ipsum used since the 1500s is reproduced below.--}}
+                                            {{--<br>--}}
+                                            {{--<small class="text-muted">Yesterday 1:10 pm</small>--}}
+                                        {{--</div>--}}
+                                    {{--</a>--}}
+                                </div>
+                            </div>
+
+                        </div>
+                    @endif
+
 
                     <div id="tab-2" class="tab-pane">
 
@@ -426,12 +438,12 @@
 
 </div>
 @section('js')
-        <script src="{{URL::asset('js/jquery-2.1.1.js')}}"></script>
-        <script src="{{URL::asset('js/app.js')}}"></script>
-        <script src="{{URL::asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
-        <script src="{{URL::asset('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-        <script src="{{URL::asset('js/inspinia.js')}}"></script>
-        <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
+    <script src="{{URL::asset('js/jquery-2.1.1.js')}}"></script>
+    <script src="{{URL::asset('js/app.js')}}"></script>
+    <script src="{{URL::asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+    <script src="{{URL::asset('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+    <script src="{{URL::asset('js/inspinia.js')}}"></script>
+    <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
 @show
 
 
