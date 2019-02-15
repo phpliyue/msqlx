@@ -1640,7 +1640,8 @@ table.dataTable thead .sorting_desc_disabled {
   float: left;
 }
 .dataTables_filter label {
-  margin-right: 5px;
+  /*margin-left: 5px;*/
+  float:left;
 }
 .html5buttons {
   float: right;
@@ -3265,10 +3266,10 @@ body.tour-open .animated {
   overflow: hidden;
   position: fixed;
   top: 60px;
-  width: 260px !important;
+  width: 300px !important;
   z-index: 1009;
   bottom: 0;
-  right: -260px;
+  right: -300px;
 }
 #right-sidebar.sidebar-open {
   right: 0;
@@ -3353,7 +3354,7 @@ body.tour-open .animated {
   color: inherit;
 }
 .sidebar-container .sidebar-message {
-  padding: 15px 20px;
+  padding-top: 15px;
 }
 .sidebar-container .sidebar-message .message-avatar {
   height: 38px;
@@ -3520,7 +3521,7 @@ video {
   padding: 0 20px;
 }
 .wrapper-content {
-  padding: 20px 10px 40px;
+  padding: 20px 10px 0px 10px;
 }
 #page-wrapper {
   padding: 0 15px;

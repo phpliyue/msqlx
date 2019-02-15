@@ -36,7 +36,7 @@
                         {!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}
                         <div class="col-sm-10">
                             {!! Form::text('path',$key->imagepath,['class'=>'urlChange form-control']) !!}
-                            <img alt="image"  src="{{$key->imagepath}}" style="width:100%;" class="urlView">
+                            <img alt="image" src="{{$key->imagepath}}" style="width:100%;" class="urlView">
                             {{--<input type="text" class="urlChange">--}}
                         </div>
                         {{--<image href="{{$key->imagepath}}" style="width:100%;"></image>--}}
@@ -63,9 +63,74 @@
             </div>
         </div>
     </div>
-
 @endsection
-
+@section('folder')
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover shuchai">
+                <thead>
+                <tr>
+                    <th>素材</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($folder as $key)
+                    <tr>
+                        <td>
+                            文件名:{{$key->filesname}}<br>
+                            备注:{{$key->remark}}
+                            @switch($key->type)
+                                @case('image')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="image">
+                                        <img alt="image" class="img-responsive"
+                                             src="http://www.msqlx.com{{$key->path}}">
+                                    </div>
+                                </a>
+                                @break
+                                @case('video')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-film"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('document')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('music')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-music"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('icon')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <img alt="image" class="img-responsive"
+                                             src="http://www.msqlx.com{{$key->path}}">
+                                    </div>
+                                </a>
+                                @break
+                            @endswitch
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection
 @section('js')
     @parent
     {{--<script src="js/plugins/footable/footable.all.min.js"></script>--}}
@@ -74,9 +139,9 @@
     <script src="{{URL::asset('js/plugins/pace/pace.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/dataTables/datatables.min.js')}}"></script>
     <script>
-        $('.urlChange').change(function(){
+        $('.urlChange').change(function () {
             var urlValue = $(this).val();
-            $('.urlView').attr("src",urlValue)
+            $('.urlView').attr("src", urlValue)
         });
         $('.summernote').summernote({
             height: '25em',
@@ -94,9 +159,11 @@
         var content = $('.fuCon').val();
         $('.summernote').summernote('code', content);
         $(document).ready(function () {
-            $('.huodong').DataTable({
+            $('.shuchai').DataTable({
                 pageLength: 5,
                 responsive: true,
+                bLengthChange: false,
+                info:false,
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
                     // {extend: 'copy'},

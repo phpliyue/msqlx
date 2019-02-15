@@ -23,7 +23,9 @@ class SnowBallController extends Controller
     {
         $adData = DB::table('snowball_ad')->where('id',$id)->get();
 //        dd($adData);
-        return view('root.adUpdate', array('user' => Auth::user(),'data' => $adData));
+        $folder = DB::table('folder')->get();
+//        dd($folder);
+        return view('root.adUpdate', array('user' => Auth::user(),'data' => $adData,'folder'=>$folder));
     }
     public function adUpdate(Request $request)
     {

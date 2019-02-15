@@ -87,7 +87,7 @@
                     </div>
                     <div class="ibox-content">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover huodong">
+                            <table class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>活动编号</th>
@@ -181,175 +181,70 @@
 @endsection
 @section('folder')
     <div class="col-lg-12">
-        @foreach($folder as $key => $value)
-            <div class="file-box">
-                <div class="file">
-                    @switch($value->type)
-                        @case('image')
-                        <a href="{{$value->path}}">
-                            <span class="corner"></span>
-                            <div class="image">
-                                <img alt="image" class="img-responsive" src="{{$value->path}}">
-                            </div>
-                            <div class="file-name">
-                                文件名: {{$value->filesname}}
-                                <br/>
-                                备注: {{$value->remark}}
-                                <br/>
-                                上传时间: <small>{{$value->datetime}}</small>
-                            </div>
-                        </a>
-                        @break
-                        @case('video')
-                        <a href="{{$value->path}}">
-                            <span class="corner"></span>
-
-                            <div class="icon">
-                                <i class="fa fa-film"></i>
-                            </div>
-                            <div class="file-name">
-                                文件名: {{$value->filesname}}
-                                <br/>
-                                备注: {{$value->remark}}
-                                <br/>
-                                上传时间: <small>{{$value->datetime}}</small>
-                            </div>
-                        </a>
-                        @break
-                        @case('document')
-                        <a href="{{$value->path}}">
-                            <span class="corner"></span>
-
-                            <div class="icon">
-                                <i class="fa fa-file"></i>
-                            </div>
-                            <div class="file-name">
-                                文件名: {{$value->filesname}}
-                                <br/>
-                                备注: {{$value->remark}}
-                                <br/>
-                                上传时间: <small>{{$value->datetime}}</small>
-                            </div>
-                        </a>
-                        @break
-                        @case('music')
-                        <a href="{{$value->path}}">
-                            <span class="corner"></span>
-
-                            <div class="icon">
-                                <i class="fa fa-music"></i>
-                            </div>
-                            <div class="file-name">
-                                文件名: {{$value->filesname}}
-                                <br/>
-                                备注: {{$value->remark}}
-                                <br/>
-                                上传时间: <small>{{$value->datetime}}</small>
-                            </div>
-                        </a>
-                        @break
-                        @case('icon')
-                        <a href="{{$value->path}}">
-                            <span class="corner"></span>
-
-                            <div class="icon">
-                                <img alt="image" class="img-responsive" src="{{$value->path}}">
-                            </div>
-                            <div class="file-name">
-                                文件名: {{$value->filesname}}
-                                <br/>
-                                备注: {{$value->remark}}
-                                <br/>
-                                上传时间: <small>{{$value->datetime}}</small>
-                            </div>
-                        </a>
-                        @break
-                    @endswitch
-                </div>
-            </div>
-        @endforeach
-        {{--<div class="file-box">--}}
-        {{--<div class="file">--}}
-        {{--<a href="#">--}}
-        {{--<span class="corner"></span>--}}
-
-        {{--<div class="icon">--}}
-        {{--<i class="fa fa-file"></i>--}}
-        {{--</div>--}}
-        {{--<div class="file-name">--}}
-        {{--Document_2014.doc--}}
-        {{--<br/>--}}
-        {{--<small>Added: Jan 11, 2014</small>--}}
-        {{--</div>--}}
-        {{--</a>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="file-box">--}}
-        {{--<div class="file">--}}
-        {{--<a href="#">--}}
-        {{--<span class="corner"></span>--}}
-        {{--<div class="image">--}}
-        {{--<img alt="image" class="img-responsive" src="img/p1.jpg">--}}
-        {{--</div>--}}
-        {{--<div class="file-name">--}}
-        {{--Italy street.jpg--}}
-        {{--<br/>--}}
-        {{--<small>Added: Jan 6, 2014</small>--}}
-        {{--</div>--}}
-        {{--</a>--}}
-
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="file-box">--}}
-        {{--<div class="file">--}}
-        {{--<a href="#">--}}
-        {{--<span class="corner"></span>--}}
-        {{--<div class="image">--}}
-        {{--<img alt="image" class="img-responsive" src="img/p1.jpg">--}}
-        {{--</div>--}}
-        {{--<div class="file-name">--}}
-        {{--Italy street.jpg--}}
-        {{--<br/>--}}
-        {{--<small>Added: Jan 6, 2014</small>--}}
-        {{--</div>--}}
-        {{--</a>--}}
-
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="file-box">--}}
-        {{--<div class="file">--}}
-        {{--<a href="#">--}}
-        {{--<span class="corner"></span>--}}
-        {{--<div class="image">--}}
-        {{--<img alt="image" class="img-responsive" src="img/p1.jpg">--}}
-        {{--</div>--}}
-        {{--<div class="file-name">--}}
-        {{--Italy street.jpg--}}
-        {{--<br/>--}}
-        {{--<small>Added: Jan 6, 2014</small>--}}
-        {{--</div>--}}
-        {{--</a>--}}
-
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="file-box">--}}
-        {{--<div class="file">--}}
-        {{--<a href="#">--}}
-        {{--<span class="corner"></span>--}}
-        {{--<div class="image">--}}
-        {{--<img alt="image" class="img-responsive" src="img/p1.jpg">--}}
-        {{--</div>--}}
-        {{--<div class="file-name">--}}
-        {{--Italy street.jpg--}}
-        {{--<br/>--}}
-        {{--<small>Added: Jan 6, 2014</small>--}}
-        {{--</div>--}}
-        {{--</a>--}}
-
-        {{--</div>--}}
-        {{--</div>--}}
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover shuchai">
+                <thead>
+                <tr>
+                    <th>素材</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($folder as $key)
+                    <tr>
+                        <td>
+                            文件名:{{$key->filesname}}<br>
+                            备注:{{$key->remark}}
+                            @switch($key->type)
+                                @case('image')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="image">
+                                        <img alt="image" class="img-responsive"
+                                             src="http://www.msqlx.com{{$key->path}}">
+                                    </div>
+                                </a>
+                                @break
+                                @case('video')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-film"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('document')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('music')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-music"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('icon')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <img alt="image" class="img-responsive"
+                                             src="http://www.msqlx.com{{$key->path}}">
+                                    </div>
+                                </a>
+                                @break
+                            @endswitch
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-
 @endsection
 @section('js')
     @parent
@@ -363,6 +258,33 @@
             $('.huodong').DataTable({
                 pageLength: 5,
                 responsive: true,
+                bLengthChange: false,
+                info:false,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    // {extend: 'copy'},
+                    // {extend: 'csv'},
+                    // {extend: 'excel', title: 'ExampleFile'},
+                    // {extend: 'pdf', title: 'ExampleFile'},
+                    // {extend: 'print',
+                    //     customize: function (win){
+                    //         $(win.document.body).addClass('white-bg');
+                    //         $(win.document.body).css('font-size', '10px');
+                    //
+                    //         $(win.document.body).find('table')
+                    //             .addClass('compact')
+                    //             .css('font-size', 'inherit');
+                    //     }
+                    // }
+                ]
+
+            });
+
+            $('.shuchai').DataTable({
+                pageLength: 5,
+                responsive: true,
+                bLengthChange: false,
+                info:false,
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
                     // {extend: 'copy'},
