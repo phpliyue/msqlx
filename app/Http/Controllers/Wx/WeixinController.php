@@ -63,6 +63,14 @@ class WeixinController extends Controller
                 'create_time' => date('Y:m:d H:i:s',time()),
                 'last_login' => date('Y:m:d H:i:s',time())
             ]);
+            //新增用户信息表
+            DB::table('customer_info')->insert([
+                'wx_openid' => $openid,
+            ]);
+            //新增用户活动表
+            DB::table('customer_activity')->insert([
+                'wx_openid' => $openid,
+            ]);
             return 'customer add';
         }else{
             $result = DB::table('customer')->where('wx_openid',$openid)->update([
