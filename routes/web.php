@@ -80,11 +80,25 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('folders','Root\RootController@folders');//素材管理
     Route::post('folders/create','Root\RootController@foldersCreate')->name('folders_create');
     Route::get('snowball','Root\SnowBallController@index');
-    Route::get('snowballAdAddView','Root\SnowBallController@snowballAdAddView');
-    Route::get('snowballAdUpdateView/{id}','Root\SnowBallController@snowballAdUpdateView');
+    //广告管理
+    Route::get('snowballAdAddView','Root\SnowBallController@adAddView');
+    Route::get('snowballAdUpdateView/{id}','Root\SnowBallController@adUpdateView');
     Route::post('ad/update','Root\SnowBallController@adUpdate')->name('ad_update');
     Route::post('ad/create','Root\SnowBallController@adCreate')->name('ad_create');
     Route::get('ad/delete/{id}','Root\SnowBallController@adDelete');
+    //活动管理
+    Route::get('snowballActivityAddView','Root\SnowBallController@activityAddView');
+    Route::get('snowballActivityUpdateView/{id}','Root\SnowBallController@activityUpdateView');
+    Route::post('activity/update','Root\SnowBallController@activityUpdate')->name('activity_update');
+    Route::post('activity/create','Root\SnowBallController@activityCreate')->name('activity_create');
+    Route::get('activity/delete/{id}','Root\SnowBallController@activityDelete');
+    //优惠管理
+    Route::get('snowballSaleAddView','Root\SnowBallController@saleAddView');
+    Route::get('snowballSaleUpdateView/{id}','Root\SnowBallController@saleUpdateView');
+    Route::post('sale/update','Root\SnowBallController@saleUpdate')->name('sale_update');
+    Route::post('sale/create','Root\SnowBallController@saleCreate')->name('sale_create');
+    Route::get('sale/delete/{id}','Root\SnowBallController@saleDelete');
+
     Route::get('/meisi','Admin\RootController@meisi');
     Route::get('/bibei','Admin\RootController@bibei');
     Route::get('/seying','Admin\RootController@seying');

@@ -23,7 +23,7 @@ class SnowBallController extends Controller
         return $ad;
     }
     /*
-     *
+     * 获取广告内容
      *
      * */
     public function getAdContent(Request $request)
@@ -31,5 +31,24 @@ class SnowBallController extends Controller
         $id = $request->get('id');
         $adContent = DB::table('snowball_ad')->where('id',$id)->get(['content','datetime']);
         return $adContent;
+    }
+    /*
+     * 获取活动
+     *
+     * */
+    public function getActivity()
+    {
+        $activity = DB::table('snowball_activity')->get(['id','imagepath']);
+        return $activity;
+    }
+    /*
+     * 获取广告内容
+     *
+     * */
+    public function getActivityContent(Request $request)
+    {
+        $id = $request->get('id');
+        $activityContent = DB::table('snowball_activity')->where('id',$id)->get();
+        return $activityContent;
     }
 }

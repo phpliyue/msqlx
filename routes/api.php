@@ -37,4 +37,5 @@ Route::get('dorm_getUserInfo','Api\DormController@getUserInfo');//在退房时�
  * */
 Route::get('snowBall_getAd','Api\SnowBallController@getAd');//获取轮播图
 Route::get('snowBall_getAdContent','Api\SnowBallController@getAdContent');//获取轮播图内容
-
+Route::get('snowBall_getActivity','Api\SnowBallController@getActivity');//获取活动
+Route::get('snowBall_getActivityContent','Api\SnowBallController@getActivityContent');//获取活动内容

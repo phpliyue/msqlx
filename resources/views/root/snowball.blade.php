@@ -71,6 +71,7 @@
             </div>
         </div>
     </div>
+    {{--活动管理--}}
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
@@ -79,30 +80,35 @@
                         <h5>活动管理</h5>
                         <div class="ibox-tools">
                             <i class="fa fa-add">
-                                <button class="btn btn-primary btn-block" data-toggle="modal"
-                                        data-target="#activityModel">添加
-                                </button>
+                                <a href="/snowballActivityAddView" style="color:white;"><button class="btn btn-primary">添加</button></a>
                             </i>
                         </div>
                     </div>
                     <div class="ibox-content">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
+                            <table class="table table-striped table-bordered table-hover huodong">
                                 <thead>
                                 <tr>
                                     <th>活动编号</th>
                                     <th>活动名称</th>
+                                    <th>主办单位</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="gradeX">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                </tr>
+                                @foreach($activityData as $key)
+                                    <tr>
+                                        <td>{{$key->id}}</td>
+                                        <td>{{$key->title}}</td>
+                                        <td>{{$key->sponsor}}</td>
+                                        <td style="text-align: center;">
+                                            <a href="activity/delete/{{$key->id}}"><i class="fa fa-trash text-navy"
+                                                                                style="color:red;"></i> 删除</a>　
+                                            |
+                                            　<a href="snowballActivityUpdateView/{{$key->id}}"><i class="fa fa-pencil  text-navy"></i> 修改</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -111,6 +117,7 @@
             </div>
         </div>
     </div>
+    {{--优惠管理--}}
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
@@ -118,61 +125,39 @@
                     <div class="ibox-title" style="background-color:#fff7cb;">
                         <h5>优惠管理</h5>
                         <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li>
-                                    <button class="btn btn-primary btn-block" data-toggle="modal"
-                                            data-target="#saleModel">添加
-                                    </button>
-                                    <a href="#">添加</a>
-                                </li>
-                                <li>
-                                    <button class="btn btn-primary btn-block" data-toggle="modal"
-                                            data-target="#myModal2">添加
-                                    </button>
-                                    <a href="#">修改</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
+                            <i class="fa fa-add">
+                                <a href="/snowballSaleAddView" style="color:white;"><button class="btn btn-primary">添加</button></a>
+                            </i>
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <table class="footable table table-stripped toggle-arrow-tiny">
-                            <thead>
-                            <tr>
-                                <th data-toggle="true">标题</th>
-                                <th>时间</th>
-                                <th data-hide="all">图片</th>
-                                <th>删除</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($data as $key)
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover huodong">
+                                <thead>
                                 <tr>
-                                    <td>{{$key->title}}</td>
-                                    <td>{{$key->datetime}}</td>
-                                    <td>
-                                        <image src="{{$key->imagepath}}"></image>
-                                    </td>
-                                    <td><a href="ad/delete/{{$key->id}}"><i class="fa fa-trash text-navy"></i></a></td>
+                                    <th>优惠编号</th>
+                                    <th>优惠名称</th>
+                                    {{--<th>主办单位</th>--}}
+                                    <th>操作</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td colspan="5">
-                                    <ul class="pagination pull-right"></ul>
-                                </td>
-                            </tr>
-                            </tfoot>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($saleData as $key)
+                                    <tr>
+                                        <td>{{$key->id}}</td>
+                                        <td>{{$key->title}}</td>
+                                        {{--<td>{{$key->sponsor}}</td>--}}
+                                        <td style="text-align: center;">
+                                            <a href="activity/delete/{{$key->id}}"><i class="fa fa-trash text-navy"
+                                                                                      style="color:red;"></i> 删除</a>　
+                                            |
+                                            　<a href="snowballActivityUpdateView/{{$key->id}}"><i class="fa fa-pencil  text-navy"></i> 修改</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

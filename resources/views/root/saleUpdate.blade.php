@@ -14,7 +14,7 @@
                     <a href="/snowball">雪球社区</a>
                 </li>
                 <li class="active">
-                    <strong>修改广告</strong>
+                    <strong>修改优惠</strong>
                 </li>
             </ol>
         </div>
@@ -22,16 +22,44 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
-                {!! Form::open(array('route'=>'ad_update','files'=>true,'class'=>'form-horizontal')) !!}
+                {!! Form::open(array('route'=>'sale_update','files'=>true,'class'=>'form-horizontal')) !!}
                 @foreach($data as $key)
                     <div class="form-group has-success">
-                        {!! Form::label('titel','标题',['class'=>'col-sm-2 control-label']) !!}
+                        {!! Form::label('titel','活动名称',['class'=>'col-sm-2 control-label']) !!}
                         <div class="col-sm-10">
                             {!! Form::text('title',$key->title,['class'=>'form-control']) !!}
                         </div>
                     </div>
-
                     <div class="hr-line-dashed"></div>
+                    <div class="form-group has-success">
+                        {!! Form::label('sponsor','主办单位',['class'=>'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                            {!! Form::text('sponsor',$key->sponsor,['class'=>'form-control']) !!}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group has-success">
+                        {!! Form::label('startdate','开始时间',['class'=>'col-sm-2 control-label']) !!}
+                        <div class="col-sm-2">
+                            {!! Form::date('startdate',$key->startdate,['class'=>'form-control']) !!}
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        {!! Form::label('enddate','结束时间',['class'=>'col-sm-2 control-label']) !!}
+                        <div class="col-sm-2">
+                            {!! Form::date('enddate',$key->enddate,['class'=>'form-control']) !!}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    {{--<div class="form-group has-success">--}}
+                    {{--{!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}--}}
+                    {{--<div class="col-sm-10">--}}
+                    {{--{!! Form::text('path',$key->imagepath,['class'=>'urlChange form-control']) !!}--}}
+                    {{--<img alt="image" src="{{$key->imagepath}}" style="width:100%;" class="urlView">--}}
+                    {{--<input type="text" class="urlChange">--}}
+                    {{--</div>--}}
+                    {{--<image href="{{$key->imagepath}}" style="width:100%;"></image>--}}
+
+                    {{--</div>--}}
                     <div class="form-group has-success">
                         {!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}
                         <div class="col-sm-10">
@@ -62,6 +90,73 @@
                 @endforeach
                 {!! Form::close() !!}
             </div>
+        </div>
+    </div>
+@endsection
+@section('folder')
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover shuchai">
+                <thead>
+                <tr>
+                    <th>素材</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($folder as $key)
+                    <tr>
+                        <td>
+                            文件名:{{$key->filesname}}<br>
+                            备注:{{$key->remark}}
+                            @switch($key->type)
+                                @case('image')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="image">
+                                        <img alt="image" class="img-responsive"
+                                             src="http://www.msqlx.com{{$key->path}}">
+                                    </div>
+                                </a>
+                                @break
+                                @case('video')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-film"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('document')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('music')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-music"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('icon')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <img alt="image" class="img-responsive"
+                                             src="http://www.msqlx.com{{$key->path}}">
+                                    </div>
+                                </a>
+                                @break
+                            @endswitch
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

@@ -34,7 +34,12 @@
             <div class="form-group has-success">
                 {!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::text('path','',['class'=>'form-control']) !!}
+                    {!! Form::text('path','',['class'=>'urlChange form-control']) !!}
+                </div>
+                <div class="hr-line-dashed"></div>
+                {!! Form::label('path','图片预览',['class'=>'col-sm-2 control-label']) !!}
+                <div class="col-sm-6">
+                    <img alt="image" src="" style="width:100%;" class="urlView">
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
@@ -64,6 +69,10 @@
     <script src="{{URL::asset('js/plugins/pace/pace.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/dataTables/datatables.min.js')}}"></script>
     <script>
+        $('.urlChange').change(function () {
+            var urlValue = $(this).val();
+            $('.urlView').attr("src", urlValue)
+        });
         $(document).ready(function () {
             $('.huodong').DataTable({
                 pageLength: 5,

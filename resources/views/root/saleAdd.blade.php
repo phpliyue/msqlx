@@ -14,7 +14,7 @@
                     <a href="/snowball">雪球社区</a>
                 </li>
                 <li class="active">
-                    <strong>修改广告</strong>
+                    <strong>添加优惠</strong>
                 </li>
             </ol>
         </div>
@@ -22,48 +22,63 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
-                {!! Form::open(array('route'=>'ad_update','files'=>true,'class'=>'form-horizontal')) !!}
-                @foreach($data as $key)
-                    <div class="form-group has-success">
-                        {!! Form::label('titel','标题',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('title',$key->title,['class'=>'form-control']) !!}
-                        </div>
+                {!! Form::open(array('route'=>'sale_create','files'=>true,'class'=>'form-horizontal')) !!}
+                <div class="form-group has-success">
+                    {!! Form::label('titel','优惠名称',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-10">
+                        {!! Form::text('title','',['class'=>'form-control']) !!}
                     </div>
+                </div>
 
-                    <div class="hr-line-dashed"></div>
-                    <div class="form-group has-success">
-                        {!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('path',$key->imagepath,['class'=>'urlChange form-control']) !!}
-                        </div>
-                        <div class="hr-line-dashed"></div>
-                        {!! Form::label('path','图片预览',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-6">
-                            <img alt="image" src="{{$key->imagepath}}" style="width:100%;" class="urlView">
-                        </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group has-success">
+                    {!! Form::label('sponsor','店铺',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-10">
+                        {!! Form::text('sponsor','',['class'=>'form-control']) !!}
                     </div>
+                </div>
 
-                    <div class="hr-line-dashed"></div>
-                    <div class="form-group has-success">
-                        {!! Form::label('detail','内容',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-10">
-                            <input type="hidden" class="fuCon" value='{{$key->content}}'>
-                            <input type="hidden" name="id" value='{{$key->id}}'>
-                            {!! Form::text('detail','',['class'=>'form-control summernote','id'=>'summernote']) !!}
-                            <input type="hidden" value='' name="cont" class="cont">
-                            {{--<input type="hidden" value="" name="cont" class="cont">--}}
-                        </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group has-success">
+                    {!! Form::label('startdate','开始时间',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-2">
+                        {!! Form::date('startdate','',['class'=>'form-control']) !!}
                     </div>
                     <div class="hr-line-dashed"></div>
-                    <div class="form-group text-center">
-                        {!! Form::submit('更新','',['class'=>'text-center']) !!}
+                    {!! Form::label('enddate','结束时间',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-2">
+                        {!! Form::date('enddate','',['class'=>'form-control']) !!}
                     </div>
-                @endforeach
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group has-success">
+                    {!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-10">
+                        {!! Form::text('path','',['class'=>'urlChange form-control']) !!}
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    {!! Form::label('path','图片预览',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-6">
+                        <img alt="image" src="" style="width:100%;" class="urlView">
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group has-success">
+                    {!! Form::label('detail','内容',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-10">
+                        {!! Form::text('detail','',['class'=>'form-control summernote','id'=>'summernote']) !!}
+                        <input type="hidden" value="" name="cont" class="cont">
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group text-center">
+                    {!! Form::submit('上传','',['class'=>' text-center']) !!}
+                </div>
                 {!! Form::close() !!}
             </div>
         </div>
     </div>
+
 @endsection
 @section('folder')
     <div class="col-lg-12">
@@ -144,21 +159,6 @@
             var urlValue = $(this).val();
             $('.urlView').attr("src", urlValue)
         });
-        $('.summernote').summernote({
-            height: '25em',
-            focus: true,
-            callbacks: {
-                onImageUpload: function (files) {
-                    sendFile(files[0]);
-                },
-                onChange: function (contents) {
-                    console.log('onChange:', contents);
-                    $('.cont').val(contents);
-                }
-            }
-        });
-        var content = $('.fuCon').val();
-        $('.summernote').summernote('code', content);
         $(document).ready(function () {
             $('.shuchai').DataTable({
                 pageLength: 5,
@@ -185,9 +185,21 @@
 
             });
 
-
+            $('.summernote').summernote(
+                {
+                    height: '30em',
+                    focus: true,
+                    callbacks: {
+                        onImageUpload: function (files) {
+                            sendFile(files[0]);
+                        },
+                        onChange: function (contents) {
+                            console.log('onChange:', contents);
+                            $('.cont').val(contents);
+                        }
+                    }
+                });
         });
-
         $('.footable').footable();
         // function sendFile(file) {
         //     console.log(file);
