@@ -18,6 +18,7 @@ class ComposerStaticInit5e9979f617d859aad76f162e3c02a0c7
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -359,9 +360,14 @@ class ComposerStaticInit5e9979f617d859aad76f162e3c02a0c7
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Dorm\\AdjustRoomController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/AdjustRoomController.php',
+        'App\\Http\\Controllers\\Dorm\\EntryNoticeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/EntryNoticeController.php',
         'App\\Http\\Controllers\\Dorm\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/HomeController.php',
         'App\\Http\\Controllers\\Dorm\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/IndexController.php',
+        'App\\Http\\Controllers\\Dorm\\NoticeManageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/NoticeManageController.php',
+        'App\\Http\\Controllers\\Dorm\\OutRegController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/OutRegController.php',
         'App\\Http\\Controllers\\Dorm\\RoomManageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/RoomManageController.php',
+        'App\\Http\\Controllers\\Dorm\\RoomRepairController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dorm/RoomRepairController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\Root\\RootController' => __DIR__ . '/../..' . '/app/Http/Controllers/Root/RootController.php',
         'App\\Http\\Controllers\\Root\\SnowBallController' => __DIR__ . '/../..' . '/app/Http/Controllers/Root/SnowBallController.php',
