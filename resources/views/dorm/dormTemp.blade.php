@@ -23,18 +23,21 @@
                     <a href="/dorm_roomManage"><i class="fa fa-money"></i> <span class="nav-label">房间管理</span></a>
                 </li>
                 <li class="@yield('nav3')">
-                    <a href="/dorm_adjustRoom"><i class="fa fa-money"></i> <span class="nav-label">房间调整</span></a>
+                    <a href="/dorm_getRoom"><i class="fa fa-money"></i> <span class="nav-label">入住管理</span></a>
                 </li>
                 <li class="@yield('nav4')">
-                    <a href="/dorm_roomRepair"><i class="fa fa-money"></i> <span class="nav-label">宿舍报修</span></a>
+                    <a href="/dorm_adjustRoom"><i class="fa fa-money"></i> <span class="nav-label">房间调整</span></a>
                 </li>
                 <li class="@yield('nav5')">
-                    <a href="/dorm_outReg"><i class="fa fa-money"></i> <span class="nav-label">外来人员登记</span></a>
+                    <a href="/dorm_roomRepair"><i class="fa fa-money"></i> <span class="nav-label">宿舍报修</span></a>
                 </li>
                 <li class="@yield('nav6')">
-                    <a href="/dorm_noticeManage"><i class="fa fa-diamond"></i> <span class="nav-label">公告管理</span></a>
+                    <a href="/dorm_outReg"><i class="fa fa-money"></i> <span class="nav-label">外来人员登记</span></a>
                 </li>
                 <li class="@yield('nav7')">
+                    <a href="/dorm_noticeManage"><i class="fa fa-diamond"></i> <span class="nav-label">公告管理</span></a>
+                </li>
+                <li class="@yield('nav8')">
                     <a href="/dorm_entryNotice"><i class="fa fa-diamond"></i> <span class="nav-label">入住须知</span></a>
                 </li>
             </ul>

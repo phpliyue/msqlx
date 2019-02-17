@@ -8,7 +8,7 @@
     <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
 @show
 @section('title','宿舍管理-入住须知')
-@section('nav7','active')
+@section('nav8','active')
 @section('content')
     <div class="ibox float-e-margins">
         <div class="ibox-title">

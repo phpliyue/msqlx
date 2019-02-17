@@ -8,21 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class NoticeManageController extends Controller
 {
-    public function subtext($text, $length)
-    {
-        if(mb_strlen($text, 'utf8') > $length) {
-            return mb_substr($text, 0, $length, 'utf8').'...';
-        } else {
-            return $text;
-        }
-    }
     //公告管理首页
     public function index()
     {
         $data = DB::table('dorm_notice')->where('status',0)->get();
         if(!empty($data)){
             foreach($data as $k=>$v){
-                $data[$k]->content = subtext(filterSpecail(strip_tags($v->content)),60);
+                $data[$k]->content = $this->subtext($this->filterSpecail(strip_tags($v->content)),60);
             }
         }
         return view('dorm.noticeManage',['data'=>$data]);
@@ -61,7 +53,7 @@ class NoticeManageController extends Controller
                 if (! file_exists ( $targetDir )) {
                     mkdir("$targetDir", 0777, true);
                 }
-                is_dir($targetDir) or (makeDir(dirname($targetDir)) and @mkdir($targetDir, 0777));
+                is_dir($targetDir) or ($this->makeDir(dirname($targetDir)) and @mkdir($targetDir, 0777));
                 //图片上传的具体路径就出来了
                 $destination = $targetDir.'/'.$filename; //change this directory
                 $location = $_FILES["file"]["tmp_name"];
@@ -100,6 +92,34 @@ class NoticeManageController extends Controller
         $id = $request->id;
         $data = DB::table('dorm_notice')->where('id',$id)->update(['status'=>1]);
         return redirect('dorm_noticeManage');
+    }
+
+    public function makeDir($path)
+    {
+        if (! file_exists ( $path )) {
+            mkdir("$path", 0777, true);
+        }
+        return is_dir($path) or ($this->makeDir(dirname($path)) and @mkdir($path, 0777));
+    }
+
+    //字符串过滤script代码以及特殊标签
+    public function filterSpecail($str = ''){
+        $str = str_replace(array("\r\n", "\r", "\n","&nbsp;","&lt;","&gt;","&amp;","&zwnj;","&quot;","&nb","&amp;nbsp;","&amp;nbsp","&apos;","&cent;","&pound;","&yen;","&euro;","&sect;","&times;","&divide;"), "",$str);
+        $arr = preg_replace("/<(script.*?)>(.*?)<(\/script.*?)>/si","",$str);
+        $arr = preg_replace("/<(embed.*?)>/si","",$arr);
+        $arr = preg_replace("/<(video.*?)>(.*?)<(\/video.*?)>/si","",$arr);
+        $arr = preg_replace("/<(audio.*?)>(.*?)<(\/audio.*?)>/si","",$arr);
+        $arr = preg_replace("/<(source.*?)>/si","",$arr);
+        return $arr;
+    }
+
+    public function subtext($text, $length)
+    {
+        if(mb_strlen($text, 'utf8') > $length) {
+            return mb_substr($text, 0, $length, 'utf8').'...';
+        } else {
+            return $text;
+        }
     }
 
 

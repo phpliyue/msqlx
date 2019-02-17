@@ -7,7 +7,7 @@
     <link href="{{URL::asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
 @show
 @section('title','宿舍管理-公告管理')
-@section('nav6','active')
+@section('nav7','active')
 @section('content')
     <div class="ibox float-e-margins">
         <div class="ibox-title">

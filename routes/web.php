@@ -164,6 +164,7 @@ Route::any('/dorm_logout','Dorm\IndexController@logout');
 Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_home','Dorm\HomeController@index');
     Route::get('/dorm_roomManage','Dorm\RoomManageController@index');
+    Route::get('/dorm_getRoom','Dorm\RoomManageController@getRooms');
     Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');
     Route::get('/dorm_matchRoom','Dorm\RoomManageController@matchRoom');
     Route::get('/dorm_backRoom','Dorm\RoomManageController@backRoom');

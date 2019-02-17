@@ -7,7 +7,7 @@
     <link href="{{URL::asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
 @show
 @section('title','宿舍管理-报修管理')
-@section('nav4','active')
+@section('nav5','active')
 @section('content')
     <div class="ibox float-e-margins">
         <div class="ibox-title">
@@ -60,21 +60,23 @@
             $('.dataTables-example').DataTable({
                 pageLength: 25,
                 responsive: true,
+                bLengthChange: false,
+                info:false,
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
-                    { extend: 'copy'},
-                    {extend: 'csv'},
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
-                    {extend: 'print',
-                        customize: function (win){
-                            $(win.document.body).addClass('white-bg');
-                            $(win.document.body).css('font-size', '10px');
-                            $(win.document.body).find('table')
-                                    .addClass('compact')
-                                    .css('font-size', 'inherit');
-                        }
-                    }
+                    // { extend: 'copy'},
+                    // {extend: 'csv'},
+                    // {extend: 'excel', title: 'ExampleFile'},
+                    // {extend: 'pdf', title: 'ExampleFile'},
+                    // {extend: 'print',
+                    //     customize: function (win){
+                    //         $(win.document.body).addClass('white-bg');
+                    //         $(win.document.body).css('font-size', '10px');
+                    //         $(win.document.body).find('table')
+                    //                 .addClass('compact')
+                    //                 .css('font-size', 'inherit');
+                    //     }
+                    // }
                 ]
             });
         });
