@@ -95,8 +95,8 @@ class DormController extends Controller
     {
         $openid = $request->get('openid');
         $admin = $request->get('admin');;
-        $name = 'aa';//$request->input('name');
-        $card = '11111';//$request->input('card');
+        $name = $request->input('name');
+        $card = $request->input('card');
         //先判断该用户是否入驻
 //        $info = (object)['uid'=>13];
         $info = DB::table('dorm_user')->where('wx_openid',$openid)->first();
@@ -118,7 +118,7 @@ class DormController extends Controller
                 }
                 if($res)
                 {
-                    $res = DB::table('dorm_user')->where('wx_openid',$openid)->update(['out_time'=>date('Y-m-d H:i:s',time())]);
+                    DB::table('dorm_user')->where('wx_openid',$openid)->update(['out_time'=>date('Y-m-d H:i:s',time())]);
                     return json_encode(['code'=>200,'info'=>'退房成功！']);
                 }else
                 {
@@ -156,4 +156,8 @@ class DormController extends Controller
         }
         return json_encode(['code'=>100,'info'=>'暂无用户信息！']);
     }
+    /*
+     * 获取公告
+     * */
+
 }
