@@ -31,7 +31,7 @@ class EntryNoticeController extends Controller
             }
         }else{
             $content =  DB::table('dorm_entrynotice')->where('admin',$admin)->value('content');
-            return view('dorm.entrynotice',['content'=>$content]);
+            return view('dorm.entryNotice',['content'=>$content]);
         }
     }
 
