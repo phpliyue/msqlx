@@ -11,7 +11,8 @@ class OutRegController extends Controller
     //首页
     public function index()
     {
-        $data = DB::table('dorm_outreg')->orderby('created_at','desc')->get();
+        $admin = session('dorm_account');
+        $data = DB::table('dorm_outreg')->where('admin',$admin)->orderby('created_at','desc')->get();
         return view('dorm.outReg',['data'=>$data]);
     }
 }

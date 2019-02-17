@@ -15,7 +15,7 @@ class GetOpenidController extends Controller
     {
         // $wx_name = $request->get('wxName');
         $code = $request->get('code');
-        $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx5eca6b48e3be02bf&secret=94f245e81a5517fe0b3b05d2eafea555&js_code=$code&grant_type=authorization_code";
+        $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx644918515d74f08a&secret=c3a591e4230c20489631c20d18cdb13b&js_code=$code&grant_type=authorization_code";
         $data = json_decode(file_get_contents($url),true);
         return $data;
     }

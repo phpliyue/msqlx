@@ -11,7 +11,8 @@ class NoticeManageController extends Controller
     //公告管理首页
     public function index()
     {
-        $data = DB::table('dorm_notice')->where('status',0)->get();
+        $admin = session('dorm_account');
+        $data = DB::table('dorm_notice')->where(['admin'=>$admin,'status'=>0])->get();
         if(!empty($data)){
             foreach($data as $k=>$v){
                 $data[$k]->content = $this->subtext($this->filterSpecail(strip_tags($v->content)),60);
@@ -71,7 +72,7 @@ class NoticeManageController extends Controller
     {
         if($request->isMethod('post')){
             $data = $request->all();
-            $data['admin'] = 1;
+            $data['admin'] = session('dorm_account');
             $data['updated_at'] = date('Y-m-d H:i:s',time());
             $res = DB::table('dorm_notice')->where('id',$data['id'])->update($data);
             if($res != false){
