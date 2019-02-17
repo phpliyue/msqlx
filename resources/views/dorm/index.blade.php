@@ -42,6 +42,11 @@
 @section('js')
     @parent
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         //点击提交
         var is_submit = false;
         $('.J_submit').click(function(){
@@ -66,9 +71,6 @@
                 data:{
                     "account":account,
                     "password":password
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success:function(data){
                     if(data.code == 100){

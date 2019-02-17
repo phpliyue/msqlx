@@ -147,6 +147,16 @@ Route::group(['middleware'=>'signInAuth'],function(){
 /*
  * 宿舍管理
  */
+//Route::get('/dorm_index','Dorm\IndexController@index');
+//Route::post('/dorm_login','Dorm\IndexController@login');
+//Route::any('/dorm_register','Dorm\IndexController@register');
+//Route::any('/dorm_logout','Dorm\IndexController@logout');
+//Route::group(['middleware'=>'dormAuth'],function(){
+//    Route::get('/dorm_home','Dorm\HomeController@index');
+//    Route::get('/dorm_roomManage','Dorm\RoomManageController@index');
+//    Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');
+//    Route::get('/dorm_getRooms','Dorm\RoomManageController@getRooms');
+//});
 Route::get('/dorm_index','Dorm\IndexController@index');
 Route::post('/dorm_login','Dorm\IndexController@login');
 Route::any('/dorm_register','Dorm\IndexController@register');
@@ -155,9 +165,19 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_home','Dorm\HomeController@index');
     Route::get('/dorm_roomManage','Dorm\RoomManageController@index');
     Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');
-    Route::get('/dorm_getRooms','Dorm\RoomManageController@getRooms');
+    Route::get('/dorm_matchRoom','Dorm\RoomManageController@matchRoom');
+    Route::get('/dorm_backRoom','Dorm\RoomManageController@backRoom');
+    Route::get('/dorm_noticeManage','Dorm\NoticeManageController@index');
+    Route::any('/dorm_addNotice','Dorm\NoticeManageController@addNotice');
+    Route::any('/dorm_upload','Dorm\NoticeManageController@upload');
+    Route::any('/dorm_editNotice/{id}','Dorm\NoticeManageController@editNotice');
+    Route::any('/dorm_editNotice','Dorm\NoticeManageController@editNotice');
+    Route::any('/dorm_delNotice/{id}','Dorm\NoticeManageController@delNotice');
+    Route::any('/dorm_entryNotice','Dorm\EntryNoticeController@index');//入住须知
+    Route::get('/dorm_adjustRoom','Dorm\AdjustRoomController@index');//房间调整
+    Route::get('/dorm_roomRepair','Dorm\RoomRepairController@index');//房间报修
+    Route::get('/dorm_outReg','Dorm\OutRegController@index');//外来人员登记
 });
-
 
 /*
  * 商品管理

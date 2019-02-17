@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @section('css')
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @show
@@ -20,31 +20,33 @@
                     <a href="/dorm_home"><i class="fa fa-home"></i> <span class="nav-label">概况统计</span></a>
                 </li>
                 <li class="@yield('nav2')">
-                    <a href="/dorm_roomManage"><i class="fa fa-building"></i> <span class="nav-label">房间管理</span></a>
+                    <a href="/dorm_roomManage"><i class="fa fa-money"></i> <span class="nav-label">房间管理</span></a>
                 </li>
                 <li class="@yield('nav3')">
-                    <a href="/dorm_getRooms"><i class="fa fa-bed"></i> <span class="nav-label">房间信息</span></a>
+                    <a href="/dorm_adjustRoom"><i class="fa fa-money"></i> <span class="nav-label">房间调整</span></a>
                 </li>
-                {{--<li class="@yield('nav4')">--}}
-                    {{--<a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>--}}
-                {{--</li>--}}
+                <li class="@yield('nav4')">
+                    <a href="/dorm_roomRepair"><i class="fa fa-money"></i> <span class="nav-label">宿舍报修</span></a>
+                </li>
+                <li class="@yield('nav5')">
+                    <a href="/dorm_outReg"><i class="fa fa-money"></i> <span class="nav-label">外来人员登记</span></a>
+                </li>
+                <li class="@yield('nav6')">
+                    <a href="/dorm_noticeManage"><i class="fa fa-diamond"></i> <span class="nav-label">公告管理</span></a>
+                </li>
+                <li class="@yield('nav7')">
+                    <a href="/dorm_entryNotice"><i class="fa fa-diamond"></i> <span class="nav-label">入住须知</span></a>
+                </li>
             </ul>
         </div>
     </nav>
     <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
-            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
                     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i>
                     </a>
                 </div>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li>
-                        <a href="/dorm_logout">
-                            <i class="fa fa-sign-out"></i> 退出登入
-                        </a>
-                    </li>
-                </ul>
             </nav>
         </div>
         @section('content')

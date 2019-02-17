@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers\Dorm;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Validator;
-
 class IndexController extends Controller
 {
     //首页
@@ -14,7 +11,6 @@ class IndexController extends Controller
     {
         return view('dorm.index');
     }
-
     //登录
     public function login(Request $request)
     {
@@ -34,10 +30,8 @@ class IndexController extends Controller
         if ($validator->fails()) {
             return json_encode(['code'=>200,'info'=>$validator->errors()->all()[0]]);
         }
-
         $account = $request->get('account');
         $password = $request->get('password');
-
         $info = DB::table('dorm_admin')->where('account',$account)->first();
         if(!empty($info))
         {
@@ -53,9 +47,7 @@ class IndexController extends Controller
         {
             return json_encode(['code'=>200,'info'=>'账号不存在！']);
         }
-
     }
-
     //注册
     public function register(Request $request)
     {
@@ -82,14 +74,12 @@ class IndexController extends Controller
             if ($validator->fails()) {
                 return json_encode(['code'=>200,'info'=>$validator->errors()->all()[0]]);
             }
-
             $data['salt'] = rand(100,999);
             $data['account'] = $request->get('account');
             $data['password'] = md5(md5($request->get('password')).$data['salt']);
             $data['phone'] = $request->get('phone');
             $data['created_at'] = date('Y-m-d H:i:s',time());
             $data['updated_at'] = date('Y-m-d H:i:s',time());
-
             $res = DB::table('dorm_admin')->insert($data);
             if($res)
             {
@@ -104,7 +94,6 @@ class IndexController extends Controller
             return view('dorm.register');
         }
     }
-
     //退出登录
     public function logout(Request $request)
     {

@@ -55,13 +55,12 @@
             var data = [{
                 label: "男-{{$sexData['sexMan']}}人",
                 data:"{{$sexData['sexMan']}}",
-                color: "#15b0d3",
+                color: "#00c1d3",
             }, {
                 label: "女-{{$sexData['sexWom']}}人",
                 data: "{{$sexData['sexWom']}}",
-                color: "#ba7224",
+                color: "#fd5eff",
             }];
-
             var plotObj = $.plot($("#sex"), data, {
                 series: {
                     pie: {
@@ -88,13 +87,12 @@
             var data = [{
                 label: "入住-{{$numData['num1']}}人",
                 data: "{{$numData['num1']}}",
-                color: "#2ad38b",
+                color: "#ffab29",
             }, {
                 label: "未入住-{{$numData['num0']}}人",
                 data: "{{$numData['num0']}}",
-                color: "#cdcb0e",
+                color: "#c7cdca",
             }];
-
             var plotObj = $.plot($("#num"), data, {
                 series: {
                     pie: {

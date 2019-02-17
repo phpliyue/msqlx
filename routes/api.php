@@ -25,13 +25,24 @@ Route::get('getUser','Api\SnowBallController@test');
  * 宿舍管理接口
  */
 //获取openid
-Route::get('getOpenid','Api\GetOpenidController@getOpenid');
+//Route::get('getOpenid','Api\GetOpenidController@getOpenid');
+//Route::get('dorm_saveUserInfo','Api\DormController@saveUserInfo');//存储用户基本信息，分配房间
+//Route::get('dorm_saveUserLogin','Api\DormController@saveUserLogin');//记录登入平台用户
+//Route::get('dorm_backRoom','Api\DormController@backRoom');//退房
+//Route::get('dorm_getUserInfo','Api\DormController@getUserInfo');//在退房时显示用户基本信息
+
+Route::get('getOpenid','Api\GetOpenidController@getOpenid');//获取openid
 Route::get('dorm_saveUserInfo','Api\DormController@saveUserInfo');//存储用户基本信息，分配房间
 Route::get('dorm_saveUserLogin','Api\DormController@saveUserLogin');//记录登入平台用户
 Route::get('dorm_backRoom','Api\DormController@backRoom');//退房
 Route::get('dorm_getUserInfo','Api\DormController@getUserInfo');//在退房时显示用户基本信息
-
-
+Route::get('dorm_notice', 'Api\NoticeController@index');//获取公告
+Route::get('dorm_noticeInfo', 'Api\NoticeController@noticeInfo');//公告详情
+Route::post('dorm_outreg', 'Api\DormController@outreg');//外来人员登记
+Route::post('dorm_roomrepair', 'Api\DormController@roomrepair');//宿舍报修
+Route::post('dorm_adjustroom', 'Api\DormController@adjustroom');//房间调整
+Route::get('dorm_getEntryNotice', 'Api\EntryNoticeController@index');//入住须知
+Route::post('dorm_myrepair', 'Api\DormController@myrepair');//我的报修
 /*
  * 雪球社区
  * */

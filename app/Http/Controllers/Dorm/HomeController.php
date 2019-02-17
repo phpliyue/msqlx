@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Dorm;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;

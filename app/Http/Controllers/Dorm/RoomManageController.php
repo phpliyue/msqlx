@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Dorm;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -43,9 +41,9 @@ class RoomManageController extends Controller
         }
     }
     //获取宿舍详细信息
-    public function getRooms(Request $request)
+    public function getRooms()
     {
-        $admin = $request->session()->get('dorm_account');//session('dorm_account');
+        $admin = 'liyue';//session('dorm_account');
         $rooms = DB::table('dorm_room')->where(['dorm_room.admin'=>$admin])->get()->toArray();
         $uids = array_filter(array_column($rooms,'uid'));
         $user_infos = DB::table('dorm_user')->select('uid','name','phone','card','in_time','out_time')->whereIn('uid',$uids)->get()->toArray();
