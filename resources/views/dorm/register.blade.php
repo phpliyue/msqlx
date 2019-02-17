@@ -29,9 +29,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-xs-2 col-xs-offset-1 col-md-4 col-md-offset-0 control-label">电话</label>
+                    <label for="number" class="col-xs-2 col-xs-offset-1 col-md-4 col-md-offset-0 control-label">电话</label>
                     <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-0">
-                        <input type="password" class="form-control" id="phone" name="phone" placeholder="请输入电话号" required>
+                        <input type="number" class="form-control" id="phone" name="phone" placeholder="请输入电话号" required>
                     </div>
                 </div>
                 <div class="form-group" style="text-align: center;">
