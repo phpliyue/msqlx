@@ -19,6 +19,15 @@ class DormController extends Controller
         DB::table('test')->insert([
             'name' => $arr['admin']
         ]);
+        DB::table('test')->insert([
+            'name' => $arr['openid']
+        ]);
+        DB::table('test')->insert([
+            'name' => $arr['name']
+        ]);
+        DB::table('test')->insert([
+            'name' => $arr['phone']
+        ]);
         //先判断该用户是否入驻
         $uid = DB::table('dorm_user')->where('wx_openid', $arr['openid'])->value('uid');
         $info = DB::table('dorm_room')->where('uid', $uid)->first();
