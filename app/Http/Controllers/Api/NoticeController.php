@@ -22,6 +22,8 @@ class NoticeController extends Controller
             foreach($data as $k=>$v){
                 $data[$k]->content = $this->filterSpecail(strip_tags($v->content));
             }
+        }else{
+            $data = '您还没有入住,无法查看相关公告!';
         }
         return json_encode(['code'=>100,'info'=>'成功！','data'=>$data]);
     }
