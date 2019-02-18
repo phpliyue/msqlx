@@ -20,7 +20,7 @@ class EntryNoticeController extends Controller
         if(!empty($admin)){
             $content = DB::table('dorm_entrynotice')->where('admin',$admin)->value('content');
         }else{
-            $content = '0';
+            $content = '您还没有入住,无法查看相关入住须知!';
         }
 
         return json_encode(['code'=>100,'info'=>'成功！','data'=>$content]);
