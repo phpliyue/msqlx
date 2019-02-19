@@ -15,7 +15,7 @@ class RoomManageController extends Controller
         $dorm_name = $request->input('dorm_name');
         $dorm_info = $request->input('dorm_info');
         $admin = session('dorm_account');
-        $id = DB::table('dorm_admin')->where('account',$admin)->first();
+//        $id = DB::table('dorm_admin')->where('account',$admin)->first();
         $data = [];
         foreach($dorm_info as $k=>$v)
         {
@@ -23,7 +23,7 @@ class RoomManageController extends Controller
             {
                 for($j = 1; $j <= $v['bed_num']; $j++)
                 {
-                    $res[count($data)]['admin'] = $id->id;
+                    $res[count($data)]['admin'] = $admin;
                     $res[count($data)]['dorm_name'] = $dorm_name;
                     $res[count($data)]['floor'] = $v['floor_num'];
                     $res[count($data)]['room'] = $i < 10 ? '0'.$i : $i;
