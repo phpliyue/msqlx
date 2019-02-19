@@ -57,6 +57,7 @@ class RoomManageController extends Controller
         {
             $rooms[$k]->user_info = empty($v->uid) ? [] :$users[$v->uid];
         }
+
         return view('dorm.roomInfo',['rooms'=>$rooms]);
     }
 }
