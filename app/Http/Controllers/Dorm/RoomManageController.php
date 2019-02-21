@@ -7,7 +7,6 @@ class RoomManageController extends Controller
 {
     public function index()
     {
-        $ss = 'sss';
         return view('dorm.roomManage');
     }
     //添加宿舍信息
