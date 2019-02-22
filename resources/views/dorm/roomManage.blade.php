@@ -1,7 +1,6 @@
 @extends('dorm.dormTemp')
 @section('css')
     @parent
-    <link href="{{URL::asset('css/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">

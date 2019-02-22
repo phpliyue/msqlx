@@ -12,6 +12,6 @@ class HomeController extends Controller
         $sexData['sexWom'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'sex'=>'女','status'=>'1'])->get());
         $numData['num1'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'status'=>'1'])->get());
         $numData['num0'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'status'=>'0'])->get());
-        return view('dorm.home',['sexData'=>$sexData,'numData'=>$numData]);
+        return view('dorm.home',['sexData'=>$sexData,'numData'=>$numData,'admin'=>$admin]);
     }
 }
