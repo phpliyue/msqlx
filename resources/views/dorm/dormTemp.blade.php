@@ -96,5 +96,6 @@
     <script src="{{URL::asset('js/plugins/dataTables/datatables.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/pace/pace.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/summernote/summernote.min.js')}}"></script>
+    <script src="{{URL::asset('js/plugins/footable/footable.all.min.js')}}"></script>
 @show
 </html>

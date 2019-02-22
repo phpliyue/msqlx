@@ -1,9 +1,6 @@
 @extends('dorm.dormTemp')
 @section('css')
     @parent
-    <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('css/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
 @show
 @section('title','宿舍管理-房间管理')
 @section('nav2','active')
@@ -42,9 +39,6 @@
 @endsection
 @section('js')
     @parent
-    <script src="{{URL::asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
-    <script src="{{URL::asset('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-    <script src="{{URL::asset('js/inspinia.js')}}"></script>
     <script>
         $(document).ready(function(){
             //添加楼层
