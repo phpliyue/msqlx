@@ -1,8 +1,6 @@
 @extends('dorm.dormTemp')
 @section('css')
     @parent
-    {{--<link href="{{URL::asset('css/plugins/iCheck/custom.css')}}" rel="stylesheet">--}}
-{{--    <link href="{{URL::asset('css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css')}}" rel="stylesheet">--}}
 @show
 @section('title','宿舍管理-添加宿舍')
 @section('nav2','active')
@@ -17,30 +15,30 @@
                     <div class="ibox-content">
                         <div class="form-group">
                             <label class="font-noraml">名称</label>
-                            <input type="text" placeholder="宿舍楼名称" class="form-control J_tilte">
+                            <input type="text" placeholder="宿舍楼名称" class="form-control J_dorm_name">
                         </div>
                         <div class="form-group">
                             <label class="font-noraml">楼层</label>
-                            <input type="number" placeholder="楼层" class="form-control J_floor">
+                            <input type="number" placeholder="楼层" min="1" class="form-control J_floor" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'>
                         </div>
                         <div class="form-group">
                             <label class="font-noraml">房间区间</label>
                             <div class=" input-group" >
-                                <input type="number" class="input-sm form-control" name="start" class="J_start"/>
+                                <input type="number" placeholder="开始房间号" min="1" class="input-sm form-control J_start" name="start" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'/>
                                 <span class="input-group-addon">to</span>
-                                <input type="number" class="input-sm form-control" name="end" class="J_end"/>
+                                <input type="number" placeholder="结束房间号" min="1" class="input-sm form-control J_end" name="end" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="font-noraml">床数</label>
-                            <input type="text" placeholder="床位数" class="form-control J_bed">
+                            <input type="number" placeholder="床位数" min="1" class="form-control J_bed_num" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'>
                         </div>
                         <div class="form-group">
                             <label class="font-noraml">性别</label>
                             <div class="input-group">
                                 <div class="i-checks">
                                     <label> <input type="radio" value="男" name="sex" class="J_sex"> <i></i> 男 </label>　
-                                    <label> <input type="radio" checked="" value="女" name="sex" class="J_sex"> <i></i> 女 </label>
+                                    <label> <input type="radio" value="女" name="sex" class="J_sex"> <i></i> 女 </label>
                                 </div>
                                 {{--<div class="i-checks"><label> <input type="radio" checked="" value="option2" name="sex"> <i></i> 女 </label></div>--}}
                             </div>
@@ -82,35 +80,59 @@
                 if (is_submit) {
                     return false;
                 }
-                var title = $('.J_tilte').val();
-                var content = $('.J_content').summernote('code');
-                if (title == '') {
-                    alert('请输入标题！');
+                var dorm_name = $('.J_dorm_name').val();//宿舍楼名称
+                var floor = $('.J_floor').val();//楼层
+                var room_start = $('.J_start').val();//房间开始区间
+                var room_end = $('.J_end').val();//房间结束区间
+                var bed_num = $('.J_bed_num').val();//床位数
+                var sex = $(".J_sex:checked").val();//性别
+                var part = $('.J_part').val();//部门
+                var remark = $('.J_mark').val();//备注
+                if (dorm_name == '') {
+                    swal('请输入宿舍楼名称！');
                     return false;
                 }
-                if (title.length < 5 || title.length > 30) {
-                    alert('标题长度为请5-30个字！');
+                if (floor == '') {
+                    swal('请输入楼层！');
                     return false;
                 }
-                if ($('.summernote').summernote("isEmpty")) {
-                    alert('请输入内容！');
+                if (room_start == '' || room_end == '' || room_start > room_end) {
+                    swal('请正确输入房间区间！');
+                    return false;
+                }
+                if (bed_num == '') {
+                    swal('请输入床位数！');
+                    return false;
+                }
+                if (sex == '' || sex == undefined) {
+                    swal('请选择性别！');
+                    return false;
+                }
+                if (part == '') {
+                    swal('请选择部门！');
                     return false;
                 }
                 $.ajax({
                     type: "post",
-                    url: '{{url('dorm_addRoomInfo')}}',
+                    url: '{{url('dorm_roomInfos')}}',
                     dataType: "json",
                     data: {
-                        "title": title,
-                        "content": content,
+                        "dorm_name": dorm_name,
+                        "floor": floor,
+                        "room_start": room_start,
+                        "room_end": room_end,
+                        "dorm_name": dorm_name,
+                        "bed_num": bed_num,
+                        "sex": sex,
+                        "part": part,
+                        "remark": remark
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function (data) {
-                        console.log(2222);
                         if (data.code == 100) {
-                            window.location.href = '{{url('dorm_noticeManage')}}';
+                            window.location.href = '{{url('dorm_roomManage')}}';
                         } else {
                             alert(data.info);
                         }

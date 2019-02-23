@@ -65,8 +65,18 @@ class RoomManageController extends Controller
         return view('dorm.addRoom');
     }
     //添加宿舍信息处理
-    public function addRoomInfo(Request $request)
+    public function roomInfos(Request $request)
     {
-
+        $data = $request->all();
+        $data['admin'] = session('dorm_account');
+        $data['add_time'] = time();
+        $result = DB::table('dorm_addroom')->insert($data);
+        if($result)
+        {
+            return json_encode(['code'=>100,'info'=>'成功！']);
+        }else
+        {
+            return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
+        }
     }
 }

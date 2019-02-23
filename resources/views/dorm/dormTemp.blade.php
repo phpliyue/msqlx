@@ -97,5 +97,6 @@
     <script src="{{URL::asset('js/plugins/pace/pace.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/summernote/summernote.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/footable/footable.all.min.js')}}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @show
 </html>

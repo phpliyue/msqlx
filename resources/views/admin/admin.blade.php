@@ -1,4 +1,4 @@
-@extends('temp')
+  @extends('temp')
 @section('headImage'){{$user->head_image}}@endsection
 @section('username'){{$user->name}}@endsection
 @section('root','active')
