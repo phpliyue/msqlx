@@ -59,4 +59,14 @@ class RoomManageController extends Controller
         }
         return view('dorm.roomInfo',['rooms'=>$rooms]);
     }
+    //添加宿舍页面
+    public function addRoom()
+    {
+        return view('dorm.addRoom');
+    }
+    //添加宿舍信息处理
+    public function addRoomInfo(Request $request)
+    {
+
+    }
 }

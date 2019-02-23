@@ -12,7 +12,7 @@
                     <div class="ibox-title">
                         <h5>公告管理</h5>
                         <div class="ibox-tools">
-                            <a href="{{url('dorm_addNotice')}}" class="btn btn-primary btn-xs">添加公告</a>
+                            <a href="{{url('dorm_addNotice')}}" class="btn btn-primary ">添加公告</a>
                         </div>
                     </div>
                     <div class="ibox-content">

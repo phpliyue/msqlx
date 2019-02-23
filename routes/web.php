@@ -163,11 +163,11 @@ Route::any('/dorm_register','Dorm\IndexController@register');
 Route::any('/dorm_logout','Dorm\IndexController@logout');
 Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_home','Dorm\HomeController@index');
-    Route::get('/dorm_roomManage','Dorm\RoomManageController@index');
-    Route::get('/dorm_getRoom','Dorm\RoomManageController@getRooms');
+    Route::get('/dorm_roomManage','Dorm\RoomManageController@index');//房间管理
+    Route::get('/dorm_getRoom','Dorm\RoomManageController@getRooms');//入住管理
     Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');
-    Route::get('/dorm_matchRoom','Dorm\RoomManageController@matchRoom');
-    Route::get('/dorm_backRoom','Dorm\RoomManageController@backRoom');
+    Route::get('/dorm_addRoom','Dorm\RoomManageController@addRoom');
+    Route::post('/dorm_addRoomInfo','Dorm\RoomManageController@addRoomInfo');
     Route::get('/dorm_noticeManage','Dorm\NoticeManageController@index');
     Route::any('/dorm_addNotice','Dorm\NoticeManageController@addNotice');
     Route::any('/dorm_upload','Dorm\NoticeManageController@upload');

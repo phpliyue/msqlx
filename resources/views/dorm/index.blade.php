@@ -16,7 +16,7 @@
 @section('content')
     {{--<body class="gray-bg">--}}
 
-    <div class="loginColumns animated fadeInDown">
+    <div class="loginColumns animated fadeInDown" style="background-color:#e0fbfe ">
         <div class="row">
 
             <div class="col-md-6">
@@ -30,10 +30,10 @@
                     利用社交平台微信,工作平台钉钉等常用工具进行有效管理,优点有覆盖面广,操作简单,可以简单有效的进行管理.
                 </p>
 
-                <div>
-                    <img src="/img/dorm_wx.jpg" style="height:150px;width:150px;float:left;">
-                    <img src="/img/dorm_wx.jpg" style="height:150px;width:150px;float:right;">
-                </div>
+                {{--<p>--}}
+                    {{--<img src="/img/dorm_wx.jpg" style="height:150px;width:40%;float:left;">--}}
+                    {{--<img src="/img/dorm_wx.jpg" style="height:150px;width:40%;float:right;">--}}
+                {{--</p>--}}
 
 
             </div>
