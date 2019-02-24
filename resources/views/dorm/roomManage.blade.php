@@ -49,7 +49,7 @@
                                             <a href="#" class="J_del" data-id="{{$room->id}}"><i class="fa fa-trash text-navy"
                                                                                                 style="color:red;"></i> 删除</a>　
                                             |
-                                            　<a href="{{url('dorm_editRoom/'.$room->id)}}"><i class="fa fa-pencil  text-navy"></i> 修改</a>
+                                            　<a href="{{url('dorm_updateRoom/'.$room->id)}}"><i class="fa fa-pencil  text-navy"></i> 修改</a>
                                         </td>
                                     </tr>
                                 @endforeach
