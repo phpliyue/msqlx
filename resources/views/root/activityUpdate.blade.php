@@ -22,73 +22,78 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
-                {!! Form::open(array('route'=>'activity_update','files'=>true,'class'=>'form-horizontal')) !!}
-                @foreach($data as $key)
-                    <div class="form-group has-success">
-                        {!! Form::label('titel','活动名称',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('title',$key->title,['class'=>'form-control']) !!}
-                        </div>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>修改活动</h5>
                     </div>
-                    <div class="hr-line-dashed"></div>
-                    <div class="form-group has-success">
-                        {!! Form::label('sponsor','主办单位',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('sponsor',$key->sponsor,['class'=>'form-control']) !!}
-                        </div>
-                    </div>
-                    <div class="hr-line-dashed"></div>
-                    <div class="form-group has-success">
-                        {!! Form::label('startdate','开始时间',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-2">
-                            {!! Form::date('startdate',$key->startdate,['class'=>'form-control']) !!}
-                        </div>
-                        <div class="hr-line-dashed"></div>
-                        {!! Form::label('enddate','结束时间',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-2">
-                            {!! Form::date('enddate',$key->enddate,['class'=>'form-control']) !!}
-                        </div>
-                    </div>
-                    <div class="hr-line-dashed"></div>
-                    {{--<div class="form-group has-success">--}}
-                        {{--{!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}--}}
-                        {{--<div class="col-sm-10">--}}
+                    <div class="ibox-content">
+                        {!! Form::open(array('route'=>'activity_update','files'=>true,'class'=>'form-horizontal')) !!}
+                        @foreach($data as $key)
+                            <div class="form-group has-success">
+                                {!! Form::label('titel','活动名称',['class'=>'col-sm-2 control-label']) !!}
+                                <div class="col-sm-10">
+                                    {!! Form::text('title',$key->title,['class'=>'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group has-success">
+                                {!! Form::label('sponsor','主办单位',['class'=>'col-sm-2 control-label']) !!}
+                                <div class="col-sm-10">
+                                    {!! Form::text('sponsor',$key->sponsor,['class'=>'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group has-success">
+                                {!! Form::label('startdate','开始时间',['class'=>'col-sm-2 control-label']) !!}
+                                <div class="col-sm-2">
+                                    {!! Form::date('startdate',$key->startdate,['class'=>'form-control']) !!}
+                                </div>
+                                {!! Form::label('enddate','结束时间',['class'=>'col-sm-2 control-label']) !!}
+                                <div class="col-sm-2">
+                                    {!! Form::date('enddate',$key->enddate,['class'=>'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            {{--<div class="form-group has-success">--}}
+                            {{--{!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}--}}
+                            {{--<div class="col-sm-10">--}}
                             {{--{!! Form::text('path',$key->imagepath,['class'=>'urlChange form-control']) !!}--}}
                             {{--<img alt="image" src="{{$key->imagepath}}" style="width:100%;" class="urlView">--}}
                             {{--<input type="text" class="urlChange">--}}
-                        {{--</div>--}}
-                        {{--<image href="{{$key->imagepath}}" style="width:100%;"></image>--}}
+                            {{--</div>--}}
+                            {{--<image href="{{$key->imagepath}}" style="width:100%;"></image>--}}
 
-                    {{--</div>--}}
-                    <div class="form-group has-success">
-                        {!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('path',$key->imagepath,['class'=>'urlChange form-control']) !!}
-                        </div>
-                        <div class="hr-line-dashed"></div>
-                        {!! Form::label('path','图片预览',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-6">
-                            <img alt="image" src="{{$key->imagepath}}" style="width:100%;" class="urlView">
-                        </div>
-                    </div>
+                            {{--</div>--}}
+                            <div class="form-group has-success">
+                                {!! Form::label('path','图片url',['class'=>'col-sm-2 control-label']) !!}
+                                <div class="col-sm-10">
+                                    {!! Form::text('path',$key->imagepath,['class'=>'urlChange form-control']) !!}
+                                </div>
+                                {!! Form::label('path','图片预览',['class'=>'col-sm-2 control-label']) !!}
+                                <div class="col-sm-6">
+                                    <img alt="image" src="{{$key->imagepath}}" style="width:100%;" class="urlView">
+                                </div>
+                            </div>
 
-                    <div class="hr-line-dashed"></div>
-                    <div class="form-group has-success">
-                        {!! Form::label('detail','内容',['class'=>'col-sm-2 control-label']) !!}
-                        <div class="col-sm-10">
-                            <input type="hidden" class="fuCon" value='{{$key->content}}'>
-                            <input type="hidden" name="id" value='{{$key->id}}'>
-                            {!! Form::text('detail','',['class'=>'form-control summernote','id'=>'summernote']) !!}
-                            <input type="hidden" value='' name="cont" class="cont">
-                            {{--<input type="hidden" value="" name="cont" class="cont">--}}
-                        </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group has-success">
+                                {!! Form::label('detail','内容',['class'=>'col-sm-2 control-label']) !!}
+                                <div class="col-sm-10">
+                                    <input type="hidden" class="fuCon" value='{{$key->content}}'>
+                                    <input type="hidden" name="id" value='{{$key->id}}'>
+                                    {!! Form::text('detail','',['class'=>'form-control summernote','id'=>'summernote']) !!}
+                                    <input type="hidden" value='' name="cont" class="cont">
+                                    {{--<input type="hidden" value="" name="cont" class="cont">--}}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group text-center">
+                                {!! Form::submit('更新','',['class'=>'text-center']) !!}
+                            </div>
+                        @endforeach
+                        {!! Form::close() !!}
                     </div>
-                    <div class="hr-line-dashed"></div>
-                    <div class="form-group text-center">
-                        {!! Form::submit('更新','',['class'=>'text-center']) !!}
-                    </div>
-                @endforeach
-                {!! Form::close() !!}
+                </div>
             </div>
         </div>
     </div>
@@ -259,7 +264,7 @@
                 pageLength: 5,
                 responsive: true,
                 bLengthChange: false,
-                info:false,
+                info: false,
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
                     // {extend: 'copy'},

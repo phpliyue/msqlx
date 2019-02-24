@@ -59,37 +59,38 @@
             </div>
         </div>
     </div>
-    {{--<div class="row wrapper wrapper-content animated fadeInRight">--}}
-        {{--<div class="col-lg-12">--}}
-            {{--<button class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myModal">+<i class="fa fa-home"></i></button>--}}
-            {{--<button type="button" class="btn btn-w-m btn-info" data-toggle="modal" data-target="#myModal">添加宿舍</button>--}}
-        {{--</div>--}}
-        {{--<div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">--}}
-            {{--<div class="modal-dialog">--}}
-                {{--<div class="modal-content animated bounceInRight">--}}
-                    {{--<div class="modal-header">--}}
-                        {{--<i class="fa fa-home modal-icon"></i>--}}
-                        {{--<h4 class="modal-title">添加宿舍</h4>--}}
-                    {{--</div>--}}
-                    {{--<div class="modal-body J_room">--}}
-                        {{--<div class="form-group col-md-12"><label>宿舍楼</label> <input type="name" placeholder="请输入宿舍名" class="form-control J_dorm_name"></div>--}}
-                        {{--<div class="J_floor_line">--}}
-                            {{--<div class="form-group col-md-4"><label>楼层</label> <input type="number" placeholder="楼层" class="form-control J_floor_num"></div>--}}
-                            {{--<div class="form-group col-md-4"><label>房间数</label> <input type="number" placeholder="房间数" class="form-control J_room_num"></div>--}}
-                            {{--<div class="form-group col-md-4"><label>床位数</label> <input type="number" placeholder="床位数" class="form-control J_bed_num"></div>--}}
-                            {{--<hr style="width: 100%;color:red;">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="modal-footer">--}}
-                        {{--<button type="button" class="btn btn-info J_add">添加楼层</button>--}}
-                        {{--<button type="button" class="btn btn-info J_del">删除楼层</button>--}}
-                        {{--<button type="button" class="btn btn-white J_cancel" data-dismiss="modal">取消</button>--}}
-                        {{--<button type="button" class="btn btn-primary J_submit">提交</button>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
+
+    <div class="row wrapper wrapper-content animated fadeInRight">
+        <div class="col-lg-12">
+            <button class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myModal">+<i class="fa fa-home"></i></button>
+            <button type="button" class="btn btn-w-m btn-info" data-toggle="modal" data-target="#myModal">添加宿舍</button>
+        </div>
+        <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <i class="fa fa-home modal-icon"></i>
+                        <h4 class="modal-title">添加宿舍</h4>
+                    </div>
+                    <div class="modal-body J_room">
+                        <div class="form-group col-md-12"><label>宿舍楼</label> <input type="name" placeholder="请输入宿舍名" class="form-control J_dorm_name"></div>
+                        <div class="J_floor_line">
+                            <div class="form-group col-md-4"><label>楼层</label> <input type="number" placeholder="楼层" class="form-control J_floor_num"></div>
+                            <div class="form-group col-md-4"><label>房间数</label> <input type="number" placeholder="房间数" class="form-control J_room_num"></div>
+                            <div class="form-group col-md-4"><label>床位数</label> <input type="number" placeholder="床位数" class="form-control J_bed_num"></div>
+                            <hr style="width: 100%;color:red;">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info J_add">添加楼层</button>
+                        <button type="button" class="btn btn-info J_del">删除楼层</button>
+                        <button type="button" class="btn btn-white J_cancel" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary J_submit">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
     @parent
