@@ -25,21 +25,11 @@
                         <h5>添加宿舍</h5>
                     </div>
                     <div class="ibox-content">
-                        {{--<div class="switch">--}}
-                        {{--<div class="onoffswitch">--}}
-                        {{--<input type="checkbox" checked class="onoffswitch-checkbox" id="example1">--}}
-                        {{--<label class="onoffswitch-label" for="example1">--}}
-                        {{--<span class="onoffswitch-inner"></span>--}}
-                        {{--<span class="onoffswitch-switch"></span>--}}
-                        {{--</label>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
                         <div class="form-group">
                             <label class="font-noraml">名称</label>
                             <input type="text" placeholder="宿舍楼名称" class="form-control J_dorm_name">
                         </div>
                         <hr style="width: 100%;">
-                        {{--<hr style="width: 100%;color:green;border:1px dashed #e7eaec;">--}}
                         <div class="J_room ">
                         <div class="J_floor_line">
                             <div class="form-group col-lg-1" style="padding-left:0;padding-right:0;">
@@ -63,68 +53,27 @@
                             </div>
                             <div class="form-group col-lg-3" style="padding-right:0;">
                                 <label class="font-noraml">部门</label>
-                                {{--<input type="text" placeholder="部门" class="form-control J_part">--}}
                                 <select class="form-control m-b J_part" name="part">
-                                    <option>生产部</option>
-                                    <option>包装部</option>
+                                    <option value="">请选择</option>
+                                    <option value="生产部">生产部</option>
+                                    <option value="包装部">包装部</option>
                                 </select>
                             </div>
                             <div class="form-group col-lg-2" style="padding-right:0;">
                                 <label class="font-noraml">性别</label>
-                                {{--<div class="switch form-control">--}}
-                                    {{--<div class="onoffswitch">--}}
-                                        {{--<input type="checkbox" checked class="onoffswitch-checkbox" id="example1">--}}
-                                        {{--<label class="onoffswitch-label" for="example1">--}}
-                                            {{--<span class="onoffswitch-inner"></span>--}}
-                                            {{--<span class="onoffswitch-switch"></span>--}}
-                                        {{--</label>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="form-control">--}}
-                                <select class="form-control m-b" name="sex">
-                                    <option>男</option>
-                                    <option>女</option>
+                                <select class="form-control m-b J_sex" name="sex">
+                                    <option value="">请选择</option>
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
                                 </select>
-                                {{--</div>--}}
-
                             </div>
-                            <hr style="width: 100%;color:green;border:1px dashed #e7eaec;">
                         </div>
                         </div>
-
-                        {{--<div class="form-group col-lg-1">--}}
-                        {{--<div class="switch">--}}
-                        {{--<div class="onoffswitch">--}}
-                        {{--<input type="checkbox" checked class="onoffswitch-checkbox" id="example1">--}}
-                        {{--<label class="onoffswitch-label" for="example1">--}}
-                        {{--<span class="onoffswitch-inner"></span>--}}
-                        {{--<span class="onoffswitch-switch"></span>--}}
-                        {{--</label>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-
                         {{--<div class="form-group">--}}
-                        {{--<label class="font-noraml">性别</label>--}}
-                        {{--<div class="input-group">--}}
-                        {{--<div class="i-checks">--}}
-                        {{--<label> <input type="radio" value="男" name="sex" class="J_sex"> <i></i> 男 </label>　--}}
-                        {{--<label> <input type="radio" value="女" name="sex" class="J_sex"> <i></i> 女 </label>--}}
+                            {{--<label class="font-noraml">备注</label>--}}
+                            {{--<input type="text" placeholder="备注" class="form-control J_mark">--}}
                         {{--</div>--}}
-                        {{--<div class="i-checks"><label> <input type="radio" checked="" value="option2" name="sex"> <i></i> 女 </label></div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        <div class="form-group">
-                            <label class="font-noraml">备注</label>
-                            <input type="text" placeholder="备注" class="form-control J_mark">
-                        </div>
-
-                        {{--<div class="form-group">--}}
-                        {{--<form action="{{url('dorm_upload')}}" method="post">--}}
-                        {{--<label class="font-noraml">内容</label>--}}
-                        {{--<div class="summernote J_content"></div>--}}
-                        {{--</form>--}}
-                        {{--</div>--}}
+                        <hr style="width: 100%;color:green;border:1px dashed #e7eaec;">
                         <div class="form-group" style="padding-bottom:20px;">
                             <div class="col-sm-12" style="text-align:center;">
                                 <button type="button" class="btn btn-info J_add">添加楼层</button>
@@ -170,15 +119,17 @@
                     '<div class="form-group col-lg-3" style="padding-right:0;">'+
                     '<label class="font-noraml">部门</label>'+
                     '<select class="form-control m-b J_part" name="part">'+
-                    '<option>生产部</option>'+
-                    '<option>包装部</option>'+
+                    '<option value="">请选择</option>'+
+                    '<option value="生产部">生产部</option>'+
+                    '<option value="包装部">包装部</option>'+
                     '</select>'+
                     '</div>'+
                     '<div class="form-group col-lg-2" style="padding-right:0;">'+
                     '<label class="font-noraml">性别</label>'+
-                    '<select class="form-control m-b" name="sex">'+
-                    '<option>男</option>'+
-                    '<option>女</option>'+
+                    '<select class="form-control m-b J_sex" name="sex">'+
+                    '<option value="">请选择</option>'+
+                    '<option value="男">男</option>'+
+                    '<option value="女">女</option>'+
                     '</select>'+
                     '</div>'+
                     '</div>'+
@@ -199,36 +150,25 @@
                     return false;
                 }
                 var dorm_name = $('.J_dorm_name').val();//宿舍楼名称
-                var floor = $('.J_floor').val();//楼层
-                var room_start = $('.J_start').val();//房间开始区间
-                var room_end = $('.J_end').val();//房间结束区间
-                var bed_num = $('.J_bed_num').val();//床位数
-                var sex = $(".J_sex:checked").val();//性别
-                var part = $('.J_part').val();//部门
-                var remark = $('.J_mark').val();//备注
                 if (dorm_name == '') {
                     swal('请输入宿舍楼名称！');
                     return false;
                 }
-                if (floor == '') {
-                    swal('请输入楼层！');
-                    return false;
-                }
-                if (room_start == '' || room_end == '' || room_start > room_end) {
-                    swal('请正确输入房间区间！');
-                    return false;
-                }
-                if (bed_num == '') {
-                    swal('请输入床位数！');
-                    return false;
-                }
-                if (sex == '' || sex == undefined) {
-                    swal('请选择性别！');
-                    return false;
-                }
-                if (part == '') {
-                    swal('请选择部门！');
-                    return false;
+                var len = $('.J_room .J_floor_line').length;
+                var dorm_info = [];
+                var floor = '';var room_start = '';var room_end = '';var bed_num = '';var sex='';var part='';
+                for (var i=0;i<len;i++){
+                    floor = $('.J_floor_line').eq(i).find('.J_floor').val();//楼层
+                    room_start = $('.J_floor_line').eq(i).find('.J_start').val();//房间开始区间
+                    room_end = $('.J_floor_line').eq(i).find('.J_end').val();//房间结束区间
+                    bed_num = $('.J_floor_line').eq(i).find('.J_bed_num').val();//床位数
+                    sex = $('.J_floor_line').eq(i).find(".J_sex option:selected").val();//性别
+                    part = $('.J_floor_line').eq(i).find('.J_part option:selected').val();//部门
+                    if(floor == "" || room_start == "" || room_end == "" || bed_num == "" || sex == "" || part == ""){
+                        swal('请输入宿舍信息！');
+                        return false;
+                    }
+                    dorm_info.push({'floor':floor,'room_start':room_start,'room_end':room_end,'bed_num':bed_num,'sex':sex,'part':part});
                 }
                 $.ajax({
                     type: "post",
@@ -236,14 +176,7 @@
                     dataType: "json",
                     data: {
                         "dorm_name": dorm_name,
-                        "floor": floor,
-                        "room_start": room_start,
-                        "room_end": room_end,
-                        "dorm_name": dorm_name,
-                        "bed_num": bed_num,
-                        "sex": sex,
-                        "part": part,
-                        "remark": remark
+                        "dorm_info": dorm_info
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -252,7 +185,7 @@
                         if (data.code == 100) {
                             window.location.href = '{{url('dorm_roomManage')}}';
                         } else {
-                            alert(data.info);
+                            swal(data.info);
                         }
                     },
                     complete: function () {
@@ -260,6 +193,7 @@
                     }
                 })
             })
+
         });
     </script>
 @endsection
