@@ -22,13 +22,6 @@ class RoomManageController extends Controller
         }
         return view('dorm.roomManage',['data'=>$data]);
     }
-
-    //添加宿舍页面
-    public function addRoom()
-    {
-        return view('dorm.addRoom');
-    }
-
     //添加宿舍信息处理
     public function roomInfos(Request $request)
     {
@@ -145,32 +138,14 @@ class RoomManageController extends Controller
         }
         return view('dorm.roomInfo',['rooms'=>$rooms]);
     }
-<<<<<<< HEAD
-=======
     //添加宿舍页面
     public function addRoom()
     {
         return view('dorm.addRoom');
-    }
-    //添加宿舍信息处理
-    public function roomInfos(Request $request)
-    {
-        $data = $request->all();
-        $data['admin'] = session('dorm_account');
-        $data['add_time'] = time();
-        $result = DB::table('dorm_addroom')->insert($data);
-        if($result)
-        {
-            return json_encode(['code'=>100,'info'=>'成功！']);
-        }else
-        {
-            return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
-        }
     }
     //修改宿舍信息页面
     public function updateRoom()
     {
         return view('dorm.updateRoom');
     }
->>>>>>> 8ff1f92f0f5bcda0545d38223ae8e60e8bbf1974
 }
