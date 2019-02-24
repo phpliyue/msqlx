@@ -165,7 +165,7 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_home','Dorm\HomeController@index');
     Route::get('/dorm_roomManage','Dorm\RoomManageController@index');//房间管理
     Route::get('/dorm_getRoom','Dorm\RoomManageController@getRooms');//入住管理
-    Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');
+    Route::get('/dorm_getRoomInfo/{id}','Dorm\RoomManageController@getRoomInfo');
     Route::get('/dorm_addRoom','Dorm\RoomManageController@addRoom');
     Route::post('/dorm_roomInfos','Dorm\RoomManageController@roomInfos');//上传宿舍信息
     Route::post('/dorm_addRoomInfo','Dorm\RoomManageController@addRoomInfo');
