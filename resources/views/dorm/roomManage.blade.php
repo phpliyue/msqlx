@@ -63,6 +63,7 @@
             </div>
         </div>
     </div>
+
     {{--<div class="row wrapper wrapper-content animated fadeInRight">--}}
         {{--<div class="col-lg-12">--}}
             {{--<button class="btn btn-primary  dim btn-large-dim" type="button" data-toggle="modal" data-target="#myModal">+<i class="fa fa-home"></i></button>--}}

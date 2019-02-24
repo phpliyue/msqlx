@@ -1,6 +1,18 @@
 @extends('dorm.dormTemp')
 @section('css')
     @parent
+    <link href="{{URL::asset('css/plugins/switchery/switchery.css')}}" rel="stylesheet">
+    <style>
+        .onoffswitch-inner::before {
+            content: '男';
+        }
+
+        .onoffswitch-inner::after {
+            content: '女';
+            background-color: red;
+            color: white;
+        }
+    </style>
 @show
 @section('title','宿舍管理-添加宿舍')
 @section('nav2','active')
@@ -13,54 +25,112 @@
                         <h5>添加宿舍</h5>
                     </div>
                     <div class="ibox-content">
+                        {{--<div class="switch">--}}
+                        {{--<div class="onoffswitch">--}}
+                        {{--<input type="checkbox" checked class="onoffswitch-checkbox" id="example1">--}}
+                        {{--<label class="onoffswitch-label" for="example1">--}}
+                        {{--<span class="onoffswitch-inner"></span>--}}
+                        {{--<span class="onoffswitch-switch"></span>--}}
+                        {{--</label>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
                         <div class="form-group">
                             <label class="font-noraml">名称</label>
                             <input type="text" placeholder="宿舍楼名称" class="form-control J_dorm_name">
                         </div>
-                        <div class="form-group">
-                            <label class="font-noraml">楼层</label>
-                            <input type="number" placeholder="楼层" min="1" class="form-control J_floor" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'>
-                        </div>
-                        <div class="form-group">
-                            <label class="font-noraml">房间区间</label>
-                            <div class=" input-group" >
-                                <input type="number" placeholder="开始房间号" min="1" class="input-sm form-control J_start" name="start" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'/>
-                                <span class="input-group-addon">to</span>
-                                <input type="number" placeholder="结束房间号" min="1" class="input-sm form-control J_end" name="end" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="font-noraml">床数</label>
-                            <input type="number" placeholder="床位数" min="1" class="form-control J_bed_num" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'>
-                        </div>
-                        <div class="form-group">
-                            <label class="font-noraml">性别</label>
-                            <div class="input-group">
-                                <div class="i-checks">
-                                    <label> <input type="radio" value="男" name="sex" class="J_sex"> <i></i> 男 </label>　
-                                    <label> <input type="radio" value="女" name="sex" class="J_sex"> <i></i> 女 </label>
+                        <hr style="width: 100%;">
+                        {{--<hr style="width: 100%;color:green;border:1px dashed #e7eaec;">--}}
+                        <div class="J_room ">
+                        <div class="J_floor_line">
+                            <div class="form-group col-lg-1" style="padding-left:0;padding-right:0;">
+                                <label class="font-noraml">楼层</label>
+                                <div class="input-group">
+                                    <input type="number" placeholder="楼层" min="1" class="form-control J_floor" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'>
                                 </div>
-                                {{--<div class="i-checks"><label> <input type="radio" checked="" value="option2" name="sex"> <i></i> 女 </label></div>--}}
                             </div>
+                            <div class="form-group col-lg-4" style="padding-right:0;">
+                                <label class="font-noraml">房间区间</label>
+                                <div class=" input-group">
+                                    <input type="number" placeholder="开始房间号" min="1" class="form-control J_start" name="start" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'/>
+                                    <span class="input-group-addon">to</span>
+                                    <input type="number" placeholder="结束房间号" min="1" class="form-control J_end" name="end" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'/>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-2" style="padding-right:0;">
+                                <label class="font-noraml">床数</label>
+                                <input type="number" placeholder="床位数" min="1" class="form-control J_bed_num" oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'>
+
+                            </div>
+                            <div class="form-group col-lg-3" style="padding-right:0;">
+                                <label class="font-noraml">部门</label>
+                                {{--<input type="text" placeholder="部门" class="form-control J_part">--}}
+                                <select class="form-control m-b J_part" name="part">
+                                    <option>生产部</option>
+                                    <option>包装部</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-2" style="padding-right:0;">
+                                <label class="font-noraml">性别</label>
+                                {{--<div class="switch form-control">--}}
+                                    {{--<div class="onoffswitch">--}}
+                                        {{--<input type="checkbox" checked class="onoffswitch-checkbox" id="example1">--}}
+                                        {{--<label class="onoffswitch-label" for="example1">--}}
+                                            {{--<span class="onoffswitch-inner"></span>--}}
+                                            {{--<span class="onoffswitch-switch"></span>--}}
+                                        {{--</label>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-control">--}}
+                                <select class="form-control m-b" name="sex">
+                                    <option>男</option>
+                                    <option>女</option>
+                                </select>
+                                {{--</div>--}}
+
+                            </div>
+                            <hr style="width: 100%;color:green;border:1px dashed #e7eaec;">
                         </div>
-                        <div class="form-group">
-                            <label class="font-noraml">部门</label>
-                            <input type="text" placeholder="部门" class="form-control J_part">
                         </div>
+
+                        {{--<div class="form-group col-lg-1">--}}
+                        {{--<div class="switch">--}}
+                        {{--<div class="onoffswitch">--}}
+                        {{--<input type="checkbox" checked class="onoffswitch-checkbox" id="example1">--}}
+                        {{--<label class="onoffswitch-label" for="example1">--}}
+                        {{--<span class="onoffswitch-inner"></span>--}}
+                        {{--<span class="onoffswitch-switch"></span>--}}
+                        {{--</label>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+
+                        {{--<div class="form-group">--}}
+                        {{--<label class="font-noraml">性别</label>--}}
+                        {{--<div class="input-group">--}}
+                        {{--<div class="i-checks">--}}
+                        {{--<label> <input type="radio" value="男" name="sex" class="J_sex"> <i></i> 男 </label>　--}}
+                        {{--<label> <input type="radio" value="女" name="sex" class="J_sex"> <i></i> 女 </label>--}}
+                        {{--</div>--}}
+                        {{--<div class="i-checks"><label> <input type="radio" checked="" value="option2" name="sex"> <i></i> 女 </label></div>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
                         <div class="form-group">
                             <label class="font-noraml">备注</label>
                             <input type="text" placeholder="备注" class="form-control J_mark">
                         </div>
 
                         {{--<div class="form-group">--}}
-                            {{--<form action="{{url('dorm_upload')}}" method="post">--}}
-                                {{--<label class="font-noraml">内容</label>--}}
-                                {{--<div class="summernote J_content"></div>--}}
-                            {{--</form>--}}
+                        {{--<form action="{{url('dorm_upload')}}" method="post">--}}
+                        {{--<label class="font-noraml">内容</label>--}}
+                        {{--<div class="summernote J_content"></div>--}}
+                        {{--</form>--}}
                         {{--</div>--}}
                         <div class="form-group" style="padding-bottom:20px;">
                             <div class="col-sm-12" style="text-align:center;">
-                                <button class="btn btn-primary" type="submit"><a href="/dorm_roomManage" style="color:white;">返回</a></button>
+                                <button type="button" class="btn btn-info J_add">添加楼层</button>
+                                <button type="button" class="btn btn-info J_del">删除楼层</button>
+                                <button class="btn btn-primary" type="submit"><a href="/dorm_roomManage"
+                                                                                 style="color:white;">返回</a></button>
                                 <button class="btn btn-warning J_submit" type="submit">提交</button>
                             </div>
                         </div>
@@ -72,8 +142,56 @@
 @endsection
 @section('js')
     @parent
+    <script src="{{URL::asset('js/plugins/switchery/switchery.js')}}"></script>
     <script>
         $(document).ready(function () {
+            //添加楼层
+            $('.J_add').click(function(){
+                $('.J_floor_line:last').after(
+                    '<div class="J_room J_floor_line">'+
+                    '<div class="form-group col-lg-1" style="padding-left:0;padding-right:0;">'+
+                    '<label class="font-noraml">楼层</label>'+
+                    '<div class="input-group">'+
+                    '<input type="number" placeholder="楼层" min="1" class="form-control J_floor" oninput=\'this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")\'>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group col-lg-4" style="padding-right:0;">'+
+                    '<label class="font-noraml">房间区间</label>'+
+                    '<div class=" input-group">'+
+                    '<input type="number" placeholder="开始房间号" min="1" class="form-control J_start" name="start" oninput=\'this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")\'/>'+
+                    '<span class="input-group-addon">to</span>'+
+                    '<input type="number" placeholder="结束房间号" min="1" class="form-control J_end" name="end" oninput=\'this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")\'/>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group col-lg-2" style="padding-right:0;">'+
+                    '<label class="font-noraml">床数</label>'+
+                    '<input type="number" placeholder="床位数" min="1" class="form-control J_bed_num" oninput=\'this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")\'>'+
+                    '</div>'+
+                    '<div class="form-group col-lg-3" style="padding-right:0;">'+
+                    '<label class="font-noraml">部门</label>'+
+                    '<select class="form-control m-b J_part" name="part">'+
+                    '<option>生产部</option>'+
+                    '<option>包装部</option>'+
+                    '</select>'+
+                    '</div>'+
+                    '<div class="form-group col-lg-2" style="padding-right:0;">'+
+                    '<label class="font-noraml">性别</label>'+
+                    '<select class="form-control m-b" name="sex">'+
+                    '<option>男</option>'+
+                    '<option>女</option>'+
+                    '</select>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'
+                    );
+            });
+            //删除楼层
+            $('.J_del').click(function(){
+                if($('.J_room .J_floor_line').length > 1){
+                    $('.J_room .J_floor_line:last').remove();
+                }
+            });
             // 提交
             var is_submit = false;
             $('.J_submit').click(function () {
