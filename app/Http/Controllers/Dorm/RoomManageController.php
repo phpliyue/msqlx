@@ -79,4 +79,9 @@ class RoomManageController extends Controller
             return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
         }
     }
+    //修改宿舍信息页面
+    public function updateRoom()
+    {
+        return view('dorm.updateRoom');
+    }
 }

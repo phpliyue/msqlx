@@ -62,7 +62,7 @@
     <script>
         $(document).ready(function () {
             $('.dataTables-example').DataTable({
-                pageLength: 2,
+                pageLength: 10,
                 responsive: true,
                 bLengthChange: false,
                 info: false,
