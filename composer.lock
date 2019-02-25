@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af6354095ac6c5056d8b8756bc4438d3",
+    "content-hash": "71540088b122869e2c51a46533a43d50",
     "packages": [
+        {
+            "name": "baidu/aip-sdk",
+            "version": "2.2.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Baidu-AIP/php-sdk.git",
+                "reference": "17c7a72411d0fa5e31adb1cd08d1a07e179ffdea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Baidu-AIP/php-sdk/zipball/17c7a72411d0fa5e31adb1cd08d1a07e179ffdea",
+                "reference": "17c7a72411d0fa5e31adb1cd08d1a07e179ffdea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/AipBase.php",
+                    "AipBodyAnalysis.php",
+                    "AipContentCensor.php",
+                    "AipFace.php",
+                    "AipImageClassify.php",
+                    "AipImageSearch.php",
+                    "AipKg.php",
+                    "AipNlp.php",
+                    "AipOcr.php",
+                    "AipSpeech.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "baidu"
+                }
+            ],
+            "description": "baidu pulic ai php sdk",
+            "time": "2019-01-25T08:29:48+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

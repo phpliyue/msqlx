@@ -43,8 +43,8 @@
                                         <td>{{$room->sex}}</td>
                                         <td style="text-align: center;">
                                             @if($room->is_create == 0)
-                                                <a href="#" class="J_create" data-id="{{$room->id}}"><i class="fa fa-trash text-navy" style="color:red;"></i> 生成　</a>
-                                                |
+                                                <a href="#" class="J_create" data-id="{{$room->id}}"><i class="fa fa-file text-navy"></i> 生成　</a>
+                                                |　
                                             @endif
                                             <a href="#" class="J_del" data-id="{{$room->id}}"><i class="fa fa-trash text-navy"
                                                                                                 style="color:red;"></i> 删除</a>　

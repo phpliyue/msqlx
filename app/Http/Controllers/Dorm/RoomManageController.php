@@ -75,8 +75,8 @@ class RoomManageController extends Controller
                         $res[count($data)]['addroom_id'] = $id;
                         $res[count($data)]['dorm_name'] = $dorm_name;
                         $res[count($data)]['floor'] = $room_info->floor;
-                        $res[count($data)]['room'] = $i < 10 ? '0'.$i : $i;
-                        $res[count($data)]['bed'] = $j < 10 ? '0'.$j : $j;
+                        $res[count($data)]['room'] = $i < 10 ? $i : $i;
+                        $res[count($data)]['bed'] = $j < 10 ? $j : $j;
                         $res[count($data)]['num'] = $res[count($data)]['floor'].$res[count($data)]['room'].$res[count($data)]['bed'];
                         array_push($data,$res[count($data)]);
                     }
@@ -101,7 +101,12 @@ class RoomManageController extends Controller
         $id = $request->input('id');
         $rooms = DB::table('dorm_room')->where('addroom_id',$id)->get();
         if(!count($rooms)){
-            return json_encode(['code'=>200,'info'=>'住宿信息不存在！']);
+            $res = DB::table('dorm_addroom')->where('id',$id)->delete();
+            if($res == false){
+                return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
+            }else{
+                return json_encode(['code'=>100,'info'=>'删除成功！']);
+            }
         }else{
             $status = array_unique(array_column($rooms->toArray(),'status'));
             if(in_array(1,$status)){
@@ -138,14 +143,36 @@ class RoomManageController extends Controller
         }
         return view('dorm.roomInfo',['rooms'=>$rooms]);
     }
+
     //添加宿舍页面
     public function addRoom()
     {
         return view('dorm.addRoom');
     }
+
     //修改宿舍信息页面
-    public function updateRoom()
+    public function updateRoom(Request $request)
     {
-        return view('dorm.updateRoom');
+        $id = $request->id;
+        $data = DB::table('dorm_addroom')->where('id',$id)->first();
+        $room_info = DB::table('dorm_room')
+            ->leftJoin('dorm_user','dorm_room.uid', '=', 'dorm_user.uid')
+            ->select('dorm_user.uid','room','status','wx_head_img','name','phone','in_time')
+            ->get();
+        $room = [];
+        foreach($room_info as $k=>$v){
+            if(!isset($room[$v->room])){
+                $room[$v->room]['people_notin'] = 0;
+                $room[$v->room]['people_in'] = 0;
+            }
+            $room[$v->room]['user'][] = (array)$v;
+            if($v->status == 0){
+                $room[$v->room]['people_notin'] += 1;
+            }else{
+                $room[$v->room]['people_in'] += 1;
+            }
+        }
+        $data->room = $room;
+        return view('dorm.updateRoom',['data'=>$data]);
     }
 }
