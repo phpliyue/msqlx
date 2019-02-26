@@ -149,7 +149,7 @@ class DormController extends Controller
      * */
     public function distinguishCard(Request $request)
     {
-        $file = $request->get('user');
+        $file = $request->file('ly');
         DB::table('test')->insert([
             'name' => $file
         ]);
