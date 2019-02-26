@@ -149,22 +149,20 @@ class DormController extends Controller
      * */
     public function distinguishCard(Request $request)
     {
-
         $file = $request->file('file');
-
-
-        $imgName = $file->getClientOriginalName();
-//        $img_ext = substr(strrchr($imgName, '.'), 1);
-        $imgNewName = 'p'.time().'.'.$imgName;
-        Image::make($file)->save(public_path('/images/'.$imgNewName));
-        $img_path = '/images/'.$imgNewName;
-        return $img_path;
-
-//        $ext = $file->getClientOriginalExtension();//文件扩展名
-//        DB::table('test')->insert([
-//            'name' => $ext
-//        ]);
-//        return $file;
+        $newName = $file->getClientOriginalName();
+        $path = '/images/'.date('Y-m-d');
+        $file->move(public_path().'/images/'.date('Y-m-d'),$newName);
+        $client = new \AipOcr('15621226', 'AttCpwef7ZpAAIYwF5GAcSGQ', 'd1fnYujAp5ErD4EmnxtzVgETymdqOkkR');
+        $img = public_path().$path.'/'.$newName;
+        $content = file_get_contents($img);
+        $idCardSide = "front";
+        // 调用身份证识别
+        $result = $client->idcard($content, $idCardSide);
+        $data['name'] = $result['words_result']['姓名']['words'];
+        $data['sex'] = $result['words_result']['性别']['words'];
+        $data['card'] = $result['words_result']['公民身份号码']['words'];
+        return $data;
     }
 
 }
