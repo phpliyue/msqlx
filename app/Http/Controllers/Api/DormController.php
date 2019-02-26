@@ -16,18 +16,6 @@ class DormController extends Controller
         $arr['phone'] = $request->get('phone');
         $arr['card'] = $request->get('card');
         $arr['sex'] = $request->get('sex');
-        DB::table('test')->insert([
-            'name' => $arr['admin']
-        ]);
-        DB::table('test')->insert([
-            'name' => $arr['openid']
-        ]);
-        DB::table('test')->insert([
-            'name' => $arr['name']
-        ]);
-        DB::table('test')->insert([
-            'name' => $arr['phone']
-        ]);
         //先判断该用户是否入驻
         $uid = DB::table('dorm_user')->where('wx_openid', $arr['openid'])->value('uid');
         $info = DB::table('dorm_room')->where('uid', $uid)->first();
@@ -157,7 +145,15 @@ class DormController extends Controller
         return json_encode(['code' => 100, 'info' => '暂无用户信息！']);
     }
     /*
-     * 获取公告
+     * 身份证识别
      * */
+    public function distinguishCard(Request $request)
+    {
+        $file = $request->get('filePath');
+        DB::table('test')->insert([
+            'name' => $file
+        ]);
+
+    }
 
 }
