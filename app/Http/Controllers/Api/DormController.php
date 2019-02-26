@@ -136,6 +136,7 @@ class DormController extends Controller
                 $data['floor'] = $roomInfo->floor;
                 $data['room'] = $roomInfo->room;
                 $data['bed'] = $roomInfo->bed;
+                $data['dorm_name'] = $roomInfo->dorm_name;
                 $data['is_in'] = 1;
             }else{
                 $data['is_in'] = 0;

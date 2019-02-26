@@ -17,6 +17,7 @@ return array(
     'AetherUpload\\ResourceHandler' => $vendorDir . '/peinhu/aetherupload-laravel/src/ResourceHandler.php',
     'AetherUpload\\Responser' => $vendorDir . '/peinhu/aetherupload-laravel/src/Responser.php',
     'AetherUpload\\UploadHandler' => $vendorDir . '/peinhu/aetherupload-laravel/src/UploadHandler.php',
+    'AipOcr' => $vendorDir . '/baidu/aip-sdk/AipOcr.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminAjaxController' => $baseDir . '/app/Http/Controllers/AdminAjaxController.php',
