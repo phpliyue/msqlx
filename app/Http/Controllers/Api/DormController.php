@@ -152,11 +152,19 @@ class DormController extends Controller
 
         $file = $request->file('file');
 
-        $ext = $file->getClientOriginalExtension();//文件扩展名
-        DB::table('test')->insert([
-            'name' => $ext
-        ]);
-        return $file;
+
+        $imgName = $file->getClientOriginalName();
+        $img_ext = substr(strrchr($imgName, '.'), 1);
+        $imgNewName = 'p'.time().'.'.$img_ext;
+        Image::make($file)->save(public_path('/images/'.$imgNewName));
+        $img_path = '/images/'.$imgNewName;
+        return $img_path;
+
+//        $ext = $file->getClientOriginalExtension();//文件扩展名
+//        DB::table('test')->insert([
+//            'name' => $ext
+//        ]);
+//        return $file;
     }
 
 }
