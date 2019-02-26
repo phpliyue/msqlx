@@ -166,6 +166,7 @@ class AdminController extends Controller
         {
             //获取头像信息
             $head_image = $request->file('headImage');
+            dd($head_image);
             //file name
             $file_name = $head_image->getClientOriginalName();
             // get file extension
