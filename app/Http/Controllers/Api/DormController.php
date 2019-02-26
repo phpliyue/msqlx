@@ -154,8 +154,8 @@ class DormController extends Controller
 
 
         $imgName = $file->getClientOriginalName();
-        $img_ext = substr(strrchr($imgName, '.'), 1);
-        $imgNewName = 'p'.time().'.'.$img_ext;
+//        $img_ext = substr(strrchr($imgName, '.'), 1);
+        $imgNewName = 'p'.time().'.'.$imgName;
         Image::make($file)->save(public_path('/images/'.$imgNewName));
         $img_path = '/images/'.$imgNewName;
         return $img_path;
