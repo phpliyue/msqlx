@@ -153,7 +153,7 @@ class DormController extends Controller
         DB::table('test')->insert([
             'name' => $file
         ]);
-
+        return $file;
     }
 
 }
