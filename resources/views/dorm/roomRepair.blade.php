@@ -25,6 +25,7 @@
                                     <th>房间号</th>
                                     <th>报修</th>
                                     <th>时间</th>
+                                    <th>状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -38,7 +39,19 @@
                                         <td>{{$repair->room_num}}</td>
                                         <td>{{$repair->remark}}</td>
                                         <td>{{$repair->created_at}}</td>
-                                        <td><a href=""><span>处理</span></a></td>
+                                        <td>
+                                            @if($repair->status == '0')
+                                                <div style="color:#ff8a00;">未处理</div>
+                                            @elseif($repair->status == '1')
+                                                <div style="color:#1AB394;">已处理</div>
+                                            @else
+                                                <div style="color:#f7000b;">驳回</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{url('dorm_roomRepairReply/'.$repair->id)}}"><i class="fa fa-pencil  text-navy"></i> 处理</a>
+                                            {{--<a href=""><span>处理</span></a>--}}
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

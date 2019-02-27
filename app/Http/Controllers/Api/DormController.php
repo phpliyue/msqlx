@@ -165,5 +165,58 @@ class DormController extends Controller
         $data['card'] = $result['words_result']['公民身份号码']['words'];
         return $data;
     }
+    /*
+     * 登记
+     * */
+    public function outreg(Request $request)
+    {
+        $admin = $request->get('admin');
+        $name = $request->get('name');
+        $phone = $request->get('phone');
+        $remark = $request->get('remark');
+        $sex = $request->get('sex');
+        $result = DB::table('dorm_outreg')->insert([
+            'admin' => $admin,
+            'name' => $name,
+            'phone' => $phone,
+            'remark' => $remark,
+            'sex' => $sex,
+            'created_at' => date('Y-m-d H:i:s',time())
+        ]);
+        if($result){
+            return json_encode(['code' => 200, 'info' => '登记成功！']);
+        }else{
+            return json_encode(['code' => 100, 'info' => '登记失败！']);
+        }
+    }
+    /*
+     * 报修
+     * */
+    public function roomrepair(Request $request)
+    {
+        $openid = $request->get('openid');
+        $uid = DB::table('dorm_user')->where('wx_openid',$openid)->value('uid');
+        $admin = DB::table('dorm_room')->where('uid',$uid)->value('admin');
+        $dorm_name = $request->get('dorm_name');
+        $room_num = $request->get('room_num');
+        $name = $request->get('name');
+        $phone = $request->get('phone');
+        $remark = $request->get('remark');
+        $result = DB::table('dorm_roomrepair')->insert([
+            'admin' => $admin,
+            'uid' => $uid,
+            'dorm_name' => $dorm_name,
+            'room_num' => $room_num,
+            'name' => $name,
+            'phone' => $phone,
+            'remark' => $remark,
+            'created_at' => date('Y-m-d H:i:s',time())
+        ]);
+        if($result){
+            return json_encode(['code' => 200, 'info' => '报修成功！']);
+        }else{
+            return json_encode(['code' => 100, 'info' => '报修失败！']);
+        }
+    }
 
 }

@@ -180,6 +180,8 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::any('/dorm_entryNotice','Dorm\EntryNoticeController@index');//入住须知
     Route::get('/dorm_adjustRoom','Dorm\AdjustRoomController@index');//房间调整
     Route::get('/dorm_roomRepair','Dorm\RoomRepairController@index');//房间报修
+    Route::get('/dorm_roomRepairReply/{id}','Dorm\RoomRepairController@repairReply');//处理报修页面
+    Route::any('/dorm_roomRepairReplyMethod','Dorm\RoomRepairController@updateRepairReply');//处理报修方法
     Route::get('/dorm_outReg','Dorm\OutRegController@index');//外来人员登记
 });
 

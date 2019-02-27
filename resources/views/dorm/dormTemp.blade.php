@@ -46,7 +46,7 @@
                     <a href="/dorm_roomRepair"><i class="fa fa-wrench"></i> <span class="nav-label">宿舍报修</span></a>
                 </li>
                 <li class="@yield('nav6')">
-                    <a href="/dorm_outReg"><i class="fa fa-user-secret"></i> <span class="nav-label">外来人员登记</span></a>
+                    <a href="/dorm_outReg"><i class="fa fa-user-secret"></i> <span class="nav-label">人员登记</span></a>
                 </li>
                 <li class="@yield('nav7')">
                     <a href="/dorm_noticeManage"><i class="fa fa-volume-down "></i> <span class="nav-label">公告管理</span></a>

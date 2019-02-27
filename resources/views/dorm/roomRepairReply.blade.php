@@ -1,32 +1,38 @@
 @extends('dorm.dormTemp')
 @section('css')
     @parent
+    {{--<link href="{{URL::asset('css/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">--}}
 @show
-@section('title','宿舍管理-公告管理')
-@section('nav7','active')
+@section('title','宿舍管理-报修 处理')
+@section('nav5','active')
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>添加公告</h5>
+                        <h5>报修处理</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="form-group">
-                            <label class="font-noraml">标题</label>
-                            <input type="text" placeholder="标题" class="form-control J_tilte">
+                            <label class="font-noraml">问题</label>
+                            <input type="hidden" value="{{$data->id}}" class="remarkId">
+                            <input type="text" class="form-control" value="{{$data->remark}}" disabled>
                         </div>
                         <div class="form-group">
                             <form action="{{url('dorm_upload')}}" method="post">
                                 <label class="font-noraml">内容</label>
-                                <div class="summernote J_content"></div>
+                                <div class="summernote J_content">
+                                    @if($data->status == 1)
+                                        {!!$data->reply!!}
+                                        @endif
+                                </div>
                             </form>
                         </div>
                         <div class="form-group" style="padding-bottom:20px;">
                             <div class="col-sm-12" style="text-align:center;">
-                                <button class="btn btn-primary" type="submit"><a href="/dorm_noticeManage" style="color:white;">返回</a></button>
-                                <button class="btn btn-warning J_submit" type="submit">提交</button>
+                                <button class="btn btn-primary" type="submit"><a href="/dorm_roomRepair" style="color:white;">返回</a></button>
+                                <button class="btn btn-warning J_submit" type="submit">处理</button>
                             </div>
                         </div>
                     </div>
@@ -80,35 +86,26 @@
                 if (is_submit) {
                     return false;
                 }
-                var title = $('.J_tilte').val();
+                var id = $('.remarkId').val();
                 var content = $('.J_content').summernote('code');
-                if (title == '') {
-                    alert('请输入标题！');
-                    return false;
-                }
-                if (title.length < 2 || title.length > 30) {
-                    alert('标题长度为请2-30个字！');
-                    return false;
-                }
                 if ($('.summernote').summernote("isEmpty")) {
                     alert('请输入内容！');
                     return false;
                 }
                 $.ajax({
                     type: "post",
-                    url: '{{url('dorm_addNotice')}}',
+                    url: '{{url('dorm_roomRepairReplyMethod')}}',
                     dataType: "json",
                     data: {
-                        "title": title,
+                        "id": id,
                         "content": content,
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function (data) {
-                        console.log(2222);
                         if (data.code == 100) {
-                            window.location.href = '{{url('dorm_noticeManage')}}';
+                            window.location.href = '{{url('dorm_roomRepair')}}';
                         } else {
                             alert(data.info);
                         }
