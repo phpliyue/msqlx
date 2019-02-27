@@ -98,7 +98,10 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('sale/update','Root\SnowBallController@saleUpdate')->name('sale_update');
     Route::post('sale/create','Root\SnowBallController@saleCreate')->name('sale_create');
     Route::get('sale/delete/{id}','Root\SnowBallController@saleDelete');
-
+    //小宿舍设置
+    Route::get('/dorm','Root\DormController@dorm');//轮播图列表
+    Route::any('/rollpicAdd/{id?}','Root\DormController@rollpicAdd')->name('addRollpic');//添加轮播图
+    Route::any('/rollpicDel/{id}','Root\DormController@rollpicDel');//删除轮播图
     Route::get('/meisi','Admin\RootController@meisi');
     Route::get('/bibei','Admin\RootController@bibei');
     Route::get('/seying','Admin\RootController@seying');

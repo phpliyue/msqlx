@@ -16,18 +16,6 @@ class DormController extends Controller
         $arr['phone'] = $request->get('phone');
         $arr['card'] = $request->get('card');
         $arr['sex'] = $request->get('sex');
-        DB::table('test')->insert([
-            'name' => $arr['admin']
-        ]);
-        DB::table('test')->insert([
-            'name' => $arr['openid']
-        ]);
-        DB::table('test')->insert([
-            'name' => $arr['name']
-        ]);
-        DB::table('test')->insert([
-            'name' => $arr['phone']
-        ]);
         //先判断该用户是否入驻
         $uid = DB::table('dorm_user')->where('wx_openid', $arr['openid'])->value('uid');
         $info = DB::table('dorm_room')->where('uid', $uid)->first();
@@ -148,6 +136,7 @@ class DormController extends Controller
                 $data['floor'] = $roomInfo->floor;
                 $data['room'] = $roomInfo->room;
                 $data['bed'] = $roomInfo->bed;
+                $data['dorm_name'] = $roomInfo->dorm_name;
                 $data['is_in'] = 1;
             }else{
                 $data['is_in'] = 0;
@@ -157,7 +146,33 @@ class DormController extends Controller
         return json_encode(['code' => 100, 'info' => '暂无用户信息！']);
     }
     /*
-     * 获取公告
+     * 身份证识别
      * */
+    public function distinguishCard(Request $request)
+    {
+        $file = $request->file('file');
+        $newName = $file->getClientOriginalName();
+        $path = '/images/'.date('Y-m-d');
+        $file->move(public_path().'/images/'.date('Y-m-d'),$newName);
+        $client = new \AipOcr('15621226', 'AttCpwef7ZpAAIYwF5GAcSGQ', 'd1fnYujAp5ErD4EmnxtzVgETymdqOkkR');
+        $img = public_path().$path.'/'.$newName;
+        $content = file_get_contents($img);
+        $idCardSide = "front";
+        // 调用身份证识别
+        $result = $client->idcard($content, $idCardSide);
+        $data['name'] = $result['words_result']['姓名']['words'];
+        $data['sex'] = $result['words_result']['性别']['words'];
+        $data['card'] = $result['words_result']['公民身份号码']['words'];
+        return $data;
+    }
+    /*
+     * 获取广告
+     * */
+    public function getAdvert(Request $request)
+    {
+        $type = $request->type;
+        $data = DB::table('dorm_rollpic')->where(['type'=>$type,'status'=>0])->get();
+        return json_encode(['code' => 100, 'info' => '成功！','data'=>$data]);
+    }
 
 }

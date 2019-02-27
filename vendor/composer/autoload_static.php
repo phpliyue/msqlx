@@ -353,6 +353,7 @@ class ComposerStaticInit5e9979f617d859aad76f162e3c02a0c7
         'AetherUpload\\ResourceHandler' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/ResourceHandler.php',
         'AetherUpload\\Responser' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/Responser.php',
         'AetherUpload\\UploadHandler' => __DIR__ . '/..' . '/peinhu/aetherupload-laravel/src/UploadHandler.php',
+        'AipOcr' => __DIR__ . '/..' . '/baidu/aip-sdk/AipOcr.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminAjaxController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminAjaxController.php',

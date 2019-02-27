@@ -55,6 +55,22 @@
 
                 </div>
                 <div class="col-lg-12">
+                    <a href="">
+                    </a>
+                    <a href="dorm">
+                        <div class="widget style1 red-bg">
+                            <div class="row vertical-align">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-university fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <h3 class="font-bold">小宿舍设置</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-12">
                     <a href="/bibei">
                         <div class="widget style1 navy-bg">
                             <div class="row vertical-align">
