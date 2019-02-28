@@ -168,6 +168,7 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_home','Dorm\HomeController@index');
     Route::get('/dorm_roomManage','Dorm\RoomManageController@index');//房间管理
     Route::get('/dorm_getRoom','Dorm\RoomManageController@getRooms');//入住管理
+    Route::get('/dorm_getBedInfo/{id}','Dorm\RoomManageController@getBedInfo');//床位信息
     Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');//生成住宿信息
     Route::post('/dorm_delRoomInfo','Dorm\RoomManageController@delRoomInfo');//删除住宿信息
     Route::get('/dorm_addRoom','Dorm\RoomManageController@addRoom');

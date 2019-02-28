@@ -29,6 +29,7 @@
                                     {{--<th>身份证</th>--}}
                                     <th>入住时间</th>
                                     <th>退房时间</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,6 +46,9 @@
                                         {{--<td>@if($room->status == 1){{$room->user_info->card}}@endif</td>--}}
                                         <td>@if($room->status == 1){{$room->user_info->in_time}}@endif</td>
                                         <td>@if($room->status == 1){{$room->user_info->out_time}}@endif</td>
+                                        <td style="text-align: center;">
+                                    　       <a href="{{url('dorm_getBedInfo/'.$room->id)}}"><i class="fa fa-eye  text-navy"></i> 查看</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

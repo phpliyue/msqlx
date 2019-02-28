@@ -144,6 +144,23 @@ class RoomManageController extends Controller
         return view('dorm.roomInfo',['rooms'=>$rooms]);
     }
 
+    //获取床位信息
+    public function getBedInfo(Request $request)
+    {
+        $id = $request->id;
+        $data = DB::table('dorm_room')
+            ->leftJoin('dorm_addroom', function ($join) {
+                $join->on('dorm_room.admin', '=', 'dorm_addroom.admin')
+                    ->on('dorm_room.dorm_name', '=', 'dorm_addroom.dorm_name')
+                    ->where('dorm_room.room', 'in', '1,4');
+            })->leftJoin('dorm_user','dorm_room.uid', '=', 'dorm_user.uid')
+            ->select('dorm_room.*','dorm_addroom.part','card','name','phone','in_time','out_time')
+            ->where(['dorm_room.id'=>$id])
+            ->first();
+        dd($data);
+        return view('dorm.getBedInfo',['data'=>$data]);
+    }
+
     //添加宿舍页面
     public function addRoom()
     {
@@ -158,6 +175,8 @@ class RoomManageController extends Controller
         $room_info = DB::table('dorm_room')
             ->leftJoin('dorm_user','dorm_room.uid', '=', 'dorm_user.uid')
             ->select('dorm_user.uid','room','status','wx_head_img','name','phone','in_time')
+            ->where(['dorm_room.admin'=>session('dorm_account')])
+            ->orderBy('room')
             ->get();
         $room = [];
         foreach($room_info as $k=>$v){
