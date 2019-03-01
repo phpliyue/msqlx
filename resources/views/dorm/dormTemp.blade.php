@@ -40,7 +40,7 @@
                     <a href="/dorm_getRoom"><i class="fa fa-hotel"></i> <span class="nav-label">入住管理</span></a>
                 </li>
                 <li class="@yield('nav4')">
-                    <a href="/dorm_adjustRoom"><i class="fa fa-random"></i> <span class="nav-label">房间调整</span></a>
+                    <a href="/dorm_roomGoods"><i class="fa fa-shopping-basket"></i> <span class="nav-label">物料管理</span></a>
                 </li>
                 <li class="@yield('nav5')">
                     <a href="/dorm_roomRepair"><i class="fa fa-wrench"></i> <span class="nav-label">宿舍报修</span></a>
@@ -49,7 +49,7 @@
                     <a href="/dorm_outReg"><i class="fa fa-user-secret"></i> <span class="nav-label">人员登记</span></a>
                 </li>
                 <li class="@yield('nav7')">
-                    <a href="/dorm_noticeManage"><i class="fa fa-volume-down "></i> <span class="nav-label">公告管理</span></a>
+                    <a href="/dorm_noticeManage"><i class="fa fa-bullhorn"></i> <span class="nav-label">公告管理</span></a>
                 </li>
                 <li class="@yield('nav8')">
                     <a href="/dorm_entryNotice"><i class="fa fa-bell"></i> <span class="nav-label">入住须知</span></a>
