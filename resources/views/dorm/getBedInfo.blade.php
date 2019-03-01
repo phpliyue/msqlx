@@ -7,46 +7,76 @@
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>床位信息</h5>
-                    </div>
-                    <div class="ibox-content" style="padding-bottom:15px;">
-
-                        <div class="form-group">
-                            <label class="font-noraml">名称</label>
-                            <input type="text" placeholder="宿舍楼名称" class="form-control J_dorm_name" value="{{$data->dorm_name}}" disabled>
+                        <div class="ibox-tools">
+                            <button class="btn btn-primary" type="submit"><a href="{{url('dorm_getRoom')}}"
+                                                                         style="color:white;">返回</a></button>
+                            @if($data->status == 0)
+                            <button class="btn btn-primary J_inroom" type="submit">入住</button>
+                            @else
+                            <button class="btn btn-primary J_outroom" type="submit">退房</button>
+                            <button class="btn btn-primary J_adjustroom" type="submit">调整房间</button>
+                            @endif
                         </div>
-                            <div class="form-group">
-                                <label class="font-noraml">楼层</label>
+                    </div>
+                    <div class="ibox-content form-horizontal" style="padding-bottom:15px;">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">宿舍楼</label>
+                            <div class="col-lg-10">
+                                <input type="text" placeholder="宿舍楼名称" class="form-control J_dorm_name" value="{{$data->dorm_name}}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">楼层</label>
+                            <div class="col-lg-10">
                                 <input type="number" placeholder="楼层" min="1" class="form-control J_floor" value="{{$data->floor}}" disabled>
                             </div>
-                            <div class="form-group">
-                                <label class="font-noraml">房间</label>
-                                <div class=" input-group">
-                                    <input type="text" placeholder="房间" min="1" class="form-control J_room"
-                                           name="start" value="{{$data->floor}}楼{{$data->room}}房{{$data->bed}}床" disabled/>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">房间号</label>
+                            <div class="col-lg-10">
+                                <input type="text" placeholder="房间" min="1" class="form-control J_room"
+                                   name="start" value="{{$data->floor}}楼{{$data->room}}房{{$data->bed}}床" disabled/>
                             </div>
-                            <div class="form-group">
-                                <label class="font-noraml">部门</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">部门</label>
+                            <div class="col-lg-10">
                                 <select class="form-control m-b J_part" name="part" disabled>
                                     <option @if($data->part == '生产部') selected @endif>生产部</option>
                                     <option @if($data->part == '包装部') selected @endif>包装部</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label class="font-noraml">性别</label>
-                                <select class="form-control m-b" name="sex" disabled>
-                                    <option @if($data->sex == '男') selected @endif>男</option>
-                                    <option @if($data->sex == '女') selected @endif>女</option>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">性别</label>
+                            <div class="col-lg-10">
+                                <select class="form-control m-b J_sex" name="sex" disabled>
+                                    <option @if($data->sex == '男') selected @endif value="男">男</option>
+                                    <option @if($data->sex == '女') selected @endif value="女">女</option>
                                 </select>
                             </div>
-                        <div class="form-group" style="padding-bottom:0px;text-align:center;margin-bottom:0px;">
-                            <button class="btn btn-primary" type="submit"><a href="/dorm_roomManage"
-                                                                             style="color:white;">返回</a></button>
-                            {{--<button class="btn btn-warning J_submit" type="submit">提交</button>--}}
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">姓名</label>
+                            <div class="col-lg-10">
+                                <input type="text" placeholder="姓名" class="form-control J_name" value="{{$data->name}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">身份证</label>
+                            <div class="col-lg-10">
+                                <input type="text" placeholder="身份证" class="form-control J_card" value="{{$data->card}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">电话号</label>
+                            <div class="col-lg-10">
+                                <input type="text" placeholder="电话号" class="form-control J_phone" value="{{$data->phone}}"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,7 +109,98 @@
                        '</div>';
                }
                $('.J_user').html(str);
-            })
+            });
+            //入住
+            var is_submit = false;
+            $('.J_inroom').click(function() {
+                if (is_submit) {
+                    return false;
+                }
+                var name = $('.J_name').val();
+                var card = $('.J_card').val();
+                var phone = $('.J_phone').val();
+                var sex = $('.J_sex option:selected').val();
+                if (name == '') {
+                    swal('请输入姓名！');
+                    return false;
+                }
+                if (card == '') {
+                    swal('请输入身份证号！');
+                    return false;
+                }
+                if (phone == '') {
+                    swal('请输入电话号码！');
+                    return false;
+                }
+                $.ajax({
+                    type: "post",
+                    url: '{{url('dorm_roomIn')}}',
+                    dataType: "json",
+                    data: {
+                        "id":{{$data->id}},
+                        "name": name,
+                        "card": card,
+                        "phone":phone,
+                        "sex":sex
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (data) {
+                        if (data.code == 100) {
+                            swal(data.info);
+                            window.location.href = '{{url('dorm_getRoom')}}';
+                        } else {
+                            swal(data.info);
+                        }
+                    },
+                    complete: function () {
+                        is_submit = false;
+                    }
+                })
+            });
+            //退房
+            $('.J_outroom').click(function(){
+                swal("确定退房", {
+                    buttons: {
+                        cancel: "取消",
+                        ok: "确定",
+                    },
+                })
+                .then((value) => {
+                    if(value == 'ok'){
+                        if (is_submit) {
+                            return false;
+                        }
+                        $.ajax({
+                            type: "post",
+                            url: '{{url('dorm_roomOut')}}',
+                            dataType: "json",
+                            data: {
+                                "id":{{$data->id}}
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function (data) {
+                                if (data.code == 100) {
+                                    swal(data.info);
+                                    window.location.href = '{{url('dorm_getRoom')}}';
+                                } else {
+                                    swal(data.info);
+                                }
+                            },
+                            complete: function () {
+                                is_submit = false;
+                            }
+                        })
+                    }
+                })
+            });
+            //调整房间
+            $('.J_adjustroom').click(function(){
+
+            });
         });
     </script>
 @endsection
