@@ -186,11 +186,14 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::any('/dorm_editNotice','Dorm\NoticeManageController@editNotice');
     Route::any('/dorm_delNotice/{id}','Dorm\NoticeManageController@delNotice');
     Route::any('/dorm_entryNotice','Dorm\EntryNoticeController@index');//入住须知
-    Route::get('/dorm_roomGoods','Dorm\roomGoodsController@index');//物料管理
+    Route::get('/dorm_roomGoods','Dorm\RoomGoodsController@index');//物料管理
     Route::get('/dorm_roomRepair','Dorm\RoomRepairController@index');//房间报修
     Route::get('/dorm_roomRepairReply/{id}','Dorm\RoomRepairController@repairReply');//处理报修页面
     Route::any('/dorm_roomRepairReplyMethod','Dorm\RoomRepairController@updateRepairReply');//处理报修方法
     Route::get('/dorm_outReg','Dorm\OutRegController@index');//外来人员登记
+    Route::get('/dorm_addGoods','Dorm\RoomGoodsController@addGoods');//添加物料页面
+    Route::post('/dorm_addGoodsInfo','Dorm\RoomGoodsController@addGoodsInfos');//添加物料方法
+    Route::get('/dorm_delGoodsInfo','Dorm\RoomGoodsController@delGoodsInfos');//删除物料
 });
 
 /*
