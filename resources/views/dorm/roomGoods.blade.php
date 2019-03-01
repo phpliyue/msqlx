@@ -2,7 +2,7 @@
 @section('css')
     @parent
 @show
-@section('title','宿舍管理-房间调整')
+@section('title','宿舍管理-物料管理')
 @section('nav4','active')
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
@@ -10,7 +10,10 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>房间调整</h5>
+                        <h5>物料</h5>
+                        <div class="ibox-tools">
+                            <a href="{{url('dorm_addGoods')}}" class="btn btn-primary ">添加物料</a>
+                        </div>
                     </div>
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -18,32 +21,25 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>姓名</th>
-                                    <th>联系电话</th>
-                                    <th>性别</th>
-                                    <th>现住宿舍楼</th>
-                                    <th>现住房间号</th>
-                                    <th>调整宿舍楼</th>
-                                    <th>调整房间号</th>
-                                    <th>备注</th>
-                                    <th>时间</th>
+                                    <th>名称</th>
+                                    <th>数量</th>
+                                    <th>部门</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($data as $adjust)
+                                @foreach ($data as $goods)
                                     <tr class="gradeX">
-                                        <td>{{$adjust->id}}</td>
-                                        <td>{{$adjust->name}}</td>
-                                        <td>{{$adjust->sex}}</td>
-                                        <td>{{$adjust->phone}}</td>
-                                        <td>{{$adjust->now_dname}}</td>
-                                        <td>{{$adjust->now_rnum}}</td>
-                                        <td>{{$adjust->to_dname}}</td>
-                                        <td>{{$adjust->to_rnum}}</td>
-                                        <td>{{$adjust->remark}}</td>
-                                        <td>{{$adjust->created_at}}</td>
-                                        <td><a href=""><span>处理</span></a></td>
+                                        <td>{{$goods->id}}</td>
+                                        <td>{{$goods->name}}</td>
+                                        <td>{{$goods->num}}</td>
+                                        <td>{{$goods->depart}}</td>
+                                        <!-- <td>
+                                            <a href="#" class="J_del" data-id="{{$goods->id}}"><i class="fa fa-trash text-navy"
+                                                                                                style="color:red;"></i> 删除</a>　
+                                            |
+                                            　<a href=""><i class="fa fa-eye  text-navy"></i> 查看</a>
+                                        </td> -->
                                     </tr>
                                 @endforeach
                                 </tbody>
