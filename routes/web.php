@@ -191,6 +191,7 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_outReg','Dorm\OutRegController@index');//外来人员登记
     Route::get('/dorm_addGoods','Dorm\RoomGoodsController@addGoods');//添加物料页面
     Route::post('/dorm_addGoodsInfo','Dorm\RoomGoodsController@addGoodsInfos');//添加物料方法
+    Route::get('/dorm_delGoodsInfo','Dorm\RoomGoodsController@delGoodsInfos');//删除物料
 });
 
 /*

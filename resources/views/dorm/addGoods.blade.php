@@ -29,25 +29,25 @@
 
                             <div class="form-group">
                                 <label class="font-noraml">名称</label>
-                                <input type="text" placeholder="物料名称" class="form-control J_name" required>
+                                <input type="text" placeholder="物料名称 必填" class="form-control J_name" required>
                             </div>
                             <div class="form-group">
                                 <label class="font-noraml">规格</label>
-                                    <input type="text" placeholder="物料规格" min="1" class="form-control J_spec">
+                                    <input type="text" placeholder="物料规格 选填" class="form-control J_spec">
                             </div>
                             <div class="form-group">
                                 <label class="font-noraml">数量</label>
-                                <input type="number" placeholder="数量" min="1" class="form-control J_bed_num">
+                                <input type="number" placeholder="数量 必填" min="1" class="form-control J_num">
                             </div>
                             <div class="form-group">
                                 <label class="font-noraml">单价</label>
-                                <input type="number" placeholder="单价" min="1" class="form-control J_price">
+                                <input type="text" placeholder="单价 选填" class="form-control J_price">
                             </div>
 
 
                         <div class="form-group">
                             <label class="font-noraml">备注</label>
-                            <input type="text" placeholder="备注" class="form-control J_remark">
+                            <input type="text" placeholder="备注 选填" class="form-control J_remark">
                         </div>
                         <div class="form-group" style="padding-bottom:20px;">
                             <div class="col-sm-12" style="text-align:center;">
@@ -76,8 +76,12 @@
                     swal('请输入物料名称！');
                     return false;
                 }
-                var goods_spc = $('.J_spe').val();
+                var goods_spec = $('.J_spec').val();
                 var goods_num = $('.J_num').val();
+                if (goods_num == '') {
+                    swal('请输入物料数量！');
+                    return false;
+                }
                 var goods_price = $('.J_price').val();
                 var goods_remark = $('.J_remark').val();
                 $.ajax({
@@ -86,7 +90,7 @@
                     dataType: "json",
                     data: {
                         "goods_name": goods_name,
-                        "goods_spc": goods_spc,
+                        "goods_spec": goods_spec,
                         "goods_num": goods_num,
                         "goods_price": goods_price,
                         "goods_remark": goods_remark
