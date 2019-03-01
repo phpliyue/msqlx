@@ -171,8 +171,10 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_getBedInfo/{id}','Dorm\RoomManageController@getBedInfo');//床位信息
     Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');//生成住宿信息
     Route::post('/dorm_delRoomInfo','Dorm\RoomManageController@delRoomInfo');//删除住宿信息
+    Route::post('/dorm_edituser','Dorm\RoomManageController@edituser');//修改员工信息
     Route::post('/dorm_roomIn','Dorm\RoomManageController@roomIn');//员工入住
     Route::post('/dorm_roomOut','Dorm\RoomManageController@roomOut');//员工退房
+    Route::post('/dorm_adjustRoom','Dorm\RoomManageController@adjustRoom');//员工调整房间
     Route::get('/dorm_addRoom','Dorm\RoomManageController@addRoom');
     Route::get('/dorm_updateRoom/{id}','Dorm\RoomManageController@updateRoom');//修改宿舍
     Route::post('/dorm_roomInfos','Dorm\RoomManageController@roomInfos');//上传宿舍信息
