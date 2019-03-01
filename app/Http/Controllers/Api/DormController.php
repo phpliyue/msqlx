@@ -169,8 +169,18 @@ class DormController extends Controller
     public function getAdvert(Request $request)
     {
         $type = $request->type;
-        $data = DB::table('dorm_rollpic')->where(['type'=>$type,'status'=>0])->get();
+        $data = DB::table('dorm_rollpic')->where(['type'=>$type,'status'=>0])->get(['id','cover_img']);
         return json_encode(['code' => 100, 'info' => '成功！','data'=>$data]);
+    }
+    /*
+    * 获取广告内容
+    *
+    * */
+    public function getAdContent(Request $request)
+    {
+        $id = $request->get('id');
+        $adContent = DB::table('dorm_rollpic')->where('id',$id)->get(['content','datetime']);
+        return $adContent;
     }
     /*
      * 登记
