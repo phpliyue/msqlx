@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class AdjustRoomController extends Controller
+class roomGoodsController extends Controller
 {
     //首页
     public function index()
