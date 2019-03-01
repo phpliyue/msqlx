@@ -78,6 +78,7 @@ class RoomManageController extends Controller
                         $res[count($data)]['room'] = $i < 10 ? $i : $i;
                         $res[count($data)]['bed'] = $j < 10 ? $j : $j;
                         $res[count($data)]['num'] = $res[count($data)]['floor'].$res[count($data)]['room'].$res[count($data)]['bed'];
+                        $res[count($data)]['sex'] = $room_info->sex;
                         array_push($data,$res[count($data)]);
                     }
                 }
@@ -157,16 +158,14 @@ class RoomManageController extends Controller
         $parts = DB::table('dorm_addroom')->where(['admin'=>$data->admin,'dorm_name'=>$data->dorm_name,'floor'=>$data->floor])->select('room_start','room_end','sex','part')->get();
         $data->part = null;
         $data->sex = null;
-        $part = [];
         foreach($parts as $v){
             if(in_array($data->room,[$v->room_start,$v->room_end])){
                 $data->part = $v->part;
                 $data->sex = $v->sex;
-                $part = (array)$v;
             }
         }
-        $getAdjust = DB::table('dorm_room')->where(['admin'=>$admin,'status'=>0,'sex'=>$part['sex']])->get();
-        return view('dorm.getBedInfo',['data'=>$data]);
+        $getAdjust = DB::table('dorm_room')->where(['admin'=>$admin,'status'=>0,'sex'=>$data->sex])->get();
+        return view('dorm.getBedInfo',['data'=>$data,'adjust'=>$getAdjust]);
     }
 
     //添加宿舍页面
@@ -203,6 +202,31 @@ class RoomManageController extends Controller
         return view('dorm.updateRoom',['data'=>$data]);
     }
 
+    //修改员工信息
+    public function edituser(Request $request){
+        $arr['id'] = $request->get('id');
+        $arr['name'] = $request->get('name');
+        $arr['phone'] = $request->get('phone');
+        $arr['card'] = $request->get('card');
+        $arr['admin'] = session('dorm_account');
+        $uid = DB::table('dorm_room')->where(['id'=>$arr['id'],'admin'=>$arr['admin']])->value('uid');
+        if(empty($uid)){
+            return json_encode(['code'=>200,'info'=>'该房间未入住！']);
+        }else{
+            //先判断该用户信息是否存在
+            $res = DB::table('dorm_user')->where(['uid'=>$uid])->update([
+                'name' => $arr['name'],
+                'phone' => $arr['phone'],
+                'card' => $arr['card']
+            ]);
+            if ($res !== false) {
+                return json_encode(['code' => 200, 'info' => '修改成功！']);
+            } else {
+                return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
+            }
+        }
+    }
+
     //员工入住
     public function roomIn(Request $request)
     {
@@ -235,7 +259,7 @@ class RoomManageController extends Controller
                 $info = DB::table('dorm_room')->where(['admin'=>$arr['admin'],'uid'=>$uid])->first();
                 if(empty($info)){
                     DB::beginTransaction();
-                    $res1 = DB::table('dorm_user')->where('card', $arr['card'])->update(['in_time' => date('Y-m-d H:i:s', time())]);
+                    $res1 = DB::table('dorm_user')->where('card', $arr['card'])->update(['in_time' => date('Y-m-d', time()),'out_time' => null]);
                     $res2 = DB::table('dorm_room')->where('id', $arr['id'])->update(['uid' => $uid,'sex' => $arr['sex'], 'status' => 1]);
                     if($res1 == false || $res2 == false){
                         DB::rollBack();
@@ -263,12 +287,37 @@ class RoomManageController extends Controller
             DB::beginTransaction();
             $res1 = DB::table('dorm_room')->where(['id'=>$arr['id']])->update(['uid'=>null,'status'=>0]);
             $res2 = DB::table('dorm_user')->where('uid', $info->uid)->update(['out_time' => date('Y-m-d', time())]);
-            if($res1 == false || $res2 == false){
-                DB::rollBack();
-                return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
-            }else{
+            if($res1 && $res2){
                 DB::commit();
                 return json_encode(['code'=>100,'info'=>'退房成功！']);
+            }else{
+                DB::rollBack();
+                return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
+            }
+        }
+    }
+
+    //员工调整房间
+    public function adjustRoom(Request $request)
+    {
+        $arr['old_id'] = $request->get('old_id');//原住房间id
+        $arr['id'] = $request->get('id');//调整房间id
+        //先判断该房间是否入住
+        $info = DB::table('dorm_room')->where('id', $arr['id'])->first();
+        $uid = DB::table('dorm_room')->where('id', $arr['old_id'])->value('uid');
+        if ($info->status == 1) {
+            return json_encode(['code' => 200, 'info' => '该房间已入住！']);
+        } else {
+            DB::beginTransaction();
+            $res0 = DB::table('dorm_room')->where(['id'=>$arr['old_id']])->update(['uid'=>null,'status'=>0]);
+            $res1 = DB::table('dorm_room')->where(['id'=>$arr['id']])->update(['uid'=>$uid,'status'=>1]);
+            $res2 = DB::table('dorm_user')->where('uid', $uid)->update(['in_time' => date('Y-m-d', time()),'out_time' => null]);
+            if($res0 && $res1 && $res2 == false){
+                DB::commit();
+                return json_encode(['code'=>100,'info'=>'房间调换成功！']);
+            }else{
+                DB::rollBack();
+                return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
             }
         }
     }

@@ -23,8 +23,8 @@
                                     {{--<th>楼层</th>--}}
                                     <th>房间号</th>
                                     {{--<th>床号</th>--}}
-                                    <th>姓名</th>
                                     <th>性别</th>
+                                    <th>姓名</th>
                                     <th>手机号</th>
                                     {{--<th>身份证</th>--}}
                                     <th>入住时间</th>
@@ -40,8 +40,8 @@
                                         {{--<td>{{$room->floor}}</td>--}}
                                         {{--<td >{{$room->room}}</td>--}}
                                         <td>{{$room->floor}}楼{{$room->room}}房{{$room->bed}}床</td>
-                                        <td>@if($room->status == 1){{$room->user_info->name}}@endif</td>
                                         <td>{{$room->sex}}</td>
+                                        <td>@if($room->status == 1){{$room->user_info->name}}@endif</td>
                                         <td>@if($room->status == 1){{$room->user_info->phone}}@endif</td>
                                         {{--<td>@if($room->status == 1){{$room->user_info->card}}@endif</td>--}}
                                         <td>@if($room->status == 1){{$room->user_info->in_time}}@endif</td>
