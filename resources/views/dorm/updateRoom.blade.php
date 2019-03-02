@@ -131,9 +131,23 @@
                     }else{
                         var head_img = user_info[i]['wx_head_img'];
                     }
-                    str += '<div class="col-lg-4">' +
-                        '<div class="contact-box">' +
-                        '<img src="'+head_img+'" style="width:100%;heigth:100px;">' +
+                    str += '<div class="col-lg-6">' +
+                        '<div class="file">' +
+                        '<span class="corner"></span>' +
+                        '<div class="image">' +
+                        '<img alt="image" class="img-responsive" src="'+head_img+'" style="width:100%;height:100%">' +
+                        '</div>' +
+                        '<div class="file-name">';
+                    if(user_info[i]['name'] == null || user_info[i]['name'] == ''){
+                        str += '暂未入住';
+                    }else{
+                        str += '姓名: ' +user_info[i]['name']+
+                        '<br>' +
+                        '电话: ' +user_info[i]['phone']+
+                        '<br>' +
+                        '入住时间: <small>'+user_info[i]['in_time']+'</small>';
+                    }
+                        str += '</div>' +
                         '</div>' +
                         '</div>';
                 }

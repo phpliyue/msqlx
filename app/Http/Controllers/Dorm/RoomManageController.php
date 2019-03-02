@@ -181,9 +181,9 @@ class RoomManageController extends Controller
         $data = DB::table('dorm_addroom')->where('id',$id)->first();
         $room_info = DB::table('dorm_room')
             ->leftJoin('dorm_user','dorm_room.uid', '=', 'dorm_user.uid')
-            ->select('dorm_user.uid','room','status','wx_head_img','name','phone','in_time')
-            ->where(['dorm_room.admin'=>session('dorm_account')])
-            ->orderBy('room')
+            ->select('dorm_user.uid','room','bed','status','wx_head_img','name','phone','card','in_time')
+            ->where(['addroom_id'=>$id,'dorm_room.admin'=>session('dorm_account')])
+            ->orderBy('dorm_room.id', 'ASC')
             ->get();
         $room = [];
         foreach($room_info as $k=>$v){
