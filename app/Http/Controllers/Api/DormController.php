@@ -77,7 +77,15 @@ class DormController extends Controller
                 'wx_openid' => $wx_openid,
                 'login_time' => $login_time
             ]);
-            return 'customer add';
+            return json_encode(['code' => 100, 'info' => '初次登入,已记录']);
+        }else{
+            $uid = DB::table('dorm_user')->where('wx_openid',$wx_openid)->value('uid');
+            $result = DB::table('dorm_room')->where('uid',$uid)->get();
+            if ($result) {
+                return json_encode(['code' => 200, 'info' => '已入住,返回基本信息']);
+            }else{
+                return json_encode(['code' => 100, 'info' => '已登入,未入住']);
+            }
         }
 
     }
