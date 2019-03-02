@@ -16,22 +16,36 @@ class DormController extends Controller
         $arr['phone'] = $request->get('phone');
         $arr['card'] = $request->get('card');
         $arr['sex'] = $request->get('sex');
+        if($arr['openid'] == '' || $arr['admin'] ==  '' || $arr['name'] == '' || $arr['phone'] == '' || $arr['card'] == '' || $arr['sex'] == ''){
+            return json_encode(['code'=>200,'info'=>'参数非法！']);
+        }
         //先判断该用户是否入驻
         $uid = DB::table('dorm_user')->where(['card'=>$arr['card'],'admin'=>$arr['admin']])->value('uid');
         if(empty($uid)){
             $uid = DB::table('dorm_user')->where(['wx_openid'=>$arr['openid'],'admin'=>$arr['admin']])->value('uid');
-            DB::table('dorm_user')->where('wx_openid', $arr['openid'])->update([
-                'name' => $arr['name'],
-                'phone' => $arr['phone'],
-                'card' => $arr['card'],
-                'sex' => $arr['sex'],
-                'admin' => $arr['admin'],
-            ]);
+            if(empty($uid)){
+                $uid = DB::table('dorm_user')->insertGetId([
+                    'wx_openid' => $arr['openid'],
+                    'name' => $arr['name'],
+                    'phone' => $arr['phone'],
+                    'card' => $arr['card'],
+                    'sex' => $arr['sex'],
+                    'admin' => $arr['admin']
+                ]);
+            }else{
+                DB::table('dorm_user')->where('wx_openid', $arr['openid'])->update([
+                    'name' => $arr['name'],
+                    'phone' => $arr['phone'],
+                    'card' => $arr['card'],
+                    'sex' => $arr['sex'],
+                    'admin' => $arr['admin'],
+                ]);
+            }
         }
         $info = DB::table('dorm_room')->where(['admin'=>$arr['admin'],'uid'=>$uid])->first();
         if (empty($info)) {
             //查询该性别是否有空位的房间
-            $room = DB::table('dorm_room')->select('id', 'dorm_name', 'floor', 'room', 'bed')->where(['admin' => $arr['admin'], 'sex' => $arr['sex'], 'status' => 0])->orderBy('num', 'asc')->first();
+            $room = DB::table('dorm_room')->select('id', 'dorm_name', 'floor', 'room', 'bed')->where(['admin' => $arr['admin'], 'sex' => $arr['sex'], 'status' => 0])->orderBy('room', 'ASC')->orderBy('bed','ASC')->first();
             //若没有该性别的人员入住，则随机分配一间空房间
             if (empty($room)) {
                 return json_encode(['code' => 100, 'info' => '宿舍已满，暂无空位置！']);
