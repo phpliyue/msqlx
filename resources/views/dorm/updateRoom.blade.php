@@ -119,6 +119,29 @@
     <script src="{{URL::asset('js/demo/peity-demo.js')}}"></script>
     <script>
         $(document).ready(function () {
+            $('.huodong').DataTable({
+                pageLength: 9,
+                responsive: true,
+                bLengthChange: false,
+                info: false,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    {extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+            });
+
             var room_info = JSON.parse('<?php echo json_encode($data->room);?>');
             // 提交
             $('.J_user_info').click(function () {

@@ -164,7 +164,7 @@
                     bed_num = $('.J_floor_line').eq(i).find('.J_bed_num').val();//床位数
                     sex = $('.J_floor_line').eq(i).find(".J_sex option:selected").val();//性别
                     part = $('.J_floor_line').eq(i).find('.J_part option:selected').val();//部门
-                    if(floor == "" || room_start == "" || room_end == "" || bed_num == "" || sex == "" || part == ""){
+                    if(floor == "" || room_start == "" || room_end == "" || bed_num == "" || sex == ""){
                         swal('请输入宿舍信息！');
                         return false;
                     }
