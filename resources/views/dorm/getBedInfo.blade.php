@@ -4,7 +4,7 @@
     <link href="{{URL::asset('css/plugins/chosen/bootstrap-chosen.css')}}" rel="stylesheet">
 @show
 @section('title','宿舍管理-床位信息')
-@section('nav2','active')
+@section('nav3','active')
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -43,15 +43,15 @@
                                    name="start" value="{{$data->floor}}楼{{$data->room}}房{{$data->bed}}床" disabled/>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">部门</label>
-                            <div class="col-lg-10">
-                                <select class="form-control m-b J_part" name="part" disabled>
-                                    <option @if($data->part == '生产部') selected @endif>生产部</option>
-                                    <option @if($data->part == '包装部') selected @endif>包装部</option>
-                                </select>
-                            </div>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<label class="col-lg-2 control-label">部门</label>--}}
+                            {{--<div class="col-lg-10">--}}
+                                {{--<select class="form-control m-b J_part" name="part" disabled>--}}
+                                    {{--<option @if($data->part == '生产部') selected @endif>生产部</option>--}}
+                                    {{--<option @if($data->part == '包装部') selected @endif>包装部</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="form-group">
                             <label class="col-lg-2 control-label">性别</label>
                             <div class="col-lg-10">

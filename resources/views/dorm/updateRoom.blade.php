@@ -39,13 +39,13 @@
                                    oninput='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")' value="{{$data->bed_num}}" disabled>
 
                         </div>
-                        <div class="form-group">
-                            <label class="font-noraml">部门</label>
-                            <select class="form-control m-b J_part" name="part" disabled>
-                                <option @if($data->part == '生产部') selected @endif>生产部</option>
-                                <option @if($data->part == '包装部') selected @endif>包装部</option>
-                            </select>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<label class="font-noraml">部门</label>--}}
+                            {{--<select class="form-control m-b J_part" name="part" disabled>--}}
+                                {{--<option @if($data->part == '生产部') selected @endif>生产部</option>--}}
+                                {{--<option @if($data->part == '包装部') selected @endif>包装部</option>--}}
+                            {{--</select>--}}
+                        {{--</div>--}}
                         <div class="form-group">
                             <label class="font-noraml">性别</label>
                             <select class="form-control m-b" name="sex" disabled>

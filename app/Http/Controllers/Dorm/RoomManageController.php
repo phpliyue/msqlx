@@ -251,6 +251,14 @@ class RoomManageController extends Controller
                     'sex' => $arr['sex'],
                     'admin' => $arr['admin']
                 ]);
+            }else{
+                DB::table('dorm_user')->where('uid',$uid)->update([
+                    'name' => $arr['name'],
+                    'phone' => $arr['phone'],
+                    'card' => $arr['card'],
+                    'sex' => $arr['sex'],
+                    'admin' => $arr['admin']
+                ]);
             }
             if (empty($uid)) {
                 return json_encode(['code' => 200, 'info' => '服务器繁忙！']);
@@ -261,12 +269,12 @@ class RoomManageController extends Controller
                     DB::beginTransaction();
                     $res1 = DB::table('dorm_user')->where('card', $arr['card'])->update(['in_time' => date('Y-m-d', time()),'out_time' => null]);
                     $res2 = DB::table('dorm_room')->where('id', $arr['id'])->update(['uid' => $uid,'sex' => $arr['sex'], 'status' => 1]);
-                    if($res1 == false || $res2 == false){
-                        DB::rollBack();
-                        return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
-                    }else{
+                    if($res1 || $res2){
                         DB::commit();
                         return json_encode(['code'=>100,'info'=>'入住成功！']);
+                    }else{
+                        DB::rollBack();
+                        return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
                     }
                 }else{
                     return json_encode(['code'=>200,'info'=>'该员工已入住其他房间！']);
@@ -312,7 +320,7 @@ class RoomManageController extends Controller
             $res0 = DB::table('dorm_room')->where(['id'=>$arr['old_id']])->update(['uid'=>null,'status'=>0]);
             $res1 = DB::table('dorm_room')->where(['id'=>$arr['id']])->update(['uid'=>$uid,'status'=>1]);
             $res2 = DB::table('dorm_user')->where('uid', $uid)->update(['in_time' => date('Y-m-d', time()),'out_time' => null]);
-            if($res0 && $res1 && $res2 == false){
+            if($res0 && $res1 && $res2){
                 DB::commit();
                 return json_encode(['code'=>100,'info'=>'房间调换成功！']);
             }else{
