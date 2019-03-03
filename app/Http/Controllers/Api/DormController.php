@@ -21,7 +21,7 @@ class DormController extends Controller
         }
         //先判断该用户是否入驻
         $userinfo = DB::table('dorm_room')->where(['card'=>$arr['card'],'admin'=>$arr['admin']])->first();
-        $uid = DB::table('dorm_user')->where(['wx_openid'=>$arr['openid'],'admin'=>$arr['admin']])->value('uid');
+        $uid = DB::table('dorm_user')->where(['wx_openid'=>$arr['openid']])->value('uid');
         if(empty($userinfo)){
             //该用户未入住，将用户信息存入user表，并更新room表
             $room = DB::table('dorm_room')->select('id', 'dorm_name', 'floor', 'room', 'bed')->where(['admin' => $arr['admin'], 'sex' => $arr['sex'], 'status' => 0])->orderBy('room', 'ASC')->orderBy('bed','ASC')->first();
@@ -53,10 +53,11 @@ class DormController extends Controller
             if(empty($userinfo->uid)){
                 DB::beginTransaction();
                 //若用户信息存在，用户已入住，判断该用户信息是否与微信用户信息是一个
-                $res1 = DB::table('dorm_user')->where(['wx_openid'=>$arr['openid'],'admin'=>$arr['admin']])->update([
+                $res1 = DB::table('dorm_user')->where(['wx_openid'=>$arr['openid']])->update([
                     'name' => $arr['name'],
                     'phone' => $arr['phone'],
                     'card' => $arr['card'],
+                    'admin'=>$arr['admin'],
                     'in_time' => $userinfo->in_time,
                     'status' => 1
                 ]);
