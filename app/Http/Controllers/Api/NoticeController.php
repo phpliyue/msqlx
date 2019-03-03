@@ -18,14 +18,15 @@ class NoticeController extends Controller
             $admin = DB::table('dorm_room')->where('uid',$info->uid)->value('admin');
         }
         $data = DB::table('dorm_notice')->where(['admin'=>$admin,'status'=>0])->orderby('created_at','desc')->get();
-        if(!empty($data)){
+        if(count($data)){
             foreach($data as $k=>$v){
                 $data[$k]->content = $this->filterSpecail(strip_tags($v->content));
             }
         }else{
             $data = '您还没有入住,无法查看相关公告!';
+            return json_encode(['code'=>100,'info'=>$data]);
         }
-        return json_encode(['code'=>100,'info'=>'成功！','data'=>$data]);
+        return json_encode(['code'=>200,'info'=>'成功！','data'=>$data]);
     }
 
     //公告详情
