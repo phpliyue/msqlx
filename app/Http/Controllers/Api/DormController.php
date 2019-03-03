@@ -273,9 +273,10 @@ class DormController extends Controller
     public function getMyXuZi(Request $request)
     {
         $openid = $request->get('openid');
-        $admin = DB::table('dorm_user')->where('openid',$openid)->value('admin');
-        if(!empty($admin)){
-            $content = DB::table('dorm_entrynotice')->where('admin',$admin)->value('content');
+        $admin = DB::table('dorm_user')->where('wx_openid',$openid)->first();
+        $result = DB::table('dorm_room')->where('admin',$admin->admin)->where('card',$admin->card)->first();
+        if(!empty($result)){
+            $content = DB::table('dorm_entrynotice')->where('admin',$admin->admin)->value('content');
             return json_encode(['code'=>200,'info'=>'成功！','data'=>$content]);
         }else{
             $content = '您还没有入住,无法查看相关入住须知!';
