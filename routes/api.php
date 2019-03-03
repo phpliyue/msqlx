@@ -46,6 +46,7 @@ Route::post('dorm_myrepair', 'Api\DormController@myrepair');//我的报修
 Route::post('dorm_distinguishCard', 'Api\DormController@distinguishCard');//身份证识别
 Route::get('dorm_getAdvert', 'Api\DormController@getAdvert');//获取首页广告
 Route::get('dorm_getAdContent', 'Api\DormController@getAdContent');//获取广告详情
+Route::get('dorm_getXuZi','Api\DormController@getMyXuZi');//获取我的页面须知
 
 /*
  * 雪球社区

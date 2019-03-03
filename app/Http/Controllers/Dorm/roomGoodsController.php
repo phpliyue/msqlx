@@ -12,7 +12,6 @@ class RoomGoodsController extends Controller
     public function index()
     {
         $admin = session('dorm_account');
-        // $data = DB::table('dorm_adjustroom')->where('admin',$admin)->orderby('created_at','desc')->get();
         $data = DB::table('dorm_goods')->where('admin',$admin)->get();
         return view('dorm.roomGoods',['data'=>$data]);
     }
