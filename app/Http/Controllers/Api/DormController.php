@@ -20,43 +20,28 @@ class DormController extends Controller
             return json_encode(['code'=>200,'info'=>'参数非法！']);
         }
         //先判断该用户是否入驻
-        $uid = DB::table('dorm_user')->where(['card'=>$arr['card'],'admin'=>$arr['admin']])->value('uid');
-        if(empty($uid)){
-            $uid = DB::table('dorm_user')->where(['wx_openid'=>$arr['openid'],'admin'=>$arr['admin']])->value('uid');
-            if(empty($uid)){
-                $uid = DB::table('dorm_user')->insertGetId([
-                    'wx_openid' => $arr['openid'],
-                    'name' => $arr['name'],
-                    'phone' => $arr['phone'],
-                    'card' => $arr['card'],
-                    'sex' => $arr['sex'],
-                    'admin' => $arr['admin']
-                ]);
+        $userinfo = DB::table('dorm_room')->where(['card'=>$arr['card'],'admin'=>$arr['admin']])->first();
+        $uid = DB::table('dorm_user')->where(['wx_openid'=>$arr['openid'],'admin'=>$arr['admin']])->value('uid');
+        if(empty($userinfo)){
+            //该用户未入住，将用户信息存入user表，并更新room表
+            $room = DB::table('dorm_room')->select('id', 'dorm_name', 'floor', 'room', 'bed')->where(['admin' => $arr['admin'], 'sex' => $arr['sex'], 'status' => 0])->orderBy('room', 'ASC')->orderBy('bed','ASC')->first();
+            if(empty($room)){
+                return json_encode(['code' => 200, 'info' => '宿舍已满，暂无空位置！']);
             }else{
-                DB::table('dorm_user')->where('wx_openid', $arr['openid'])->update([
+                DB::beginTransaction();
+                $in_time = date('Y-m-d',time());
+                $res1 = DB::table('dorm_user')->where('wx_openid', $arr['openid'])->update([
                     'name' => $arr['name'],
                     'phone' => $arr['phone'],
                     'card' => $arr['card'],
                     'sex' => $arr['sex'],
                     'admin' => $arr['admin'],
+                    'in_time' => $in_time,
+                    'out_time' => null,
+                    'status' => 1
                 ]);
-            }
-        }
-        $info = DB::table('dorm_room')->where(['admin'=>$arr['admin'],'uid'=>$uid])->first();
-        if (empty($info)) {
-            //查询该性别是否有空位的房间
-            $room = DB::table('dorm_room')->select('id', 'dorm_name', 'floor', 'room', 'bed')->where(['admin' => $arr['admin'], 'sex' => $arr['sex'], 'status' => 0])->orderBy('room', 'ASC')->orderBy('bed','ASC')->first();
-            //若没有该性别的人员入住，则随机分配一间空房间
-            if (empty($room)) {
-                return json_encode(['code' => 100, 'info' => '宿舍已满，暂无空位置！']);
-            } else {
-                DB::beginTransaction();
-                $res = DB::table('dorm_room')->where('id', $room->id)->update(['uid' => $uid, 'sex' => $arr['sex'], 'status' => 1]);
-                $res1 = DB::table('dorm_user')->where('uid', $uid)->update([
-                    'in_time' => date('Y-m-d', time()),
-                    'out_time' => null
-                ]);
-                if($res && $res1){
+                $res2 = DB::table('dorm_room')->where('id', $room->id)->update(['uid'=>$uid,'name'=>$arr['name'], 'card' => $arr['card'], 'phone'=>$arr['phone'], 'in_time'=>$in_time, 'status' => 1]);
+                if($res1 && $res2){
                     DB::commit();
                     return json_encode(['code'=>100,'info'=>'入住成功！','data'=>$room]);
                 }else{
@@ -64,8 +49,30 @@ class DormController extends Controller
                     return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
                 }
             }
-        } else {
-            return json_encode(['code' => 100, 'info' => '该员工已入住！']);
+        }else{
+            if(empty($userinfo->uid)){
+                DB::beginTransaction();
+                //若用户信息存在，用户已入住，判断该用户信息是否与微信用户信息是一个
+                $res1 = DB::table('dorm_user')->where(['wx_openid'=>$arr['openid'],'admin'=>$arr['admin']])->update([
+                    'name' => $arr['name'],
+                    'phone' => $arr['phone'],
+                    'card' => $arr['card'],
+                    'in_time' => $userinfo->in_time,
+                    'status' => 1
+                ]);
+                $res2 = DB::table('dorm_room')->where(['card'=>$arr['card'],'admin'=>$arr['admin']])->update([
+                    'uid' => $uid
+                ]);
+                if($res1 && $res2){
+                    DB::commit();
+                    return json_encode(['code'=>100,'info'=>'该员工已入住！','data'=>$userinfo]);
+                }else{
+                    DB::rollBack();
+                    return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
+                }
+            }else{
+                return json_encode(['code'=>100,'info'=>'该员工已入住！','data'=>$userinfo]);
+            }
         }
     }
 
@@ -108,18 +115,25 @@ class DormController extends Controller
         $openid = $request->get('openid');
         $admin = $request->get('admin');
         //先判断该用户是否入驻
-//        $info = (object)['uid'=>13];
         $info = DB::table('dorm_user')->where('wx_openid', $openid)->first();
         if (!empty($info)) {
             //查询该员工是否入住
             $room = DB::table('dorm_room')->where(['admin' => $admin, 'uid' => $info->uid, 'status' => 1])->first();
             if (!empty($room)) {
-                $res = DB::table('dorm_room')->where('id', $room->id)->update(['uid' => null, 'status' => 0]);
-                if ($res) {
-                    DB::table('dorm_user')->where('wx_openid', $openid)->update(['out_time' => date('Y-m-d', time())]);
-                    return json_encode(['code' => 200, 'info' => '退房成功！']);
-                } else {
-                    return json_encode(['code' => 100, 'info' => '服务器繁忙！']);
+                $res1 = true; $res2 = true;
+                if(!empty($room->arz_uid)){
+                    $res1 = DB::table('dorm_user_arz')->where('id', $room->arz_uid)->update(['in_time'=>null,'out_time' => date('Y-m-d', time()),'status'=>0]);
+                }
+                if(!empty($room->uid)){
+                    $res2 = DB::table('dorm_user')->where('uid', $room->uid)->update(['in_time'=>null,'out_time' => date('Y-m-d', time()),'status'=>0]);
+                }
+                $res3 = DB::table('dorm_room')->where(['id'=>$room->id])->update(['uid'=>null,'arz_uid'=>null,'name'=>null,'phone'=>null,'card'=>null,'in_time'=>null,'status'=>0]);
+                if($res1 && $res2 && $res3){
+                    DB::commit();
+                    return json_encode(['code'=>100,'info'=>'退房成功！']);
+                }else{
+                    DB::rollBack();
+                    return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
                 }
             }  else {
                 return json_encode(['code' => 100, 'info' => '该员工未入住！']);

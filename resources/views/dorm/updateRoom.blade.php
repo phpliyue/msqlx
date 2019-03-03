@@ -80,7 +80,7 @@
                                 <tbody>
                                 @foreach($data->room as $key=>$val)
                                     <tr>
-                                        <td>{{$key}}房间</td>
+                                        <td>{{$key}}</td>
                                         <td><span class="pie">{{$val['people_in']}},{{$val['people_notin']}}</span></td>
                                         <td style="text-align: center;">
                                             <button class="btn btn-primary btn-xs J_user_info" data-toggle="modal" data-target="#myModal" data-id="{{$key}}" style="margin:0px;padding:0px 5px;border-top: 0;">人员信息</button>
