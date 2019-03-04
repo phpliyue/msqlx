@@ -104,6 +104,16 @@
 @show
 @section('js')
     <script src='{{URL::asset('web/js/app.min.js')}}'></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?cce6451dfa3cbde087633b85cdd3539c";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
 @show
 
 </body>
