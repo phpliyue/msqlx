@@ -53,7 +53,7 @@
         <div class="container">
             <div class="expanded__inner">
                 <div class="expanded__media">
-                    <img src="{{URL::asset('web/img/undraw_browser.svg')}}" class="expanded__image">
+                    <img src="{{URL::asset('web/img/internet.svg')}}" class="expanded__image">
                 </div>
                 <div class="expanded__content">
                     <h2 class="expanded__title">互联网服务</h2>
@@ -66,7 +66,7 @@
         <div class="container">
             <div class="expanded__inner">
                 <div class="expanded__media">
-                    <img src="{{URL::asset('web/img/undraw_frameworks.svg')}}" class="expanded__image">
+                    <img src="{{URL::asset('web/img/snowball.svg')}}" class="expanded__image">
                 </div>
                 <div class="expanded__content">
                     <h2 class="expanded__title">雪球社区</h2>
@@ -79,7 +79,7 @@
         <div class="container">
             <div class="expanded__inner">
                 <div class="expanded__media">
-                    <img src="{{URL::asset('web/img/together.svg')}}" class="expanded__image">
+                    <img src="{{URL::asset('web/img/business.svg')}}" class="expanded__image">
                 </div>
                 <div class="expanded__content">
                     <h2 class="expanded__title">商企服务</h2>

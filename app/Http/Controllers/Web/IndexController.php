@@ -19,4 +19,18 @@ class IndexController extends Controller
     {
         return view('web.new');
     }
+    /*
+     * 小宿舍
+     * */
+    public function xss()
+    {
+        return view('web.xss');
+    }
+    /*
+     * 小宿舍注册页面
+     * */
+    public function xssR()
+    {
+        return view('web.xssR');
+    }
 }

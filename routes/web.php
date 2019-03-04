@@ -10,8 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*
+ * 官网路由
+ * */
 Route::get('/','Web\IndexController@index');
-Route::get('/new','Web\IndexController@new');
+Route::get('/web_new','Web\IndexController@new');
+Route::get('/web_xss','Web\IndexController@xss');
+Route::get('/web_xssR','Web\IndexController@xssR');
 /*
  *
  * 后台
@@ -150,16 +155,6 @@ Route::group(['middleware'=>'signInAuth'],function(){
 /*
  * 宿舍管理
  */
-//Route::get('/dorm_index','Dorm\IndexController@index');
-//Route::post('/dorm_login','Dorm\IndexController@login');
-//Route::any('/dorm_register','Dorm\IndexController@register');
-//Route::any('/dorm_logout','Dorm\IndexController@logout');
-//Route::group(['middleware'=>'dormAuth'],function(){
-//    Route::get('/dorm_home','Dorm\HomeController@index');
-//    Route::get('/dorm_roomManage','Dorm\RoomManageController@index');
-//    Route::post('/dorm_getRoomInfo','Dorm\RoomManageController@getRoomInfo');
-//    Route::get('/dorm_getRooms','Dorm\RoomManageController@getRooms');
-//});
 Route::get('/dorm_index','Dorm\IndexController@index');
 Route::post('/dorm_login','Dorm\IndexController@login');
 Route::any('/dorm_register','Dorm\IndexController@register');
@@ -211,6 +206,3 @@ Route::group(['middleware'=>'ShopAuth'],function(){
     Route::any('/shop_addcate/{id?}','Shop\CateController@addcate');//新增类目
 });
 
-Route::get('error',function(){
-    abort(404, 'Unauthorized action.');
-});

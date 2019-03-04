@@ -11,6 +11,10 @@ class IndexController extends Controller
     {
         return view('dorm.index');
     }
+    public function iview()
+    {
+        return view('dorm_login');
+    }
     //登录
     public function login(Request $request)
     {
