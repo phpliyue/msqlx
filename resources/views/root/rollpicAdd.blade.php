@@ -139,13 +139,7 @@
     <script src="{{URL::asset('js/plugins/dataTables/datatables.min.js')}}"></script>
     <script>
         $(document).ready(function () {
-            $('.shuchai').DataTable({
-                pageLength: 5,
-                responsive: true,
-                bLengthChange: false,
-                info:false,
-                dom: '<"html5buttons"B>lTfgitp',
-            });
+
             $('.huodong').DataTable({
                 pageLength: 5,
                 responsive: true,
@@ -215,6 +209,13 @@
                         }
                     }
                 });
+        });
+        $('.shuchai').DataTable({
+            pageLength: 5,
+            responsive: true,
+            bLengthChange: false,
+            info:false,
+            dom: '<"html5buttons"B>lTfgitp',
         });
         $('.footable').footable();
     </script>
