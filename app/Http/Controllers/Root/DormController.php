@@ -46,7 +46,8 @@ class DormController extends Controller
         } else {
             $id = $request->id;
             $data = DB::table('dorm_rollpic')->where('id', $id)->first();
-            return view('root.rollpicAdd', array('user' => Auth::user(), 'data' => $data));
+            $folder = DB::table('folder')->get();
+            return view('root.rollpicAdd', array('user' => Auth::user(), 'data' => $data,'folder'=>$folder));
         }
     }
 

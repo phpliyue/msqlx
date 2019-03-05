@@ -23,7 +23,6 @@ class RootController extends Controller
     public function folders()
     {
         $data = DB::table('folder')->get();
-//        dd($data);
         return view('root.folder', array('user' => Auth::user(),'data'=>$data));
     }
     /*

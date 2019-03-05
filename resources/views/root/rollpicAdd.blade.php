@@ -64,6 +64,73 @@
 
 @endsection
 
+@section('folder')
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover shuchai">
+                <thead>
+                <tr>
+                    <th>素材</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($folder as $key)
+                    <tr>
+                        <td>
+                            文件名:{{$key->filesname}}<br>
+                            备注:{{$key->remark}}
+                            @switch($key->type)
+                                @case('image')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="image">
+                                        <img alt="image" class="img-responsive"
+                                             src="http://www.msqlx.com{{$key->path}}">
+                                    </div>
+                                </a>
+                                @break
+                                @case('video')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-film"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('document')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('music')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-music"></i>
+                                    </div>
+                                </a>
+                                @break
+                                @case('icon')
+                                <a href="http://www.msqlx.com{{$key->path}}">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <img alt="image" class="img-responsive"
+                                             src="http://www.msqlx.com{{$key->path}}">
+                                    </div>
+                                </a>
+                                @break
+                            @endswitch
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection
 @section('js')
     @parent
     <script src="{{URL::asset('js/plugins/footable/footable.all.min.js')}}"></script>
@@ -72,6 +139,13 @@
     <script src="{{URL::asset('js/plugins/dataTables/datatables.min.js')}}"></script>
     <script>
         $(document).ready(function () {
+            $('.shuchai').DataTable({
+                pageLength: 5,
+                responsive: true,
+                bLengthChange: false,
+                info:false,
+                dom: '<"html5buttons"B>lTfgitp',
+            });
             $('.huodong').DataTable({
                 pageLength: 5,
                 responsive: true,
@@ -112,18 +186,19 @@
                 $('.J_img').show();
                 $('.urlView').attr("src", urlValue)
             });
-            $('.summernote').summernote({
-                height: '25em',
-                focus: true,
-                callbacks: {
-                    onImageUpload: function (files) {
-                        sendFile(files[0]);
-                    },
-                    onChange: function (contents) {
-                        $('.cont').val(contents);
-                    }
-                }
-            });
+            $('.summernote').summernote('fontName', 'Arial');
+            // $('.summernote').summernote({
+            //     height: '25em',
+            //     focus: true,
+            //     callbacks: {
+            //         onImageUpload: function (files) {
+            //             sendFile(files[0]);
+            //         },
+            //         onChange: function (contents) {
+            //             $('.cont').val(contents);
+            //         }
+            //     }
+            // });
             var content = $('.fuCon').val();
             $('.summernote').summernote('code', content);
             $('.summernote').summernote(
