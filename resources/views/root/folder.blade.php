@@ -108,6 +108,7 @@
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-9">
             <h2>素材管理</h2>
+            {{DIRECTORY_SEPARATOR}}
             <ol class="breadcrumb">
                 <li>
                     <a href="/root">管理员</a>
