@@ -72,10 +72,6 @@
     <script src="{{URL::asset('js/plugins/dataTables/datatables.min.js')}}"></script>
     <script>
         $(document).ready(function () {
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 87e8608... liyue
             $('.huodong').DataTable({
                 pageLength: 5,
                 responsive: true,
