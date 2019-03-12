@@ -11,7 +11,16 @@
             background: -webkit-gradient(linear, left top, right top, from(#ff7e77), to(#36fe29));
             background: linear-gradient(90deg, #ff7e77, #1efe67)
         }
+        .navbar {
+            position: fixed;
+            z-index: 100;
+            width: 100%;
+            background-color: #EA6544;
+            -webkit-transition: .7s;
+            transition: .7s
+        }
     </style>
+
 @endsection
 @section('title','码上互联')
 @section('header')
@@ -22,9 +31,9 @@
                 <a href="/" class="navbar__logo">码上互联</a>
                 <nav class="navbar__menu">
                     <ul>
-                        <li><a href="/web_new">关于</a></li>
-                        <li><a href="/web_xss">小宿舍</a></li>
-                        <li><a href="/login">登入</a></li>
+                        {{--<li><a href="/web_new">关于</a></li>--}}
+                        {{--<li><a href="/web_xss">小宿舍</a></li>--}}
+                        {{--<li><a href="/login">登入</a></li>--}}
                     </ul>
                 </nav>
                 <div class="navbar__menu-mob"><a href="" id='toggle'>
@@ -51,7 +60,7 @@
                     {{--<form method='post' action="/example" autocompelete="new-password" role="presentation" class="form">--}}
                         <input name="email" class="fakefield">
                         <label>用户名</label>
-                        <input type="text" class="form-control" id="account" name="account" placeholder="您公司名称">
+                        <input type="text" class="form-control" id="account" name="account" placeholder="请输入正确用户名">
                         <label>密码</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" autocomplete="off">
                         <a href="/web_xssR"><button class="button button__warning">注册</button></a>　

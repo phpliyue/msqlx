@@ -709,7 +709,7 @@ select::-ms-expand {
     position: fixed;
     z-index: 100;
     width: 100%;
-    background-color: #ff3f4c;
+    background-color: #fd4756;
     -webkit-transition: .7s;
     transition: .7s
 }
@@ -916,17 +916,17 @@ select::-ms-expand {
     width: 100%;
     opacity: .96;
     z-index: 1;
-    background-color: #ff3f4c
+    background-color: #fd4756
 }
 
 .hero__overlay--gradient {
-    background: -webkit-gradient(linear, left top, right top, from(#ff3f4c), to(#4641ff));
-    background: linear-gradient(90deg, #ff3f4c, #4641ff)
+    background: -webkit-gradient(linear, left top, right top, from(#fd4756), to(#6c63ff));
+    background: linear-gradient(90deg, #fd4756, #6c63ff)
 }
 
 .hero__overlay--gradientVertical {
-    background: -webkit-gradient(linear, left top, left bottom, from(#ff3f4c), to(#4641ff));
-    background: linear-gradient(180deg, #ff3f4c, #4641ff)
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff3f4c), to(#22ffa7));
+    background: linear-gradient(180deg, #ff3f4c, #22ffa7)
 }
 
 .hero__mask {

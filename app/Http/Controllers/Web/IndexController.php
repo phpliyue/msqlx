@@ -33,4 +33,25 @@ class IndexController extends Controller
     {
         return view('web.xssR');
     }
+    /*
+     * 技术外包
+     * */
+    public function iserver()
+    {
+        return view('web.iserver');
+    }
+    /*
+     * 雪球社区
+     * */
+    public function xserver()
+    {
+        return view('web.xserver');
+    }
+    /*
+     * 商企服务
+     * */
+    public function qserver()
+    {
+        return view('web.qserver');
+    }
 }

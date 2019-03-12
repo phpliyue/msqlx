@@ -17,6 +17,9 @@ Route::get('/','Web\IndexController@index');
 Route::get('/web_new','Web\IndexController@new');
 Route::get('/web_xss','Web\IndexController@xss');
 Route::get('/web_xssR','Web\IndexController@xssR');
+Route::get('/web_iserver','Web\IndexController@iserver');
+Route::get('/web_xserver','Web\IndexController@xserver');
+Route::get('/web_qserver','Web\IndexController@qserver');
 /*
  *
  * 后台

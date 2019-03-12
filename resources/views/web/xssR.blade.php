@@ -11,6 +11,14 @@
             background: -webkit-gradient(linear, left top, right top, from(#ff7e77), to(#36fe29));
             background: linear-gradient(90deg, #ff7e77, #1efe67)
         }
+        .navbar {
+            position: fixed;
+            z-index: 100;
+            width: 100%;
+            background-color: #EA6544;
+            -webkit-transition: .7s;
+            transition: .7s
+        }
     </style>
 @endsection
 @section('title','码上互联')
@@ -22,9 +30,9 @@
                 <a href="/" class="navbar__logo">码上互联</a>
                 <nav class="navbar__menu">
                     <ul>
-                        <li><a href="/web_new">关于</a></li>
-                        <li><a href="/web_xss">小宿舍</a></li>
-                        <li><a href="/login">登入</a></li>
+                        {{--<li><a href="/web_new">关于</a></li>--}}
+                        {{--<li><a href="/web_xss">小宿舍</a></li>--}}
+                        {{--<li><a href="/login">登入</a></li>--}}
                     </ul>
                 </nav>
                 <div class="navbar__menu-mob"><a href="" id='toggle'>
