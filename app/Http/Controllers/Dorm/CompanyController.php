@@ -27,6 +27,6 @@ class CompanyController extends Controller
      * */
     public function dorm_addManagerInfo(Request $request)
     {
-        
+
     }
 }
