@@ -158,7 +158,10 @@ class RoomManageController extends Controller
         $data = DB::table('dorm_addroom')->where('id',$id)->first();
         $room_info = DB::table('dorm_room')->where(['addroom_id'=>$id,'dorm_room.admin'=>session('dorm_account')])->get();
         $room = [];
+        $uids = array_filter(array_column($room_info->toArray(),'uid'));
+        $user_head = DB::table('dorm_user')->whereIn('uid',$uids)->pluck('wx_head_img','uid');
         foreach($room_info as $k=>$v){
+            $v->wx_head_img = isset($user_head[$v->uid])?$user_head[$v->uid]:'';
             if(!isset($room[$v->room])){
                 $room[$v->room]['people_notin'] = 0;
                 $room[$v->room]['people_in'] = 0;

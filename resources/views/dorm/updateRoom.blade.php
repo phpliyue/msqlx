@@ -154,25 +154,56 @@
                     }else{
                         var head_img = user_info[i]['wx_head_img'];
                     }
-                    str += '<div class="col-lg-6">' +
-                        '<div class="file">' +
-                        '<span class="corner"></span>' +
-                        '<div class="image">' +
-                        '<img alt="image" class="img-responsive" src="'+head_img+'" style="width:100%;height:100%">' +
-                        '</div>' +
-                        '<div class="file-name">';
                     if(user_info[i]['name'] == null || user_info[i]['name'] == ''){
-                        str += '暂未入住';
-                    }else{
-                        str += '姓名: ' +user_info[i]['name']+
-                        '<br>' +
-                        '电话: ' +user_info[i]['phone']+
-                        '<br>' +
-                        '入住时间: <small>'+user_info[i]['in_time']+'</small>';
+                        user_info[i]['name'] = '';
                     }
-                        str += '</div>' +
-                        '</div>' +
-                        '</div>';
+                    // str += '<div class="col-lg-6">' +
+                    //     '<div class="file">' +
+                    //     '<span class="corner"></span>' +
+                    //     '<div class="image">' +
+                    //     '<img alt="image" class="img-responsive" src="'+head_img+'" style="width:100%;height:100%">' +
+                    //     '</div>' +
+                    //     '<div class="file-name">';
+                    // if(user_info[i]['name'] == null || user_info[i]['name'] == ''){
+                    //     str += '暂未入住';
+                    // }else{
+                    //     str += '姓名: ' +user_info[i]['name']+
+                    //     '<br>' +
+                    //     '电话: ' +user_info[i]['phone']+
+                    //     '<br>' +
+                    //     '入住时间: <small>'+user_info[i]['in_time']+'</small>';
+                    // }
+                    //     str += '</div>' +
+                    //     '</div>' +
+                    //     '</div>';
+                    str += '<div class="col-lg-6">' +
+                        '                <div class="contact-box">' +
+                        '                    <div class="col-sm-4">' +
+                        '                        <div class="text-center">' +
+                        '                            <img alt="image" class="img-circle m-t-xs img-responsive" src="'+head_img+'">' +
+                        '                            <div class="m-t-xs font-bold">'+user_info[i]['name']+'</div>' +
+                        '                        </div>' +
+                        '                    </div>' +
+                        '                    <div class="col-sm-8">';
+                    if(user_info[i]['name'] == null || user_info[i]['name'] == '') {
+                        str += '                        <h3><strong>电话</strong></h3>' +
+                            '                        <p><i class="fa fa-phone"></i>　无</p>' +
+                            '                        <h3><strong>身份证</strong></h3>' +
+                            '                        <p>无</p>' +
+                            '                        <h3><strong>床位</strong></h3>' +
+                            '                        <p>'+user_info[i]['bed']+'床</p>';
+                    }else{
+                        str += '                        <h3><strong>电话</strong></h3>' +
+                        '                        <p><i class="fa fa-phone"></i>　'+user_info[i]['phone']+'</p>' +
+                        '                        <h3><strong>身份证</strong></h3>' +
+                        '                        <p>'+user_info[i]['card']+'</p>' +
+                        '                        <h3><strong>床位</strong></h3>' +
+                        '                        <p>'+user_info[i]['bed']+'床</p>';
+                    }
+                        str += '                    </div>' +
+                        '                    <div class="clearfix"></div>' +
+                        '                </div>' +
+                        '            </div>';
                 }
                 $('.J_user').html(str);
             })
