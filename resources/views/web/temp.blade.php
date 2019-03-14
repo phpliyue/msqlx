@@ -28,6 +28,7 @@
                     <a href="/" class="navbar__logo">码上互联</a>
                     <nav class="navbar__menu">
                         <ul>
+                            <li><a href="{{url('')}}">首页</a></li>
                             <li><a href="#iserver">技术服务</a></li>
                             <li><a href="#xserver">雪球社区</a></li>
                             <li><a href="#qserver">商企服务</a></li>

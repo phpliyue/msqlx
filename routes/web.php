@@ -193,8 +193,9 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::post('/dorm_addGoodsInfo','Dorm\RoomGoodsController@addGoodsInfos');//添加物料方法
     Route::get('/dorm_delGoodsInfo','Dorm\RoomGoodsController@delGoodsInfos');//删除物料
     Route::get('/dorm_company','Dorm\CompanyController@index');//公司管理页面
-    Route::get('/dorm_addManager','Dorm\CompanyController@addManager');
-    Route::post('/dorm_addManagerInfo','Dorm\CompanyController@dorm_addManagerInfo');
+    Route::get('/dorm_addManager/{id?}','Dorm\CompanyController@addManager');
+    Route::post('/dorm_addManagerInfo','Dorm\CompanyController@addManagerInfo');
+    Route::post('/dorm_delManager','Dorm\CompanyController@delManager');//删除管理员
 });
 
 /*

@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group" style="padding-bottom:20px;">
                             <div class="col-sm-12" style="text-align:center;">
-                                <button class="btn btn-warning J_submit" type="submit">添加</button>
+                                <button class="btn btn-warning J_submit" type="submit">@if($data == null)添加@else编辑@endif</button>
                             </div>
                         </div>
                     </div>
@@ -54,20 +54,28 @@
     <script src="{{URL::asset('js/plugins/switchery/switchery.js')}}"></script>
     <script>
         $(document).ready(function () {
+            var data = <?php echo json_encode($data)?>;
+            if(data !== null || data == ''){
+                $('.J_acount').val(data.account);
+                $('.J_password').val(data.password);
+                $('.J_name').val(data.name);
+                $('.J_phone').val(data.phone);
+                $('.J_remark').val(data.remark);
+            }
             // 提交
             var is_submit = false;
             $('.J_submit').click(function () {
                 if (is_submit) {
                     return false;
                 }
-                var acount = $('.J_acount').val();
-                if (acount == '') {
-                    swal('请输入管理员姓名！');
+                var account = $('.J_acount').val();
+                if (account == '') {
+                    swal('请输入账号！');
                     return false;
                 }
                 var password = $('.J_password').val();
-                if (password == '') {
-                    swal('请输入密码！');
+                if (password == '' || password.length < 6) {
+                    swal('请输入至少6位密码！');
                     return false;
                 }
                 var name = $('.J_name').val();
@@ -78,7 +86,8 @@
                     url: '{{url('dorm_addManagerInfo')}}',
                     dataType: "json",
                     data: {
-                        "acount": acount,
+                        "id":(data.id == null || data.id == '') ? '' : data.id,
+                        "account": account,
                         "password": password,
                         "name": name,
                         "phone": phone,
@@ -89,7 +98,8 @@
                     },
                     success: function (data) {
                         if (data.code == 100) {
-                            window.location.href = '{{url('dorm_roomGoods')}}';
+                            swal(data.info);
+                            window.location.href = '{{url('dorm_company')}}';
                         } else {
                             swal(data.info);
                         }
