@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group" style="padding-bottom:20px;">
                             <div class="col-sm-12" style="text-align:center;">
-                                <button class="btn btn-warning J_submit" type="submit">@if($data == null)添加@else编辑@endif</button>
+                                <button class="btn btn-warning J_submit" type="submit">@if($data==null)添加@else编辑@endif</button>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                     url: '{{url('dorm_addManagerInfo')}}',
                     dataType: "json",
                     data: {
-                        "id":(data.id == null || data.id == '') ? '' : data.id,
+                        "id":(data== null || data == '') ? '' : data.id,
                         "account": account,
                         "password": password,
                         "name": name,

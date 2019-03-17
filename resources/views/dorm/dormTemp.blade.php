@@ -54,9 +54,11 @@
                 <li class="@yield('nav8')">
                     <a href="/dorm_entryNotice"><i class="fa fa-bell"></i> <span class="nav-label">入住须知</span></a>
                 </li>
-                <li class="@yield('nav9')">
-                    <a href="/dorm_company"><i class="fa fa-comment"></i> <span class="nav-label">公司信息</span></a>
+                @if(session('dorm_role') == 0)
+                <li class ="@yield('nav9')">
+                    <a href="/dorm_company"><i class="fa fa-comment"></i> <span class="nav-label">人员管理</span></a>
                 </li>
+                @endif
             </ul>
         </div>
     </nav>
