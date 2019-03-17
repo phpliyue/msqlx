@@ -36,16 +36,24 @@ class IndexController extends Controller
         }
         $account = $request->get('account');
         $password = $request->get('password');
-        $info = DB::table('dorm_admin')->where('account',$account)->first();
+        $info = DB::table('dorm_admin')->where(['account'=>$account,'status'=>0])->first();
+        $role = 0;
         if(!empty($info))
         {
+            if($info->type == 1){
+                $role = 1;
+                $account = DB::table('dorm_admin')->where(['id'=>$info->pid,'type'=>0,'status'=>0])->value('account');
+                if(empty($account)){
+                    return json_encode(['code'=>200,'info'=>'请联系管理员！']);
+                }
+            }
+            session(['dorm_account' => $account,'dorm_role' => $role]);
             if(md5(md5($password).$info->salt) == $info->password)
             {
-                session(['dorm_account' => $account]);
                 return json_encode(['code'=>100,'info'=>'登录成功！']);
             }else
             {
-                return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
+                return json_encode(['code'=>200,'info'=>'密码错误！']);
             }
         }else
         {
@@ -87,7 +95,7 @@ class IndexController extends Controller
             $res = DB::table('dorm_admin')->insert($data);
             if($res)
             {
-                session(['dorm_account' => $data['account']]);
+                session(['dorm_account' => $data['account'],'dorm_role' => 0]);
                 return json_encode(['code'=>100,'info'=>'登录成功！']);
             }else
             {
