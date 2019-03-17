@@ -8,8 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @section('css')
         {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="{{URL::asset('css/font-awesome-4.7.0/css/font-awesome.css')}}" rel="stylesheet">
         <link href="{{URL::asset('css/plugins/summernote/summernote.css')}}" rel="stylesheet">
         {{--<link href="{{URL::asset('css/app.css')}}" rel="stylesheet">--}}

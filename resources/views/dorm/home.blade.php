@@ -8,7 +8,7 @@
 @section('content')
 
     <div class="row" style="margin-top:15px;">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>入住男女比例</h5>
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>入住人数占比</h5>
@@ -32,6 +32,20 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>入住人数占比</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="flot-chart">
+                        <div class="flot-chart-pie-content" id="day"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 @endsection
 @section('js')
@@ -108,4 +122,36 @@
             });
         });
     </script>
+            <script>
+                $(function() {
+                    var data = [{
+                        label: "今日入住-{{$numData['num1']}}人",
+                        data: "{{$numData['num1']}}",
+                        color: "#ff0800",
+                    }, {
+                        label: "今日退房-{{$numData['num0']}}人",
+                        data: "{{$numData['num0']}}",
+                        color: "#24cd00",
+                    }];
+                    var plotObj = $.plot($("#day"), data, {
+                        series: {
+                            pie: {
+                                show: true
+                            }
+                        },
+                        grid: {
+                            hoverable: true
+                        },
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                            shifts: {
+                                x: 20,
+                                y: 0
+                            },
+                            defaultTheme: false
+                        }
+                    });
+                });
+            </script>
 @endsection
