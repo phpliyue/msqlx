@@ -20,6 +20,9 @@
                             <input type="text" class="form-control" value="{{$data->remark}}" disabled>
                         </div>
                         <div class="form-group">
+                            <img alt="image" src="{{$data->img}}" style="width:50%;" class="urlView">
+                        </div>
+                        <div class="form-group">
                             <form action="{{url('dorm_upload')}}" method="post">
                                 <label class="font-noraml">内容</label>
                                 <div class="summernote J_content">

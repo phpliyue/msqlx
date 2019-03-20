@@ -7,25 +7,47 @@
 @section('nav1','active')
 @section('content')
     <div class="row" style="margin-top:15px;">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <span class="label label-success pull-right">Monthly</span>
-                    <h5>今日入住</h5>
+                    {{--<span class="label label-success pull-right">Monthly</span>--}}
+                    <h5>今日入住(移动端)</h5>
                 </div>
                 <div class="ibox-content">
-                    <h1 class="no-margins">入住人数</h1>
+                    <h1 class="no-margins">{{$nowData['inMobile']}}</h1>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <span class="label label-success pull-right">Monthly</span>
-                    <h5>今日退房</h5>
+                    {{--<span class="label label-success pull-right">Monthly</span>--}}
+                    <h5>今日退房(移动端)</h5>
                 </div>
                 <div class="ibox-content">
-                    <h1 class="no-margins">退房人数</h1>
+                    <h1 class="no-margins">{{$nowData['outMobile']}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    {{--<span class="label label-success pull-right">Monthly</span>--}}
+                    <h5>今日入住(PC端)</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{$nowData['inPC']}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    {{--<span class="label label-success pull-right">Monthly</span>--}}
+                    <h5>今日退房(PC端)</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{$nowData['inPC']}}</h1>
                 </div>
             </div>
         </div>

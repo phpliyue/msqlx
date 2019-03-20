@@ -8,16 +8,20 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $admin = $request->session()->get('dorm_account');
-        $result = DB::table('dorm_department')->where('admin',$admin)->get();
-        foreach($result as $key){
-            $arr[] = $key->department;
-        }
-        var_dump($arr);
+        $nowTime = date('Y-m-d',time());
+        $inMobile = DB::table('dorm_user')->where(['admin'=>$admin,'in_time'=>$nowTime])->count();
+        $outMobile = DB::table('dorm_user')->where(['admin'=>$admin,'out_time'=>$nowTime])->count();
+        $inPC = DB::table('dorm_user_arz')->where(['admin'=>$admin,'in_time'=>$nowTime])->count();
+        $outPC = DB::table('dorm_user_arz')->where(['admin'=>$admin,'out_time'=>$nowTime])->count();
+        $nowData['inMobile'] = $inMobile;
+        $nowData['outMobile'] = $outMobile;
+        $nowData['inPC'] = $inPC;
+        $nowData['outPC'] = $outPC;
         $sexData['sexMan'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'sex'=>'男','status'=>'1'])->get());
         $sexData['sexWom'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'sex'=>'女','status'=>'1'])->get());
         $numData['num1'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'status'=>'1'])->get());
         $numData['num0'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'status'=>'0'])->get());
-        return view('dorm.home',['sexData'=>$sexData,'numData'=>$numData,'admin'=>$admin]);
+        return view('dorm.home',['sexData'=>$sexData,'numData'=>$numData,'admin'=>$admin,'nowData'=>$nowData]);
     }
     //上传图片
     public function upload(Request $request)
