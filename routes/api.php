@@ -47,6 +47,7 @@ Route::post('dorm_distinguishCard', 'Api\DormController@distinguishCard');//身�
 Route::get('dorm_getAdvert', 'Api\DormController@getAdvert');//获取首页广告
 Route::get('dorm_getAdContent', 'Api\DormController@getAdContent');//获取广告详情
 Route::post('dorm_getXuZi','Api\DormController@getMyXuZi');//获取我的页面须知
+Route::get('dorm_getDepartment','Api\DormController@getDepartment');//获取部门
 
 /*
  * 雪球社区

@@ -80,7 +80,8 @@
 @section('js')
     @parent
     <script src="{{URL::asset('js/jquery-2.1.1.js')}}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>--}}
+    <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
     <script>
         $.ajaxSetup({
             headers: {

@@ -148,7 +148,8 @@ class RoomManageController extends Controller
     //添加宿舍页面
     public function addRoom()
     {
-        return view('dorm.addRoom');
+        $departInfo = DB::table('dorm_department')->where('admin',session('dorm_account'))->get();
+        return view('dorm.addRoom',['depart'=>$departInfo]);
     }
 
     //修改宿舍信息页面
