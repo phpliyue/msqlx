@@ -40,6 +40,7 @@ Route::get('dorm_notice', 'Api\NoticeController@index');//获取公告
 Route::get('dorm_noticeInfo', 'Api\NoticeController@noticeInfo');//公告详情
 Route::post('dorm_outreg', 'Api\DormController@outreg');//外来人员登记
 Route::post('dorm_roomrepair', 'Api\DormController@roomrepair');//宿舍报修
+Route::post('dorm_roomrepair2', 'Api\DormController@roomrepair2');//宿舍报修
 Route::post('dorm_adjustroom', 'Api\DormController@adjustroom');//房间调整
 Route::get('dorm_getEntryNotice', 'Api\EntryNoticeController@index');//入住须知
 Route::post('dorm_myrepair', 'Api\DormController@myrepair');//我的报修

@@ -1,6 +1,6 @@
 @extends('dorm.dormTemp')
 @section('css')
-    <link href="{{URL::asset('css/plugins/c3/c3.min.css')}}" rel="stylesheet">
+    {{--<link href="{{URL::asset('css/plugins/c3/c3.min.css')}}" rel="stylesheet">--}}
     @parent
 @show
 @section('title','宿舍管理')
@@ -47,23 +47,10 @@
                     <h5>今日退房(PC端)</h5>
                 </div>
                 <div class="ibox-content">
-                    <h1 class="no-margins">{{$nowData['inPC']}}</h1>
+                    <h1 class="no-margins">{{$nowData['outPC']}}</h1>
                 </div>
             </div>
         </div>
-        {{--<div class="col-lg-4">--}}
-            {{--<div class="ibox float-e-margins">--}}
-                {{--<div class="ibox-title">--}}
-                    {{--<span class="label label-success pull-right">Monthly</span>--}}
-                    {{--<h5>待定</h5>--}}
-                {{--</div>--}}
-                {{--<div class="ibox-content">--}}
-                    {{--<h1 class="no-margins">40 886,200</h1>--}}
-                    {{--<div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>--}}
-                    {{--<small>Total income</small>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
     </div>
     <div class="row">
         <div class="col-lg-4">
@@ -93,99 +80,48 @@
         <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Bar Chart Example <small>With custom colors.</small></h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">Config option 1</a>
-                            </li>
-                            <li><a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
+                    <h5>房间概况</h5>
                 </div>
                 <div class="ibox-content">
-                    <div class="flot-chart">
-                        <div class="flot-chart-content" id="flot-bar-chart"></div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover roomInfo">
+                            <thead>
+                            <tr>
+                                <th>楼层</th>
+                                <th>房间数</th>
+                                <th>剩余</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{--@foreach ($data as $repair)--}}
+                                <tr class="gradeX">
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                </tr>
+                            <tr class="gradeX">
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                            </tr>
+                            {{--@endforeach--}}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-
-        {{--<div class="col-lg-4">--}}
-            {{--<div class="ibox float-e-margins">--}}
-                {{--<div class="ibox-title">--}}
-                    {{--<h5>Pie </h5>--}}
-
-                {{--</div>--}}
-                {{--<div class="ibox-content">--}}
-                    {{--<div>--}}
-                        {{--<div id="stocked"></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
-        {{--<div class="col-lg-4">--}}
-            {{--<div class="ibox float-e-margins">--}}
-                {{--<div class="ibox-title">--}}
-                    {{--<span class="label label-success pull-right">{{$sexData['sexMan']}}　人</span>--}}
-                    {{--<span class="label label-warning pull-right">{{$sexData['sexWom']}}　人</span>--}}
-                    {{--<h5>入住比例</h5>--}}
-                    {{--<div class="ibox-tools　pull-right">--}}
-                        {{--<a class="collapse-link">--}}
-                            {{--<i class="fa fa-chevron-up"></i>--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="ibox-content">--}}
-                    {{--<div>--}}
-                        {{--<div id="nn"></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="col-lg-4">--}}
-            {{--<div class="ibox float-e-margins">--}}
-                {{--<div class="ibox-title">--}}
-                    {{--<span class="label label-success pull-right">{{$numData['num1']}}　人</span>--}}
-                    {{--<span class="label label-warning pull-right">{{$numData['num0']}}　人</span>--}}
-                    {{--<h5>入住人数占比</h5>--}}
-                    {{--<div class="ibox-tools　pull-right">--}}
-                        {{--<a class="collapse-link">--}}
-                            {{--<i class="fa fa-chevron-up"></i>--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="ibox-content">--}}
-                    {{--<div>--}}
-                        {{--<div id="numb"></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
     </div>
 @endsection
 @section('js')
     @parent
-    <script src="{{URL::asset('js/plugins/c3/c3.min.js')}}"></script>
-    <script src="{{URL::asset('js/plugins/d3/d3.min.js')}}"></script>
-
+    {{--<script src="{{URL::asset('js/plugins/c3/c3.min.js')}}"></script>--}}
+    {{--<script src="{{URL::asset('js/plugins/d3/d3.min.js')}}"></script>--}}
     <script src="{{URL::asset('js/plugins/flot/jquery.flot.js')}}"></script>
     <script src="{{URL::asset('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/flot/jquery.flot.resize.js')}}"></script>
     <script src="{{URL::asset('js/plugins/flot/jquery.flot.pie.js')}}"></script>
     <script src="{{URL::asset('js/plugins/flot/jquery.flot.time.js')}}"></script>
-
     {{--<script src="{{URL::asset('js/demo/flot-demo.js')}}"></script>--}}
     <script>
         $(function () {
@@ -252,56 +188,6 @@
         });
     </script>
     <script>
-        {{--$(document).ready(function(){--}}
-            {{--c3.generate({--}}
-                {{--bindto: '#stocked',--}}
-                {{--data: {--}}
-                    {{--columns: [--}}
-                        {{--['总床数', 50, 200, 100],--}}
-                        {{--['已使用', 30, 20, 34]--}}
-                    {{--],--}}
-                    {{--colors: {--}}
-                        {{--'总床数': '#BABABA',--}}
-                        {{--'已使用': '#ff000c'--}}
-                    {{--},--}}
-                    {{--type: 'bar',--}}
-                    {{--groups: [--}}
-                        {{--['总床数', '已使用']--}}
-                    {{--],--}}
-
-                {{--},--}}
-
-            {{--});--}}
-
-            {{--c3.generate({--}}
-                {{--bindto: '#nn',--}}
-                {{--data: {--}}
-                    {{--columns: [--}}
-                        {{--['男', {{$sexData['sexMan']}}],--}}
-                        {{--['女', {{$sexData['sexWom']}}]--}}
-                    {{--],--}}
-                    {{--colors: {--}}
-                        {{--'男': '#00c1d3',--}}
-                        {{--'女': '#fd5eff'--}}
-                    {{--},--}}
-                    {{--type: 'pie'--}}
-                {{--}--}}
-            {{--});--}}
-            {{--c3.generate({--}}
-                {{--bindto: '#numb',--}}
-                {{--data: {--}}
-                    {{--columns: [--}}
-                        {{--['入住', {{$numData['num1']}}],--}}
-                        {{--['未入住', {{$numData['num0']}}]--}}
-                    {{--],--}}
-                    {{--colors: {--}}
-                        {{--'入住': '#ffab29',--}}
-                        {{--'未入住': '#c7cdca'--}}
-                    {{--},--}}
-                    {{--type: 'pie'--}}
-                {{--}--}}
-            {{--});--}}
-        {{--})--}}
         $(function () {
             var data = [{
                 label: "今日入住-{{$numData['num1']}}人",
@@ -332,57 +218,29 @@
                 }
             });
         });
-
-
-
-        $(function() {
-            var barOptions = {
-                series: {
-                    bars: {
-                        show: true,
-                        barWidth: 0.6,
-                        fill: true,
-                        fillColor: {
-                            colors: [{
-                                opacity: 0.8
-                            }, {
-                                opacity: 0.8
-                            }]
-                        }
-                    }
-                },
-                xaxis: {
-                    tickDecimals: 0
-                },
-                colors: ["#24cd00","#ff000c"],
-                grid: {
-                    color: "#999999",
-                    hoverable: true,
-                    clickable: true,
-                    tickColor: "#D4D4D4",
-                    borderWidth:0
-                },
-                legend: {
-                    show: false
-                },
-                tooltip: true,
-                tooltipOpts: {
-                    content: "楼层: %x,房间数:%y,入住:%z "
-                }
-            };
-            var barData = {
-                label: "bar高科技高科技和空间环境",
-                data: [
-                    [1, 90, 40],
-                    [2, 90, 40],
-                    [3, 90, 40],
-                    [4, 90, 40],
-                    [5, 90, 40],
-                    [6, 90, 40]
+        $(document).ready(function () {
+            $('.roomInfo').DataTable({
+                pageLength: 5,
+                responsive: true,
+                bLengthChange: false,
+                info: false,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    // { extend: 'copy'},
+                    // {extend: 'csv'},
+                    // {extend: 'excel', title: 'ExampleFile'},
+                    // {extend: 'pdf', title: 'ExampleFile'},
+                    // {extend: 'print',
+                    //     customize: function (win){
+                    //         $(win.document.body).addClass('white-bg');
+                    //         $(win.document.body).css('font-size', '10px');
+                    //         $(win.document.body).find('table')
+                    //                 .addClass('compact')
+                    //                 .css('font-size', 'inherit');
+                    //     }
+                    // }
                 ]
-            };
-            $.plot($("#flot-bar-chart"), [barData], barOptions);
-
+            });
         });
     </script>
 @endsection
