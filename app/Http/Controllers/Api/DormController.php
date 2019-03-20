@@ -160,6 +160,7 @@ class DormController extends Controller
             $data['phone'] = $info->phone;
             $data['card'] = $info->card;
             $data['sex'] = $info->sex;
+            $data['depart'] = $info->depart;
             $data['in_time'] = $info->in_time;
             $roomInfo = DB::table('dorm_room')->where('uid', $info->uid)->first();
             if ($roomInfo) {
