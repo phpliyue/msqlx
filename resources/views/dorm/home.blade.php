@@ -126,12 +126,12 @@
     <script>
         $(function () {
             var data = [{
-                label: "男-{{$userData['sexMan']}}人",
-                data:"{{$userData['sexMan']}}",
+                label: "男-{{$sexData['sexMan']}}人",
+                data:"{{$sexData['sexMan']}}",
                 color: "#00c1d3",
             }, {
-                label: "女-{{$userData['sexWom']}}人",
-                data: "{{$userData['sexWom']}}",
+                label: "女-{{$sexData['sexWom']}}人",
+                data: "{{$sexData['sexWom']}}",
                 color: "#fd5eff",
             }];
             var plotObj = $.plot($("#sex"), data, {
@@ -158,12 +158,12 @@
     <script>
         $(function () {
             var data = [{
-                label: "入住-{{$userData['num1']}}人",
-                data: "{{$userData['num1']}}",
+                label: "入住-{{$numData['num1']}}人",
+                data: "{{$numData['num1']}}",
                 color: "#ffab29",
             }, {
-                label: "未入住-{{$userData['num0']}}人",
-                data: "{{$userData['num0']}}",
+                label: "未入住-{{$numData['num0']}}人",
+                data: "{{$numData['num0']}}",
                 color: "#c7cdca",
             }];
             var plotObj = $.plot($("#num"), data, {
