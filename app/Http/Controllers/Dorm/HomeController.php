@@ -8,13 +8,21 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $admin = $request->session()->get('dorm_account');
-        $sexData['sexMan'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'sex'=>'男','status'=>'1'])->get());
-        $sexData['sexWom'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'sex'=>'女','status'=>'1'])->get());
-        $numData['num1'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'status'=>'1'])->get());
-        $numData['num0'] = count(DB::table('dorm_room')->where(['admin'=>$admin,'status'=>'0'])->get());
-
-        $client = new \AipOcr('15621226', 'AttCpwef7ZpAAIYwF5GAcSGQ', 'd1fnYujAp5ErD4EmnxtzVgETymdqOkkR');
-        return view('dorm.home',['sexData'=>$sexData,'numData'=>$numData,'admin'=>$admin]);
+        $userData['sexMan'] = DB::table('dorm_room')->where(['admin'=>$admin,'sex'=>'男','status'=>'1'])->count();
+        $userData['sexWom'] = DB::table('dorm_room')->where(['admin'=>$admin,'sex'=>'女','status'=>'1'])->count();
+        $userData['num1'] = DB::table('dorm_room')->where(['admin'=>$admin,'status'=>'1'])->count();
+        $userData['num0'] = DB::table('dorm_room')->where(['admin'=>$admin,'status'=>'0'])->count();
+        //今日入住、今日退房人数
+        $time = date('Y-m-d',time());
+        $where = ['admin'=>$admin,'status'=>'1','in_time'=>$time];
+        $outwhere = ['admin'=>$admin,'status'=>'0','out_time'=>$time];
+        $userData['innum'] = DB::table('dorm_user')->where($where)->count() + DB::table('dorm_user_arz')->where($where)->count();
+        $userData['outnum'] = DB::table('dorm_user')->where($outwhere)->count() + DB::table('dorm_user_arz')->where($outwhere)->count();
+        //统计每层楼的入住情况(先获取宿舍楼名称)
+        $dorm_name = array_unique(DB::table('dorm_addroom')->where('admin',$admin)->pluck('dorm_name')->toArray());
+        //获取每栋楼每层的入住情况
+        
+        return view('dorm.home',['userData'=>$userData,'admin'=>$admin]);
     }
     public function getCard(Request $request)
     {

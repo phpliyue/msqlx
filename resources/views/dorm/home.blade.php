@@ -32,19 +32,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>入住人数占比</h5>
-                </div>
-                <div class="ibox-content">
-                    <div class="flot-chart">
-                        <div class="flot-chart-pie-content" id="day"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
     </div>
 @endsection
@@ -61,12 +48,12 @@
     <script>
         $(function() {
             var data = [{
-                label: "男-{{$sexData['sexMan']}}人",
-                data:"{{$sexData['sexMan']}}",
+                label: "男-{{$userData['sexMan']}}人",
+                data:"{{$userData['sexMan']}}",
                 color: "#00c1d3",
             }, {
-                label: "女-{{$sexData['sexWom']}}人",
-                data: "{{$sexData['sexWom']}}",
+                label: "女-{{$userData['sexWom']}}人",
+                data: "{{$userData['sexWom']}}",
                 color: "#fd5eff",
             }];
             var plotObj = $.plot($("#sex"), data, {
@@ -93,12 +80,12 @@
     <script>
         $(function() {
             var data = [{
-                label: "入住-{{$numData['num1']}}人",
-                data: "{{$numData['num1']}}",
+                label: "入住-{{$userData['num1']}}人",
+                data: "{{$userData['num1']}}",
                 color: "#ffab29",
             }, {
-                label: "未入住-{{$numData['num0']}}人",
-                data: "{{$numData['num0']}}",
+                label: "未入住-{{$userData['num0']}}人",
+                data: "{{$userData['num0']}}",
                 color: "#c7cdca",
             }];
             var plotObj = $.plot($("#num"), data, {
@@ -122,36 +109,4 @@
             });
         });
     </script>
-            <script>
-                $(function() {
-                    var data = [{
-                        label: "今日入住-{{$numData['num1']}}人",
-                        data: "{{$numData['num1']}}",
-                        color: "#ff0800",
-                    }, {
-                        label: "今日退房-{{$numData['num0']}}人",
-                        data: "{{$numData['num0']}}",
-                        color: "#24cd00",
-                    }];
-                    var plotObj = $.plot($("#day"), data, {
-                        series: {
-                            pie: {
-                                show: true
-                            }
-                        },
-                        grid: {
-                            hoverable: true
-                        },
-                        tooltip: true,
-                        tooltipOpts: {
-                            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
-                            shifts: {
-                                x: 20,
-                                y: 0
-                            },
-                            defaultTheme: false
-                        }
-                    });
-                });
-            </script>
 @endsection
