@@ -140,15 +140,17 @@ class RoomManageController extends Controller
     {
         $id = $request->id;
         $admin = session('dorm_account');
+        $departInfo = DB::table('dorm_department')->where('admin',session('dorm_account'))->get();
         $data = DB::table('dorm_room')->where(['dorm_room.id'=>$id])->first();
         $getAdjust = DB::table('dorm_room')->where(['admin'=>$admin,'status'=>0,'sex'=>$data->sex])->get();
-        return view('dorm.getBedInfo',['data'=>$data,'adjust'=>$getAdjust]);
+        return view('dorm.getBedInfo',['data'=>$data,'adjust'=>$getAdjust,'depart'=>$departInfo]);
     }
 
     //添加宿舍页面
     public function addRoom()
     {
-        return view('dorm.addRoom');
+        $departInfo = DB::table('dorm_department')->where('admin',session('dorm_account'))->get();
+        return view('dorm.addRoom',['depart'=>$departInfo]);
     }
 
     //修改宿舍信息页面
@@ -184,6 +186,7 @@ class RoomManageController extends Controller
         $arr['phone'] = $request->get('phone');
         $arr['card'] = $request->get('card');
         $arr['admin'] = session('dorm_account');
+        $arr['depart'] = $request->get('depart');
         $info = DB::table('dorm_room')->where(['id'=>$arr['id'],'admin'=>$arr['admin']])->first();
         if(empty($info)){
             return json_encode(['code'=>200,'info'=>'该房间未入住！']);
@@ -192,12 +195,12 @@ class RoomManageController extends Controller
             $res1 = true; $res2 = true;
             //先判断该用户信息是否存在
             if(!empty($info->arz_uid)){
-                $res1 = DB::table('dorm_user_arz')->where('id',$info->arz_uid)->update(['name'=>$arr['name'],'phone'=>$arr['phone'],'card'=>$arr['card']]);
+                $res1 = DB::table('dorm_user_arz')->where('id',$info->arz_uid)->update(['name'=>$arr['name'],'phone'=>$arr['phone'],'card'=>$arr['card'],'depart'=>$arr['depart']]);
             }
             if(!empty($info->uid)){
-                $res2 = DB::table('dorm_user')->where('uid',$info->uid)->update(['name'=>$arr['name'],'phone'=>$arr['phone'],'card'=>$arr['card']]);
+                $res2 = DB::table('dorm_user')->where('uid',$info->uid)->update(['name'=>$arr['name'],'phone'=>$arr['phone'],'card'=>$arr['card'],'depart'=>$arr['depart']]);
             }
-            $res3 = DB::table('dorm_room')->where('id',$arr['id'])->update(['name'=>$arr['name'],'phone'=>$arr['phone'],'card'=>$arr['card']]);
+            $res3 = DB::table('dorm_room')->where('id',$arr['id'])->update(['name'=>$arr['name'],'phone'=>$arr['phone'],'card'=>$arr['card'],'depart'=>$arr['depart']]);
             if($res1 && $res2 && $res3){
                 DB::commit();
                 return json_encode(['code'=>100,'info'=>'修改成功！']);
@@ -217,6 +220,7 @@ class RoomManageController extends Controller
         $arr['card'] = $request->get('card');
         $arr['sex'] = $request->get('sex');
         $arr['admin'] = session('dorm_account');
+        $arr['depart'] = $request->get('depart');
         $room_status = DB::table('dorm_room')->where(['id'=>$arr['id'],'admin'=>$arr['admin']])->value('status');
         if($room_status == 1){
             return json_encode(['code'=>200,'info'=>'该房间已入住！']);
@@ -232,6 +236,7 @@ class RoomManageController extends Controller
                     'phone' => $arr['phone'],
                     'card' => $arr['card'],
                     'sex' => $arr['sex'],
+                    'depart'=>$arr['depart'],
                     'admin' => $arr['admin'],
                     'in_time' => $in_time,
                     'status' => 1
@@ -247,7 +252,7 @@ class RoomManageController extends Controller
                 ]);
                 $uid_arz = $userinfo->id;
             }
-            $res2 = DB::table('dorm_room')->where('id', $arr['id'])->update(['arz_uid' => $uid_arz, 'name' => $arr['name'],'phone' => $arr['phone'],'card' => $arr['card'],'in_time' => $in_time, 'status' => 1]);
+            $res2 = DB::table('dorm_room')->where('id', $arr['id'])->update(['arz_uid' => $uid_arz, 'name' => $arr['name'],'phone' => $arr['phone'],'card' => $arr['card'],'depart'=>$arr['depart'],'in_time' => $in_time, 'status' => 1]);
             if($res1 && $res2){
                 DB::commit();
                 return json_encode(['code'=>100,'info'=>'入住成功！']);

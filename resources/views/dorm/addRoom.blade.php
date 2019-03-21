@@ -55,8 +55,9 @@
                                 <label class="font-noraml">部门</label>
                                 <select class="form-control m-b J_part" name="part">
                                     <option value="">请选择</option>
-                                    <option value="生产部">生产部</option>
-                                    <option value="包装部">包装部</option>
+                                    @foreach ($depart as $key)
+                                        <option value="{{$key->department}}">{{$key->department}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-lg-2" style="padding-right:0;">

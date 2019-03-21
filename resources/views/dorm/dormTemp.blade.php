@@ -55,7 +55,7 @@
                 </li>
                 @if(session('dorm_role') == 0)
                 <li class ="@yield('nav9')">
-                    <a href="/dorm_company"><i class="fa fa-comment"></i> <span class="nav-label">人员管理</span></a>
+                    <a href="/dorm_company"><i class="fa fa-gear"></i> <span class="nav-label">公司管理</span></a>
                 </li>
                 @endif
             </ul>

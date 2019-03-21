@@ -19,6 +19,11 @@
                             <input type="hidden" value="{{$data->id}}" class="remarkId">
                             <input type="text" class="form-control" value="{{$data->remark}}" disabled>
                         </div>
+                        @if($data->img)
+                        <div class="form-group">
+                            <img alt="image" src="{{$data->img}}" style="width:50%;" class="urlView">
+                        </div>
+                        @endif
                         <div class="form-group">
                             <form action="{{url('dorm_upload')}}" method="post">
                                 <label class="font-noraml">内容</label>

@@ -1,13 +1,58 @@
 @extends('dorm.dormTemp')
 @section('css')
+    {{--<link href="{{URL::asset('css/plugins/c3/c3.min.css')}}" rel="stylesheet">--}}
     @parent
-    {{--<link href="{{URL::asset('css/font-awesome/css/font-awesome.css')}}" rel="stylesheet">--}}
 @show
 @section('title','宿舍管理')
 @section('nav1','active')
 @section('content')
-
     <div class="row" style="margin-top:15px;">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    {{--<span class="label label-success pull-right">Monthly</span>--}}
+                    <h5>今日入住(移动端)</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{$nowData['inMobile']}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    {{--<span class="label label-success pull-right">Monthly</span>--}}
+                    <h5>今日退房(移动端)</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{$nowData['outMobile']}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    {{--<span class="label label-success pull-right">Monthly</span>--}}
+                    <h5>今日入住(PC端)</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{$nowData['inPC']}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    {{--<span class="label label-success pull-right">Monthly</span>--}}
+                    <h5>今日退房(PC端)</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{$nowData['outPC']}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -32,21 +77,54 @@
                 </div>
             </div>
         </div>
-
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>房间概况</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover roomInfo">
+                            <thead>
+                            <tr>
+                                <th>楼层</th>
+                                <th>房间数</th>
+                                <th>剩余</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{--@foreach ($data as $repair)--}}
+                                <tr class="gradeX">
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                </tr>
+                            <tr class="gradeX">
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                            </tr>
+                            {{--@endforeach--}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @section('js')
     @parent
-    {{--{{URL::asset('')}}--}}
+    {{--<script src="{{URL::asset('js/plugins/c3/c3.min.js')}}"></script>--}}
+    {{--<script src="{{URL::asset('js/plugins/d3/d3.min.js')}}"></script>--}}
     <script src="{{URL::asset('js/plugins/flot/jquery.flot.js')}}"></script>
     <script src="{{URL::asset('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script>
     <script src="{{URL::asset('js/plugins/flot/jquery.flot.resize.js')}}"></script>
     <script src="{{URL::asset('js/plugins/flot/jquery.flot.pie.js')}}"></script>
-    {{--<script src="{{URL::asset('js/plugins/flot/jquery.flot.time.js')}}"></script>--}}
-
+    <script src="{{URL::asset('js/plugins/flot/jquery.flot.time.js')}}"></script>
     {{--<script src="{{URL::asset('js/demo/flot-demo.js')}}"></script>--}}
     <script>
-        $(function() {
+        $(function () {
             var data = [{
                 label: "男-{{$userData['sexMan']}}人",
                 data:"{{$userData['sexMan']}}",
@@ -78,7 +156,7 @@
         });
     </script>
     <script>
-        $(function() {
+        $(function () {
             var data = [{
                 label: "入住-{{$userData['num1']}}人",
                 data: "{{$userData['num1']}}",

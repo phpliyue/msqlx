@@ -16,6 +16,7 @@ class DormController extends Controller
         $arr['phone'] = $request->get('phone');
         $arr['card'] = $request->get('card');
         $arr['sex'] = $request->get('sex');
+        $arr['depart'] = $request->get('depart');
         if ($arr['openid'] == '' || $arr['admin'] == '' || $arr['name'] == '' || $arr['phone'] == '' || $arr['card'] == '' || $arr['sex'] == '') {
             return json_encode(['code' => 200, 'info' => '参数非法！']);
         }
@@ -35,12 +36,13 @@ class DormController extends Controller
                     'phone' => $arr['phone'],
                     'card' => $arr['card'],
                     'sex' => $arr['sex'],
+                    'depart' => $arr['depart'],
                     'admin' => $arr['admin'],
                     'in_time' => $in_time,
                     'out_time' => null,
                     'status' => 1
                 ]);
-                $res2 = DB::table('dorm_room')->where('id', $room->id)->update(['uid' => $uid, 'name' => $arr['name'], 'card' => $arr['card'], 'phone' => $arr['phone'], 'in_time' => $in_time, 'status' => 1]);
+                $res2 = DB::table('dorm_room')->where('id', $room->id)->update(['uid' => $uid, 'name' => $arr['name'], 'card' => $arr['card'], 'depart' => $arr['depart'],'phone' => $arr['phone'], 'in_time' => $in_time, 'status' => 1]);
                 if ($res1 && $res2) {
                     DB::commit();
                     return json_encode(['code' => 100, 'info' => '入住成功！', 'data' => $room]);
@@ -57,6 +59,7 @@ class DormController extends Controller
                     'name' => $arr['name'],
                     'phone' => $arr['phone'],
                     'card' => $arr['card'],
+                    'depart' => $arr['depart'],
                     'admin' => $arr['admin'],
                     'in_time' => $userinfo->in_time,
                     'status' => 1
@@ -157,6 +160,7 @@ class DormController extends Controller
             $data['phone'] = $info->phone;
             $data['card'] = $info->card;
             $data['sex'] = $info->sex;
+            $data['depart'] = $info->depart;
             $data['in_time'] = $info->in_time;
             $roomInfo = DB::table('dorm_room')->where('uid', $info->uid)->first();
             if ($roomInfo) {
@@ -267,6 +271,37 @@ class DormController extends Controller
             return json_encode(['code' => 100, 'info' => '报修失败！']);
         }
     }
+    public function roomrepair2(Request $request)
+    {
+        $file = $request->file('file');
+        $newName = $file->getClientOriginalName();
+        $file->move(public_path() . '/images/roomRepair', $newName);
+        $path = '/images/roomRepair/' . $newName;
+        $openid = $request->get('openid');
+        $uid = DB::table('dorm_user')->where('wx_openid', $openid)->value('uid');
+        $admin = DB::table('dorm_room')->where('uid', $uid)->value('admin');
+        $dorm_name = $request->get('dorm_name');
+        $room_num = $request->get('room_num');
+        $name = $request->get('name');
+        $phone = $request->get('phone');
+        $remark = $request->get('remark');
+        $result = DB::table('dorm_roomrepair')->insert([
+            'admin' => $admin,
+            'uid' => $uid,
+            'dorm_name' => $dorm_name,
+            'room_num' => $room_num,
+            'name' => $name,
+            'phone' => $phone,
+            'img'=>$path,
+            'remark' => $remark,
+            'created_at' => date('Y-m-d H:i:s', time())
+        ]);
+        if ($result) {
+            return json_encode(['code' => 200, 'info' => '报修成功！']);
+        } else {
+            return json_encode(['code' => 100, 'info' => '报修失败！']);
+        }
+    }
     /*
      * 我的页面须知接口
      * */
@@ -282,6 +317,18 @@ class DormController extends Controller
             $content = '您还没有入住,无法查看相关入住须知!';
             return json_encode(['code'=>100,'info'=>'成功！','data'=>$content]);
         }
+    }
+    /*
+     * 获取部门
+     * */
+    public function getDepartment(Request $request)
+    {
+        $admin = $request->get('admin');
+        $result = DB::table('dorm_department')->where('admin',$admin)->get();
+        foreach($result as $key){
+            $arr[] = $key->department;
+        }
+        return $arr;
     }
 
 }

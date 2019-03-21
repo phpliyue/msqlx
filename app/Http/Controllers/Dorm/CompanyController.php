@@ -14,9 +14,10 @@ class CompanyController extends Controller
      * */
     public function index()
     {
+        $depart = DB::table('dorm_department')->where('admin',session('dorm_account'))->get();
         $uid = DB::table('dorm_admin')->where('account',session('dorm_account'))->value('id');
         $data = DB::table('dorm_admin')->where(['pid'=>$uid,'status'=>0])->get();
-        return view('dorm.company',['data'=>$data]);
+        return view('dorm.company',['data'=>$data,'depart'=>$depart]);
     }
     /*
      * 添加管理员页面
@@ -84,6 +85,33 @@ class CompanyController extends Controller
     {
         $id = $request->id;
         $res = DB::table('dorm_admin')->where('id',$id)->update(['status'=>1]);
+        if($res)
+        {
+            return json_encode(['code'=>100,'info'=>'删除成功！']);
+        }else
+        {
+            return json_encode(['code'=>200,'info'=>'服务器繁忙！']);
+        }
+    }
+    /*
+     * 添加部门
+     * */
+    public function addDepartment(Request $request)
+    {
+        $depart = $request->get('department');
+        $admin = $request->session()->get('dorm_account');
+        $res = DB::table('dorm_department')->insert([
+            'department'=>$depart,
+            'admin'=>$admin
+        ]);
+        if($res){
+            return redirect('/dorm_company');
+        }
+    }
+    public function delDepartment(Request $request)
+    {
+        $id = $request->id;
+        $res = DB::table('dorm_department')->where('id',$id)->delete();
         if($res)
         {
             return json_encode(['code'=>100,'info'=>'删除成功！']);

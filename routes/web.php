@@ -196,6 +196,8 @@ Route::group(['middleware'=>'dormAuth'],function(){
     Route::get('/dorm_addManager/{id?}','Dorm\CompanyController@addManager');
     Route::post('/dorm_addManagerInfo','Dorm\CompanyController@addManagerInfo');
     Route::post('/dorm_delManager','Dorm\CompanyController@delManager');//删除管理员
+    Route::get('/dorm_addDepartment','Dorm\CompanyController@addDepartment');//添加部门方法
+    Route::get('/dorm_delDepartment','Dorm\CompanyController@delDepartment');
 });
 
 /*

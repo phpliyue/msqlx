@@ -13,7 +13,6 @@
                         <h5>报修管理</h5>
                     </div>
                     <div class="ibox-content">
-
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover dataTables-example">
                                 <thead>
