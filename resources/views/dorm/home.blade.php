@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>入住男女比例</h5>
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>入住人数占比</h5>
@@ -77,40 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>房间概况</h5>
-                </div>
-                <div class="ibox-content">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover roomInfo">
-                            <thead>
-                            <tr>
-                                <th>楼层</th>
-                                <th>房间数</th>
-                                <th>剩余</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {{--@foreach ($data as $repair)--}}
-                                <tr class="gradeX">
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                </tr>
-                            <tr class="gradeX">
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                            </tr>
-                            {{--@endforeach--}}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 @endsection
 @section('js')
