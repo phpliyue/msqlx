@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <a href="adminIndex">返回首页</a>
+                    <a href="root">返回首页</a>
                 </div>
             </div>
         </div>

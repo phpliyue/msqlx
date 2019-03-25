@@ -44,7 +44,7 @@
                              </span> <span class="text-muted text-xs block">用户信息<b
                                             class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile">用户管理</a></li>
+                            <li><a href="/">用户管理</a></li>
                             <li><a href="contacts.html">待定</a></li>
                             <li><a href="mailbox.html">邮箱</a></li>
                             <li class="divider"></li>
@@ -68,13 +68,13 @@
                 {{--</ul>--}}
                 {{--</li>--}}
                 <li class="@yield('navzero')">
-                    <a href="/adminIndex"><i class="fa fa-home"></i> <span class="nav-label">概况统计</span></a>
+                    <a href="#"><i class="fa fa-home"></i> <span class="nav-label">概况统计</span></a>
                 </li>
                 <li class="@yield('nav1')">
-                    <a href="/userMag"><i class="fa fa-users"></i> <span class="nav-label">导游管理</span></a>
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">导游管理</span></a>
                 </li>
                 <li class="@yield('nav2')">
-                    <a href="/product"><i class="fa fa-money"></i> <span class="nav-label">产品管理</span></a>
+                    <a href="#"><i class="fa fa-money"></i> <span class="nav-label">产品管理</span></a>
                 </li>
                 <li class="@yield('nav3')">
                     <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>

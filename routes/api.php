@@ -12,10 +12,13 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//
+
 /*
  * 小程序公用接口
  * */
 Route::get('wx_getOpenid','Api\WxPublicApiController@getOpenid');
+Route::get('wx_saveCustomerInfo','Api\WxPublicApiController@saveCustomerInfo');
 //
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
