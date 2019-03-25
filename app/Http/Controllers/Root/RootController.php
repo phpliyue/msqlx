@@ -78,61 +78,6 @@ class RootController extends Controller
         return redirect('folders')->with('success',$successMessages);
     }
 
-    /*
-     *travel
-     * */
-    public function lxs()
-    {
-        return view('root.lxs', array('user' => Auth::user()));
-    }
-    /*
-     *
-     * */
-    public function meisi()
-    {
-        return view('root.meisi', array('user' => Auth::user()));
-    }
-
-    /*
-     *
-     * */
-    public function bibei()
-    {
-        return view('root.bibei', array('user' => Auth::user()));
-    }
-
-    /*
-     *
-     * */
-    public function seying()
-    {
-        return view('root.seying', array('user' => Auth::user()));
-    }
-
-    /*
-     *
-     * */
-    public function gonglve()
-    {
-        return view('root.gonglve', array('user' => Auth::user()));
-    }
-
-    /*
-     *
-     * */
-    public function more()
-    {
-        return view('root.more', array('user' => Auth::user()));
-    }
-
-    /*
-     * shop id
-     * */
-    public function shopId()
-    {
-        $data = DB::table('shopID')->get();
-        return view('root.shopId', array('user' => Auth::user(), 'data' => $data));
-    }
 
     /*
      *
