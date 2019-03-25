@@ -19,10 +19,11 @@ class RoomManageController extends Controller
                     $data[$k]->is_create = 0;
                 }
             }
-            foreach ($addroom_ids as $key) {
-                $data[$key - 1]->rz = DB::table('dorm_room')->where(['addroom_id' => $key, 'status' => 1])->count();
-                $data[$key - 1]->wrz = DB::table('dorm_room')->where(['addroom_id' => $key, 'status' => 0])->count();
-            }
+
+        }
+        for($i=0;$i<count($addroom_ids);$i++){
+            $data[$i]->rz = DB::table('dorm_room')->where(['addroom_id' => $addroom_ids[$i], 'status' => 1])->count();
+            $data[$i]->wrz = DB::table('dorm_room')->where(['addroom_id' => $addroom_ids[$i], 'status' => 0])->count();
         }
         return view('dorm.roomManage',['data'=>$data]);
     }
