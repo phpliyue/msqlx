@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 /*
  * 小程序公用接口
  * */
-Route::post('wx_getOpenid','Api\WxPublicApiController@getOpenid');
+Route::get('wx_getOpenid','Api\WxPublicApiController@getOpenid');
 //
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -9,15 +9,19 @@ class RoomManageController extends Controller
     {
         $admin = session('dorm_account');
         $data = DB::table('dorm_addroom')->where('admin',$admin)->get();
-        if(!empty($data)){
-            $ids = array_column($data->toArray(),'id');
-            $addroom_ids = DB::table('dorm_room')->whereIn('addroom_id',$ids)->groupBy('addroom_id')->pluck('addroom_id')->toArray();
-            foreach($ids as $k=>$v){
-                if(in_array($v,$addroom_ids)){
+        if(!empty($data)) {
+            $ids = array_column($data->toArray(), 'id');
+            $addroom_ids = DB::table('dorm_room')->whereIn('addroom_id', $ids)->groupBy('addroom_id')->pluck('addroom_id')->toArray();
+            foreach ($ids as $k => $v) {
+                if (in_array($v, $addroom_ids)) {
                     $data[$k]->is_create = 1;
-                }else{
+                } else {
                     $data[$k]->is_create = 0;
                 }
+            }
+            foreach ($addroom_ids as $key) {
+                $data[$key - 1]->rz = DB::table('dorm_room')->where(['addroom_id' => $key, 'status' => 1])->count();
+                $data[$key - 1]->wrz = DB::table('dorm_room')->where(['addroom_id' => $key, 'status' => 0])->count();
             }
         }
         return view('dorm.roomManage',['data'=>$data]);

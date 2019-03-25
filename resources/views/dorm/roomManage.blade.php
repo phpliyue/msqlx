@@ -26,7 +26,7 @@
                                     <th>楼层</th>
                                     <th>房间</th>
                                     <th>床数</th>
-                                    {{--<th>部门</th>--}}
+                                    <th>入住/未入住</th>
                                     <th>性别</th>
                                     <th>操作</th>
                                 </tr>
@@ -39,7 +39,7 @@
                                         <td>{{$room->floor}}</td>
                                         <td>@if($room->room_start == $room->room_end) {{$room->room_start}} @else {{$room->room_start}}-{{$room->room_end}} @endif</td>
                                         <td>{{$room->bed_num}}</td>
-{{--                                        <td>{{$room->part}}</td>--}}
+                                        <td>{{$room->rz}}/{{$room->wrz}}</td>
                                         <td>{{$room->sex}}</td>
                                         <td style="text-align: center;">
                                             @if($room->is_create == 0)

@@ -12,7 +12,8 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5.0",
-        "peinhu/aetherupload-laravel": "1.0.7"
+        "peinhu/aetherupload-laravel": "1.0.7",
+        "phpoffice/phpexcel": "^1.8"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
