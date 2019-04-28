@@ -31,11 +31,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('img_update','AdminAjaxController@imgUpdate');
 Route::get('image-upload',['as'=>'image.upload','uses'=>'AdminController@index']);
 Route::post('image-upload',['as'=>'image.upload.post','uses'=>'AdminAjaxController@imageUploadPost']);
-
+//Route::redirect('/here', '/there', 301);
 /*
  * 管理员路由
  * */
 Route::group(['middleware'=>'auth'],function(){
+    //商品管理
+    Route::get('goodsManager','Admin\GoodsManagerController@index');
+    Route::any('addGoodsType','Admin\GoodsManagerController@add');
+    Route::any('goods/del/{id}','Admin\GoodsManagerController@del');
+    Route::any('addGoodsView/{type}','Admin\GoodsManagerController@addGoodsView');
+    Route::post('/addGoodsImage','Admin\GoodsManagerController@addGoodsImage');
+    Route::post('/addGoods','Admin\GoodsManagerController@addGoods');//商品上传
+    Route::post('/addDescImage','Admin\GoodsManagerController@addDescImage');//商品内容图片上传
+
+    //
     Route::get('root','Root\RootController@index');
     Route::get('folders','Root\RootController@folders');//素材管理
     Route::post('folders/create','Root\RootController@foldersCreate')->name('folders_create');

@@ -51,4 +51,12 @@ class SnowBallController extends Controller
         $activityContent = DB::table('snowball_activity')->where('id',$id)->get();
         return $activityContent;
     }
+    /*获取首页优惠商品
+     *首页
+     *
+     * */
+    public function getGoods()
+    {
+
+    }
 }

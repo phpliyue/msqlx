@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title','后台管理')</title>
 
-
+    @section('css')
+    @show
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     {{--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"--}}
@@ -68,11 +69,12 @@
                 {{--</ul>--}}
                 {{--</li>--}}
                 <li class="@yield('navzero')">
-                    <a href="#"><i class="fa fa-home"></i> <span class="nav-label">概况统计</span></a>
+                    <a href="#"><i class="fa fa-home"></i> <span class="nav-label">shang</span></a>
                 </li>
                 <li class="@yield('nav1')">
-                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">导游管理</span></a>
+                    <a href="/goodsManager"><i class="fa fa-users"></i> <span class="nav-label">商品管理</span></a>
                 </li>
+
                 <li class="@yield('nav2')">
                     <a href="#"><i class="fa fa-money"></i> <span class="nav-label">产品管理</span></a>
                 </li>
