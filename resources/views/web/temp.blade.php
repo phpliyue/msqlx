@@ -152,7 +152,7 @@
                 </div>
             </div>
         </div>
-        <div style="text-align: center;">沈阳市码上互联网信息服务有限公司</div>
+        <div style="text-align: center;"><a rel="nofollow" href="http://www.beian.miit.gov.cn/" target="_blank">辽ICP备17019287号-1</a>  &nbsp;&nbsp;&nbsp;©2020 www.msqlx.com </div>
     </div>
 </div>
 @show
