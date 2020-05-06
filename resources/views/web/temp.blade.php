@@ -152,7 +152,11 @@
                 </div>
             </div>
         </div>
-        <div style="text-align: center;"><a rel="nofollow" href="http://www.beian.miit.gov.cn/" target="_blank">辽ICP备17019287号-1</a>  &nbsp;&nbsp;&nbsp;©2020 www.msqlx.com </div>
+        <div style="text-align: center;color:white;"><a rel="nofollow" href="http://www.beian.miit.gov.cn/" target="_blank">辽ICP备17019287号-1</a>  &nbsp;&nbsp;&nbsp;©2020 www.msqlx.com </div>
+        <div style="text-align: center;margin-top: 10px;">
+            <img src="{{URL::asset('web/img/beian.png')}}" class="">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=21010402000323" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:white;">辽公网安备 21010402000323号</p></a>
+        </div>
     </div>
 </div>
 @show
