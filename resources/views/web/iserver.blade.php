@@ -8,15 +8,15 @@
 @section('style')
     <style>
         .iserver__overlay--gradient {
-            background: -webkit-gradient(linear, left top, right top, from(#0e1a54), to(#c59b6a));
-            background: linear-gradient(90deg, #0e1a54, #c59b6a)
+            background: -webkit-gradient(linear, left top, right top, from(#9bd6bc), to(#e3c4e4));
+            background: linear-gradient(90deg, #9bd6bc, #e3c4e4)
         }
 
         .navbar {
             position: fixed;
             z-index: 100;
             width: 100%;
-            background-color: #0e1a54;
+            background-color: #9bd6bc;
             -webkit-transition: .7s;
             transition: .7s
         }
@@ -57,7 +57,7 @@
             <div class="container">
                 <div class="page__header__content">
                     <div class="page__header__content__inner" id='navConverter'>
-                        <h1 class="page__header__title">技术服务</h1>
+                        <h1 class="page__header__title" style="color:#333C44">技术服务</h1>
                         <p class="page__header__text">为企业或个人提供互联网相关解决方案。</p>
                     </div>
                 </div>
@@ -85,6 +85,8 @@
                     <div class="text-container doc2">
                         <h3 class="page__main__title">技术前沿</h3>
                         <p>--暂无介绍--</p>
+
+
                     </div>
                     <div class="text-container doc3">
                         <h3 class="page__main__title">解决方案</h3>

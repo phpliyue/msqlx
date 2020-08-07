@@ -9,8 +9,8 @@
     @section('link')
 
             <link href="{{URL::asset('css/font-awesome-4.7.0/css/font-awesome.css')}}" rel="stylesheet">
-        <link rel='stylesheet' href='{{URL::asset('web/css/style.min1.css')}}'/>
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+            <link rel='stylesheet' href='{{URL::asset('web/css/style.min1.css')}}'/>
+{{--            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">--}}
 @show
 @section('style')
 @show
